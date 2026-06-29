@@ -1,0 +1,184 @@
+<!doctype html>
+<!--
+  ╔═══════════════════════════════════════════════════════════════════╗
+  ║  FocusJam — CANONICAL PARTIALS                                    ║
+  ║  Copy the marked blocks verbatim into every page.                 ║
+  ║                                                                   ║
+  ║  RULES FOR PAGE AGENTS                                            ║
+  ║  1. CSS link order:                                               ║
+  ║       <link rel="stylesheet" href="/styles.css">   ← FIRST       ║
+  ║       <link rel="stylesheet" href="/PAGENAME.css"> ← page-local  ║
+  ║     Every page has its own <page>.css file alongside it.         ║
+  ║     Example: features.html → features.css                        ║
+  ║                                                                   ║
+  ║  2. Copy <header> and <footer> VERBATIM. Do not alter class      ║
+  ║     names, attribute names, or element structure — site.js        ║
+  ║     depends on exact selectors.                                   ║
+  ║                                                                   ║
+  ║  3. Active nav state: on the matching nav link set                ║
+  ║       aria-current="page"                                         ║
+  ║     This is the ONLY allowed per-page edit inside <header>.       ║
+  ║                                                                   ║
+  ║  4. site.js contracts (do not break):                             ║
+  ║     • [data-header]  → header receives .is-scrolled at scroll>12 ║
+  ║     • .nav-toggle    → button, aria-expanded="false|true",        ║
+  ║                        aria-controls="site-nav"                   ║
+  ║     • #site-nav / .site-nav → nav panel, toggled .is-open        ║
+  ║     • [data-year]    → textContent replaced with current year     ║
+  ║     • .reveal        → gets .is-visible via IntersectionObserver  ║
+  ║                                                                   ║
+  ║  5. Include <script src="/site.js" defer></script> at end of      ║
+  ║     <body>, after all markup.                                     ║
+  ║                                                                   ║
+  ║  6. Set per-page <title>, <meta name="description">, og:* tags,  ║
+  ║     and <link rel="canonical"> in the <head> placeholder block.  ║
+  ╚═══════════════════════════════════════════════════════════════════╝
+-->
+
+<!-- ═══════════════════════════════════════════════════
+     BLOCK 1: <head> BOILERPLATE
+     Paste into every page. Fill in the PER-PAGE section.
+     ═══════════════════════════════════════════════════ -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#071510" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <!-- CSS: global FIRST, then page-local -->
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/PAGENAME.css" />
+
+    <!-- ── PER-PAGE: replace everything below this line ── -->
+    <meta name="description" content="PAGE DESCRIPTION" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="PAGE TITLE — FocusJam" />
+    <meta property="og:description" content="PAGE OG DESCRIPTION" />
+    <meta property="og:url" content="https://focusjam.com/PAGENAME.html" />
+    <meta property="og:image" content="https://focusjam.com/social-card.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://focusjam.com/PAGENAME.html" />
+    <title>PAGE TITLE — FocusJam</title>
+    <!-- ── END PER-PAGE ── -->
+  </head>
+
+<!-- ═══════════════════════════════════════════════════
+     BLOCK 2: SKIP LINK
+     Paste immediately after <body> on every page.
+     ═══════════════════════════════════════════════════ -->
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ═══════════════════════════════════════════════════
+     BLOCK 3: CANONICAL <header>
+     Copy verbatim. Set aria-current="page" on the active
+     nav link only. No other edits inside this block.
+
+     Nav items:
+       Product        → index.html#product
+       Features       → features.html
+       Integrations   → integrations.html
+       Security       → security.html
+       Pricing        → pricing.html
+       Join a meeting → https://join.focusjam.com  (mobile-visible)
+       Open FocusJam  → https://app.focusjam.com   (primary CTA)
+     ═══════════════════════════════════════════════════ -->
+    <header class="site-header" data-header>
+      <a class="brand" href="/" aria-label="FocusJam home">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+          <path d="M7 8.5 20 3l13 5.5v10.8c0 8.4-5.2 14.4-13 17.7C12.2 33.7 7 27.7 7 19.3Z" />
+          <path d="m14.2 20.2 3.7 3.7 8.2-8.7" />
+        </svg>
+        <span>FocusJam</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Toggle navigation</span>
+        <span></span><span></span>
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+        <a href="/index.html#product">Product</a>
+        <a href="/features.html">Features</a>
+        <a href="/integrations.html">Integrations</a>
+        <a href="/security.html">Security</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="https://join.focusjam.com" class="nav-join">Join a meeting</a>
+        <a href="https://app.focusjam.com" class="button button-small">Open FocusJam</a>
+      </nav>
+    </header>
+    <!-- ── END HEADER ── -->
+
+    <!-- MAIN CONTENT: wrap in <main id="main"> … </main> -->
+
+<!-- ═══════════════════════════════════════════════════
+     BLOCK 4: CANONICAL <footer>
+     Copy verbatim. No per-page edits needed.
+
+     Columns:
+       Brand    — wordmark + tagline + sovereign AI note
+       Product  — page links
+       Meeting  — app/join links
+       Company  — legal + copyright (data-year auto-set by site.js)
+     ═══════════════════════════════════════════════════ -->
+    <footer class="site-footer">
+      <div class="section-shell">
+        <div class="footer-cols">
+
+          <!-- Brand column -->
+          <div class="footer-col-brand">
+            <a class="brand" href="/" aria-label="FocusJam home">
+              <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+                <path d="M7 8.5 20 3l13 5.5v10.8c0 8.4-5.2 14.4-13 17.7C12.2 33.7 7 27.7 7 19.3Z" />
+                <path d="m14.2 20.2 3.7 3.7 8.2-8.7" />
+              </svg>
+              <span>FocusJam</span>
+            </a>
+            <p>Private meetings. Useful intelligence. Infrastructure you control.</p>
+            <p>Sovereign AI video conferencing — every inference stays on your estate. No external AI APIs. No data leaving your boundary.</p>
+          </div>
+
+          <!-- Product column -->
+          <div>
+            <span class="footer-col-heading">Product</span>
+            <nav class="footer-col-links" aria-label="Product pages">
+              <a href="/index.html#product">Product</a>
+              <a href="/features.html">Features</a>
+              <a href="/integrations.html">Integrations</a>
+              <a href="/security.html">Security</a>
+              <a href="/pricing.html">Pricing</a>
+            </nav>
+          </div>
+
+          <!-- Meeting column -->
+          <div>
+            <span class="footer-col-heading">Meeting</span>
+            <nav class="footer-col-links" aria-label="Meeting links">
+              <a href="https://join.focusjam.com">Join a meeting</a>
+              <a href="https://app.focusjam.com">Open FocusJam</a>
+            </nav>
+          </div>
+
+          <!-- Company column -->
+          <div>
+            <span class="footer-col-heading">Company</span>
+            <nav class="footer-col-links" aria-label="Company links">
+              <a href="mailto:hello@focushive.com">Contact</a>
+              <a href="mailto:support@focusjam.com">Support</a>
+            </nav>
+          </div>
+
+        </div>
+
+        <div class="footer-bottom">
+          <small>© <span data-year>2026</span> FocusHive Inc.</small>
+        </div>
+      </div>
+    </footer>
+    <!-- ── END FOOTER ── -->
+
+    <!-- SCRIPTS: always last in <body> -->
+    <script src="/site.js" defer></script>
+  </body>
+</html>
