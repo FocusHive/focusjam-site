@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#071510" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <!-- CSS: global FIRST, then page-local -->
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/pricing.css" />
+
+    <!-- ── PER-PAGE ── -->
+    <meta name="description" content="Simple, transparent pricing for FocusJam — sovereign AI conferencing with an AI Jammer, live transcription, and E2EE on every plan." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Pricing — FocusJam" />
+    <meta property="og:description" content="Pick the plan that fits your jams. Every tier includes your AI Jammer, live transcription, and end-to-end encryption." />
+    <meta property="og:url" content="https://focusjam.com/pricing.html" />
+    <meta property="og:image" content="https://focusjam.com/social-card.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://focusjam.com/pricing.html" />
+    <title>Pricing — FocusJam</title>
+    <!-- ── END PER-PAGE ── -->
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-header>
+      <a class="brand" href="/" aria-label="FocusJam home">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+          <path d="M7 8.5 20 3l13 5.5v10.8c0 8.4-5.2 14.4-13 17.7C12.2 33.7 7 27.7 7 19.3Z" />
+          <path d="m14.2 20.2 3.7 3.7 8.2-8.7" />
+        </svg>
+        <span>FocusJam</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Toggle navigation</span>
+        <span></span><span></span>
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+        <a href="/index.html#product">Product</a>
+        <a href="/features.html">Features</a>
+        <a href="/integrations.html">Integrations</a>
+        <a href="/security.html">Security</a>
+        <a href="/pricing.html" aria-current="page">Pricing</a>
+        <a href="https://join.focusjam.com" class="nav-join">Join a meeting</a>
+        <a href="https://app.focusjam.com" class="button button-small">Open FocusJam</a>
+      </nav>
+    </header>
+    <!-- ── END HEADER ── -->
+
+    <main id="main">
+
+      <!-- ═══════════════════════════════════════════════
+           1. HERO — headline + billing toggle
+           ═══════════════════════════════════════════════ -->
+      <section class="pricing-hero section-shell">
+        <div class="pricing-hero-copy reveal">
+          <p class="eyebrow"><span></span>Plans &amp; Pricing</p>
+          <h1 class="pricing-headline">Straightforward pricing.<br><em>Powerful jams.</em></h1>
+          <p class="lead">Every plan ships with your AI Jammer, live transcription, auto-generated recaps, and end-to-end encryption — right out of the box. Scale as your team grows.</p>
+        </div>
+
+        <div class="billing-toggle-wrap reveal">
+          <span id="label-monthly">Monthly</span>
+          <label class="billing-toggle" for="billing-cycle">
+            <input
+              type="checkbox"
+              id="billing-cycle"
+              role="switch"
+              aria-checked="false"
+              aria-labelledby="label-monthly label-annual"
+            />
+            <span class="billing-toggle-track" aria-hidden="true">
+              <span class="billing-toggle-thumb"></span>
+            </span>
+          </label>
+          <span id="label-annual">Annual <span class="badge">Save 25%</span></span>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════
+           2. PRICING CARDS — Solo / Team / Enterprise
+           ═══════════════════════════════════════════════ -->
+      <section class="pricing-cards-section section-shell" aria-label="Pricing tiers">
+        <div class="grid-3 gap-lg">
+
+          <!-- ── Solo ── -->
+          <article class="card pricing-card reveal">
+            <header class="pricing-card-header">
+              <h2 class="pricing-tier-name">Solo</h2>
+              <p class="pricing-tier-tagline">For individuals &amp; freelancers</p>
+            </header>
+
+            <div class="pricing-price" aria-live="polite" aria-atomic="true">
+              <div class="price-display price-monthly">
+                <span class="price-number">$12</span>
+                <span class="price-period">/mo</span>
+              </div>
+              <div class="price-display price-annual" hidden>
+                <span class="price-number">$9</span>
+                <span class="price-period">/mo</span>
+              </div>
+              <p class="price-note price-monthly-note">billed monthly</p>
+              <p class="price-note price-annual-note" hidden>billed annually &mdash; $108/yr</p>
+            </div>
+
+            <a class="button pricing-cta" href="https://app.focusjam.com">Start free trial</a>
+
+            <ul class="feature-list" aria-label="Solo plan includes">
+              <li>Up to 10 participants per jam</li>
+              <li>HD encrypted video &amp; audio</li>
+              <li>1 AI Jammer per session</li>
+              <li>Live transcription</li>
+              <li>Auto notes, decisions &amp; action items</li>
+              <li>Risk flags &amp; meeting health score</li>
+              <li>Downloadable recap (Markdown + JSON)</li>
+              <li>End-to-end encryption (E2EE)</li>
+              <li>Lobby, PIN &amp; invite links</li>
+              <li>5 GB recap storage</li>
+            </ul>
+          </article>
+
+          <!-- ── Team (most popular) ── -->
+          <article class="card pricing-card pricing-card--featured reveal">
+            <div class="pricing-card-badge-row">
+              <span class="badge">Most popular</span>
+            </div>
+            <header class="pricing-card-header">
+              <h2 class="pricing-tier-name">Team</h2>
+              <p class="pricing-tier-tagline">For growing teams</p>
+            </header>
+
+            <div class="pricing-price" aria-live="polite" aria-atomic="true">
+              <div class="price-display price-monthly">
+                <span class="price-number">$18</span>
+                <span class="price-period">/seat/mo</span>
+              </div>
+              <div class="price-display price-annual" hidden>
+                <span class="price-number">$14</span>
+                <span class="price-period">/seat/mo</span>
+              </div>
+              <p class="price-note price-monthly-note">billed monthly</p>
+              <p class="price-note price-annual-note" hidden>billed annually &mdash; $168/seat/yr</p>
+            </div>
+
+            <a class="button pricing-cta" href="https://app.focusjam.com">Start free trial</a>
+
+            <ul class="feature-list" aria-label="Team plan includes">
+              <li>Everything in Solo</li>
+              <li>Up to 50 participants per jam</li>
+              <li>Multiple AI Jammers + custom names</li>
+              <li>All wake triggers &amp; in-session activities</li>
+              <li>Meeting blueprints</li>
+              <li>SIP / PSTN dial-in</li>
+              <li>Admin dashboard</li>
+              <li>Team meeting health analytics</li>
+              <li>50 GB shared storage</li>
+              <li>Priority email support</li>
+            </ul>
+          </article>
+
+          <!-- ── Enterprise ── -->
+          <article class="card pricing-card reveal">
+            <header class="pricing-card-header">
+              <h2 class="pricing-tier-name">Enterprise</h2>
+              <p class="pricing-tier-tagline">For organizations that need full control</p>
+            </header>
+
+            <div class="pricing-price">
+              <span class="price-contact">Contact sales</span>
+              <p class="price-note">Custom pricing &amp; volume discounts</p>
+            </div>
+
+            <a class="button button-ghost pricing-cta" href="mailto:hello@focushive.com?subject=FocusJam%20Enterprise%20inquiry">Contact sales</a>
+
+            <ul class="feature-list" aria-label="Enterprise plan includes">
+              <li>Everything in Team</li>
+              <li>Unlimited participants</li>
+              <li>SSO / OIDC (Keycloak / FocusPass)</li>
+              <li>Self-hosted sovereign deployment</li>
+              <li>OpenZiti ZTNA private networking</li>
+              <li>Bring-your-own E2EE key control</li>
+              <li>Dedicated GPU capacity</li>
+              <li>Custom data retention policies</li>
+              <li>SLA with 99.9% uptime guarantee</li>
+              <li>Dedicated onboarding &amp; success manager</li>
+            </ul>
+          </article>
+
+        </div>
+
+        <p class="pricing-disclaimer reveal">All prices in USD. Annual plans are charged as a single upfront payment. Cancel or change plans at any time.</p>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════
+           3. COMPARISON TABLE
+           ═══════════════════════════════════════════════ -->
+      <section class="compare-section section-shell" aria-label="Full feature comparison">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span></span>Feature comparison</p>
+            <h2 class="reveal">Every detail,<br>side by side.</h2>
+          </div>
+        </div>
+
+        <div class="compare-table-wrap reveal">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th scope="col">Feature</th>
+                <th scope="col">Solo</th>
+                <th scope="col" class="col-featured">Team</th>
+                <th scope="col">Enterprise</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <!-- ── Meetings ── -->
+              <tr class="compare-category-row">
+                <td colspan="4">Meetings</td>
+              </tr>
+              <tr>
+                <th scope="row">HD encrypted video &amp; audio</th>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td class="col-featured"><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Max participants per jam</th>
+                <td>10</td>
+                <td class="col-featured">50</td>
+                <td>Unlimited</td>
+              </tr>
+              <tr>
+                <th scope="row">SIP / PSTN dial-in</th>
+                <td><span class="cross" aria-label="No">&#10007;</span></td>
+                <td class="col-featured"><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Lobby, PIN &amp; room lock</th>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td class="col-featured"><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Invite tokens &amp; shareable links</th>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td class="col-featured"><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+
+              <!-- ── AI Jammer ── -->
+              <tr class="compare-category-row">
+                <td colspan="4">AI Jammer</td>
+              </tr>
+              <tr>
+                <th scope="row">AI Jammers per session</th>
+                <td>1</td>
+                <td class="col-featured">Multiple</td>
+                <td>Multiple</td>
+              </tr>
+              <tr>
+                <th scope="row">Custom Jammer name &amp; persona</th>
+                <td><span class="cross" aria-label="No">&#10007;</span></td>
+                <td class="col-featured"><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Wake triggers</th>
+                <td>Basic</td>
+                <td class="col-featured">All</td>
+                <td>All</td>
+              </tr>
+              <tr>
+                <th scope="row">In-session activities</th>
+                <td>Basic</td>
+                <td class="col-featured">All</td>
+                <td>All</td>
+              </tr>
+              <tr>
+                <th scope="row">Meeting blueprints</th>
+                <td><span class="cross" aria-label="No">&#10007;</span></td>
+                <td class="col-featured"><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Live Q&amp;A with AI Jammer</th>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td class="col-featured"><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+
+              <!-- ── Recaps & Artifacts ── -->
+              <tr class="compare-category-row">
+                <td colspan="4">Recaps &amp; Artifacts</td>
+              </tr>
+              <tr>
+                <th scope="row">Live transcription</th>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td class="col-featured"><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Auto-generated notes summary</th>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td class="col-featured"><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Decisions log</th>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td class="col-featured"><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Action items extraction</th>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td class="col-featured"><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Risk flags</th>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td class="col-featured"><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Meeting health score</th>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td class="col-featured"><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Downloadable Markdown recap</th>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td class="col-featured"><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Downloadable JSON recap</th>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td class="col-featured"><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Recap storage</th>
+                <td>5 GB</td>
+                <td class="col-featured">50 GB</td>
+                <td>Custom</td>
+              </tr>
+
+              <!-- ── Privacy & Security ── -->
+              <tr class="compare-category-row">
+                <td colspan="4">Privacy &amp; Security</td>
+              </tr>
+              <tr>
+                <th scope="row">End-to-end encrypted media</th>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td class="col-featured"><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <th scope="row">AI runs on FocusJam infrastructure</th>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td class="col-featured"><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Bring-your-own E2EE key control</th>
+                <td><span class="cross" aria-label="No">&#10007;</span></td>
+                <td class="col-featured"><span class="cross" aria-label="No">&#10007;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Data residency controls</th>
+                <td><span class="cross" aria-label="No">&#10007;</span></td>
+                <td class="col-featured"><span class="cross" aria-label="No">&#10007;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+
+              <!-- ── Admin & Deployment ── -->
+              <tr class="compare-category-row">
+                <td colspan="4">Admin &amp; Deployment</td>
+              </tr>
+              <tr>
+                <th scope="row">Admin dashboard</th>
+                <td><span class="cross" aria-label="No">&#10007;</span></td>
+                <td class="col-featured"><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Usage analytics</th>
+                <td><span class="cross" aria-label="No">&#10007;</span></td>
+                <td class="col-featured"><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <th scope="row">SSO / OIDC (Keycloak / FocusPass)</th>
+                <td><span class="cross" aria-label="No">&#10007;</span></td>
+                <td class="col-featured"><span class="cross" aria-label="No">&#10007;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Self-hosted sovereign deployment</th>
+                <td><span class="cross" aria-label="No">&#10007;</span></td>
+                <td class="col-featured"><span class="cross" aria-label="No">&#10007;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <th scope="row">OpenZiti ZTNA private networking</th>
+                <td><span class="cross" aria-label="No">&#10007;</span></td>
+                <td class="col-featured"><span class="cross" aria-label="No">&#10007;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Custom data retention policies</th>
+                <td><span class="cross" aria-label="No">&#10007;</span></td>
+                <td class="col-featured"><span class="cross" aria-label="No">&#10007;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Dedicated GPU capacity</th>
+                <td><span class="cross" aria-label="No">&#10007;</span></td>
+                <td class="col-featured"><span class="cross" aria-label="No">&#10007;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+
+              <!-- ── Support ── -->
+              <tr class="compare-category-row">
+                <td colspan="4">Support</td>
+              </tr>
+              <tr>
+                <th scope="row">Community support</th>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td class="col-featured"><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Priority email support</th>
+                <td><span class="cross" aria-label="No">&#10007;</span></td>
+                <td class="col-featured"><span class="check" aria-label="Yes">&#10003;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <th scope="row">SLA (99.9% uptime guarantee)</th>
+                <td><span class="cross" aria-label="No">&#10007;</span></td>
+                <td class="col-featured"><span class="cross" aria-label="No">&#10007;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Dedicated success manager</th>
+                <td><span class="cross" aria-label="No">&#10007;</span></td>
+                <td class="col-featured"><span class="cross" aria-label="No">&#10007;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Custom onboarding</th>
+                <td><span class="cross" aria-label="No">&#10007;</span></td>
+                <td class="col-featured"><span class="cross" aria-label="No">&#10007;</span></td>
+                <td><span class="check" aria-label="Yes">&#10003;</span></td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════
+           4. FAQ
+           ═══════════════════════════════════════════════ -->
+      <section class="faq-section section-shell" aria-labelledby="faq-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span></span>FAQ</p>
+            <h2 id="faq-heading" class="reveal">Common questions,<br><em>straight answers.</em></h2>
+          </div>
+        </div>
+
+        <div class="faq-list reveal">
+
+          <details class="faq-item">
+            <summary class="faq-question">Where does my data and AI processing run?</summary>
+            <div class="faq-answer">
+              <p>FocusJam operates its own AI infrastructure — no third-party AI SaaS (no OpenAI, no Google, no external model APIs). Your audio, transcripts, and recaps stay on FocusJam&rsquo;s own GPU cluster. Enterprise customers can go further: deploy the entire stack on their own infrastructure for complete data sovereignty.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">Is my video and audio end-to-end encrypted?</summary>
+            <div class="faq-answer">
+              <p>Yes. All jam media is end-to-end encrypted. Enterprise customers can bring their own E2EE keys for full key control &mdash; meaning FocusJam&rsquo;s infrastructure never sees plaintext media, even in transit through our relay servers.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">Can I self-host FocusJam?</summary>
+            <div class="faq-answer">
+              <p>Yes &mdash; on the Enterprise plan. FocusJam offers sovereign, self-hosted deployment on your own infrastructure, including OpenZiti ZTNA private networking so jam sessions never touch the public internet. Contact us to scope your deployment.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">What is an AI Jammer?</summary>
+            <div class="faq-answer">
+              <p>An AI Jammer is FocusJam&rsquo;s AI meeting participant &mdash; it joins every session, listens in real time, takes structured notes, tracks decisions and action items, flags risks, and maintains a live meeting health score. At the end of each jam it produces a full recap: notes, decisions, action items, and risk flags, downloadable as Markdown or JSON. It can also answer questions live during the session.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">Can I rename or customize my AI Jammer?</summary>
+            <div class="faq-answer">
+              <p>Yes, on Team and Enterprise plans. You can give your AI Jammer a custom name and configure its persona so it feels like a genuine member of your team. Solo plan users get the default Jammer experience with a standard name and behavior.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">How does seat-based billing work on the Team plan?</summary>
+            <div class="faq-answer">
+              <p>The Team plan is priced per seat (per user account) per month. Each team member with a FocusJam account counts as one seat. You can add or remove seats at any time &mdash; changes are prorated to your next billing cycle. Annual plans are billed as a single upfront payment at the discounted per-seat rate.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">Can I cancel anytime?</summary>
+            <div class="faq-answer">
+              <p>Absolutely. Monthly plans can be cancelled at any time &mdash; your access continues through the end of the current billing period. Annual plans can be cancelled at renewal. No long-term contracts on Solo or Team.</p>
+            </div>
+          </details>
+
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════
+           5. FINAL CTA
+           ═══════════════════════════════════════════════ -->
+      <section class="final-cta-shell section-shell reveal" aria-label="Get started">
+        <div class="cta-section">
+          <div class="cta-copy">
+            <p class="eyebrow eyebrow-light"><span></span>Ready to jam?</p>
+            <h2>Your next meeting could be your best one yet.</h2>
+          </div>
+          <div class="cta-actions">
+            <a class="button button-light" href="https://app.focusjam.com">Start free trial</a>
+            <a class="text-link text-link-light" href="mailto:hello@focushive.com?subject=FocusJam%20Enterprise%20inquiry">
+              Talk to sales <span aria-hidden="true">&#8599;</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ═══════════════════════════════════════════════
+         CANONICAL FOOTER
+         ═══════════════════════════════════════════════ -->
+    <footer class="site-footer">
+      <div class="section-shell">
+        <div class="footer-cols">
+
+          <!-- Brand column -->
+          <div class="footer-col-brand">
+            <a class="brand" href="/" aria-label="FocusJam home">
+              <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+                <path d="M7 8.5 20 3l13 5.5v10.8c0 8.4-5.2 14.4-13 17.7C12.2 33.7 7 27.7 7 19.3Z" />
+                <path d="m14.2 20.2 3.7 3.7 8.2-8.7" />
+              </svg>
+              <span>FocusJam</span>
+            </a>
+            <p>Jam with your team — with an AI Jammer that actually keeps up.</p>
+            <p>Every session gets an AI Jammer that takes notes, tracks decisions, and answers questions live. All AI runs on your own infrastructure — no external APIs, no data leaving your boundary.</p>
+          </div>
+
+          <!-- Product column -->
+          <div>
+            <span class="footer-col-heading">Product</span>
+            <nav class="footer-col-links" aria-label="Product pages">
+              <a href="/index.html#product">Product</a>
+              <a href="/features.html">Features</a>
+              <a href="/integrations.html">Integrations</a>
+              <a href="/security.html">Security</a>
+              <a href="/pricing.html">Pricing</a>
+            </nav>
+          </div>
+
+          <!-- Meeting column -->
+          <div>
+            <span class="footer-col-heading">Meeting</span>
+            <nav class="footer-col-links" aria-label="Meeting links">
+              <a href="https://join.focusjam.com">Join a meeting</a>
+              <a href="https://app.focusjam.com">Open FocusJam</a>
+            </nav>
+          </div>
+
+          <!-- Company column -->
+          <div>
+            <span class="footer-col-heading">Company</span>
+            <nav class="footer-col-links" aria-label="Company links">
+              <a href="mailto:hello@focushive.com">Contact</a>
+              <a href="mailto:support@focusjam.com">Support</a>
+            </nav>
+          </div>
+
+        </div>
+
+        <div class="footer-bottom">
+          <small>&copy; <span data-year>2026</span> FocusHive Inc.</small>
+        </div>
+      </div>
+    </footer>
+    <!-- ── END FOOTER ── -->
+
+    <!-- Billing toggle: tiny inline script, no external dependencies -->
+    <script>
+      (function () {
+        var toggle = document.getElementById('billing-cycle');
+        if (!toggle) return;
+
+        function applyBilling() {
+          var annual = toggle.checked;
+          toggle.setAttribute('aria-checked', String(annual));
+
+          document.querySelectorAll('.price-monthly, .price-monthly-note').forEach(function (el) {
+            el.hidden = annual;
+          });
+          document.querySelectorAll('.price-annual, .price-annual-note').forEach(function (el) {
+            el.hidden = !annual;
+          });
+        }
+
+        toggle.addEventListener('change', applyBilling);
+      }());
+    </script>
+
+    <script src="/site.js" defer></script>
+  </body>
+</html>
