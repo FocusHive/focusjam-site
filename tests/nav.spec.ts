@@ -1,90 +1,90 @@
 /**
  * nav.spec.ts — Primary navigation checks on every page.
  *
- * Verifies:
- *   - All 7 nav links render on every page
- *   - Brand anchor points to "/"
- *   - Each nav link has the expected href
- *   - aria-current="page" is set on the correct link per page
- *   - "Open FocusJam" CTA is present
+ * Targets the Cloudly template markup:
+ *   - nav#mobile-menu  (desktop accordion nav, hidden by meanmenu on mobile)
+ *   - .logo a.header-logo  (wordmark / brand link)
+ *   - header .header-right a.pp-theme-btn  ("Open FocusJam" CTA)
+ *   - header .header-right a.pp-btn-outline  ("Join a meeting" CTA)
+ *   - li.active  (per-page active state)
+ *
+ * Restricted to Desktop Chrome only — on mobile viewports meanmenu
+ * hides nav#mobile-menu and rewrites the nav into the offcanvas sidebar;
+ * mobile nav behaviour is covered by mobile-nav.spec.ts.
  */
 
-import { test, expect } from '@playwright/test';
+import { test, expect, devices } from '@playwright/test';
 
-// Pages under test: [url, expected aria-current link text]
-// 404 has no aria-current on any nav link — represented as null.
+test.use({ ...devices['Desktop Chrome'] });
+
+// [url, expected active link text | null for 404]
 const pages: [string, string | null][] = [
-  ['/', 'Product'],
+  ['/', 'Home'],
   ['/features.html', 'Features'],
+  ['/pricing.html', 'Pricing'],
   ['/integrations.html', 'Integrations'],
   ['/security.html', 'Security'],
-  ['/pricing.html', 'Pricing'],
   ['/404.html', null],
 ];
 
-// Expected nav links in order: [display text, href]
-const expectedLinks: [string, string][] = [
-  ['Product', '/index.html#product'],
-  ['Features', '/features.html'],
-  ['Integrations', '/integrations.html'],
-  ['Security', '/security.html'],
-  ['Pricing', '/pricing.html'],
-  ['Join a meeting', 'https://join.focusjam.com'],
-  ['Open FocusJam', 'https://app.focusjam.com'],
+// Expected nav items in order: [display text, href attribute]
+const expectedNavItems: [string, string][] = [
+  ['Home', 'index.html'],
+  ['Features', 'features.html'],
+  ['Pricing', 'pricing.html'],
+  ['Integrations', 'integrations.html'],
+  ['Security', 'security.html'],
 ];
 
-for (const [url, currentPageLabel] of pages) {
+for (const [url, activeText] of pages) {
   test.describe(`nav on ${url}`, () => {
-    test('renders 7 nav links', async ({ page }) => {
+    test('renders 5 nav items', async ({ page }) => {
       await page.goto(url);
-      const nav = page.locator('#site-nav');
-      // NOTE: on mobile viewport the nav is CSS-hidden (hamburger pattern) — we
-      // check DOM presence and link count, not container visibility. The
-      // mobile-nav.spec.ts suite covers the open/close behaviour separately.
-      const links = nav.locator('a');
-      await expect(links).toHaveCount(7);
+      const items = page.locator('nav#mobile-menu ul li');
+      await expect(items).toHaveCount(5);
     });
 
-    test('brand link points to /', async ({ page }) => {
+    test('nav items have correct text and hrefs', async ({ page }) => {
       await page.goto(url);
-      const brand = page.locator('.site-header .brand').first();
-      await expect(brand).toHaveAttribute('href', '/');
-    });
-
-    test('nav links have correct hrefs', async ({ page }) => {
-      await page.goto(url);
-      const nav = page.locator('#site-nav');
-      const links = nav.locator('a');
-
-      for (let i = 0; i < expectedLinks.length; i++) {
-        const [text, href] = expectedLinks[i];
-        const link = links.nth(i);
-        await expect(link).toHaveText(text);
-        await expect(link).toHaveAttribute('href', href);
+      for (const [text, href] of expectedNavItems) {
+        const link = page.locator(`nav#mobile-menu ul li a[href="${href}"]`);
+        await expect(link).toHaveCount(1);
+        await expect(link).toContainText(text);
       }
     });
 
-    test('aria-current="page" is on the correct link', async ({ page }) => {
+    test('brand wordmark links to index.html', async ({ page }) => {
       await page.goto(url);
-      const nav = page.locator('#site-nav');
+      const brand = page.locator('.logo a.header-logo').first();
+      await expect(brand).toHaveAttribute('href', 'index.html');
+    });
 
-      if (currentPageLabel === null) {
-        // 404: no link should carry aria-current
-        const currentLinks = nav.locator('[aria-current="page"]');
-        await expect(currentLinks).toHaveCount(0);
+    test('correct nav item carries class="active"', async ({ page }) => {
+      await page.goto(url);
+      const activeItems = page.locator('nav#mobile-menu ul li.active');
+
+      if (activeText === null) {
+        // 404: no item should be active
+        await expect(activeItems).toHaveCount(0);
       } else {
-        // Exactly one link has aria-current="page", and its text matches
-        const currentLinks = nav.locator('[aria-current="page"]');
-        await expect(currentLinks).toHaveCount(1);
-        await expect(currentLinks.first()).toHaveText(currentPageLabel);
+        await expect(activeItems).toHaveCount(1);
+        await expect(activeItems.first().locator('a')).toContainText(activeText);
       }
     });
 
-    test('"Open FocusJam" CTA is present', async ({ page }) => {
+    test('"Open FocusJam" CTA is present and links to app.focusjam.com', async ({ page }) => {
       await page.goto(url);
-      const cta = page.locator('#site-nav a.button.button-small');
-      await expect(cta).toHaveText('Open FocusJam');
+      const cta = page.locator('header .header-right a.pp-theme-btn').first();
+      await expect(cta).toContainText('Open FocusJam');
       await expect(cta).toHaveAttribute('href', 'https://app.focusjam.com');
+    });
+
+    test('"Join a meeting" CTA is present and links to join.focusjam.com', async ({ page }) => {
+      await page.goto(url);
+      // d-none d-lg-inline-block: visible on desktop
+      const cta = page.locator('header .header-right a.pp-btn-outline').first();
+      await expect(cta).toContainText('Join a meeting');
+      await expect(cta).toHaveAttribute('href', 'https://join.focusjam.com');
     });
   });
 }

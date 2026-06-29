@@ -1,0 +1,428 @@
+/*
+ * integrations-page.css
+ * Page-specific styles for integrations.html (Cloudly rebuild).
+ * Loaded after site-overrides.css per partials.html CSS load order.
+ * Colors use Cloudly tokens: --pp-theme #7B1FE4, --pp-header #1A192E,
+ * --pp-text #6D6B7B, --pp-bg #FAFAFA, --pp-white #fff.
+ * Fonts: DM Sans (headings) + Open Sans (body) — both loaded via main.css.
+ */
+
+/* ==================================================================
+   1. STATUS BADGES
+   ================================================================== */
+
+/* Pulsing green dot for live connectors */
+.int-live-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    margin-right: 5px;
+    flex-shrink: 0;
+    animation: int-pulse 2.4s ease-in-out infinite;
+    vertical-align: middle;
+}
+@keyframes int-pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+    50%       { opacity: 0.55; box-shadow: 0 0 0 5px rgba(34, 197, 94, 0); }
+}
+
+/* "Live" badge — green */
+.int-badge-live {
+    display: inline-flex;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #16a34a;
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.28);
+    border-radius: 100px;
+    padding: 3px 10px;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+/* "In development" badge — amber */
+.int-badge-dev {
+    display: inline-flex;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #b45309;
+    background: rgba(217, 119, 6, 0.09);
+    border: 1px solid rgba(217, 119, 6, 0.25);
+    border-radius: 100px;
+    padding: 3px 10px;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+/* "Coming soon" badge — neutral gray */
+.int-badge-soon {
+    display: inline-flex;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--pp-text);
+    background: var(--pp-bg);
+    border: 1px solid rgba(155, 154, 165, 0.3);
+    border-radius: 100px;
+    padding: 3px 10px;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+/* "Enterprise" badge — purple tint */
+.int-badge-ent {
+    display: inline-flex;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--pp-theme);
+    background: rgba(123, 31, 228, 0.08);
+    border: 1px solid rgba(123, 31, 228, 0.22);
+    border-radius: 100px;
+    padding: 3px 10px;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+/* ==================================================================
+   2. LIVE CONNECTOR CARDS (pp-offer-box-item extension)
+   ================================================================== */
+
+/* SVG icon inside the pp-offer-icon circle */
+.pp-offer-icon-svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    width: 72px;
+    height: 72px;
+    background: linear-gradient(270deg, #A121CA 0%, #7B1FE4 100%);
+    margin-bottom: 20px;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+/* Badge row directly below the icon */
+.int-badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+/* ==================================================================
+   3. ROADMAP CARDS
+   ================================================================== */
+
+.int-roadmap-box {
+    padding: 32px 28px 44px 28px;
+    border-radius: 32px;
+    border: 1.5px solid rgba(155, 154, 165, 0.18);
+    background-color: var(--pp-white);
+    transition: all 0.4s ease-in-out;
+    margin-top: 30px;
+    opacity: 0.7;
+    height: 100%;
+}
+.int-roadmap-box:hover {
+    opacity: 1;
+    border-color: rgba(123, 31, 228, 0.2);
+}
+
+/* Muted icon circle for roadmap items */
+.int-roadmap-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    width: 64px;
+    height: 64px;
+    background: rgba(155, 154, 165, 0.12);
+    margin-bottom: 16px;
+    color: var(--pp-text);
+}
+.int-roadmap-box h3 {
+    font-size: 20px;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 700;
+    color: var(--pp-header);
+    margin-bottom: 10px;
+}
+.int-roadmap-box p {
+    font-size: 15px;
+    color: var(--pp-text);
+    line-height: 1.6;
+}
+
+/* ==================================================================
+   4. "HOW CONNECTING WORKS" STEPS
+   ================================================================== */
+
+.int-steps-section .pp-section-title-area {
+    margin-bottom: 48px;
+}
+
+.int-step-card {
+    text-align: center;
+    padding: 32px 24px;
+    position: relative;
+}
+
+.int-step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(270deg, #A121CA 0%, #7B1FE4 100%);
+    color: #fff;
+    font-family: "DM Sans", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 auto 20px;
+    box-shadow: 0 4px 18px rgba(123, 31, 228, 0.3);
+}
+
+.int-step-title {
+    font-family: "DM Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--pp-header);
+    margin-bottom: 10px;
+}
+
+.int-step-body {
+    font-size: 15px;
+    color: var(--pp-text);
+    line-height: 1.65;
+}
+
+/* Right-pointing arrow connector (hidden on mobile) */
+.int-step-arrow {
+    position: absolute;
+    top: 42px;
+    right: -18px;
+    color: var(--pp-theme);
+    opacity: 0.3;
+    font-size: 22px;
+    z-index: 2;
+    display: block;
+}
+@media (max-width: 991px) {
+    .int-step-arrow { display: none; }
+}
+
+/* ==================================================================
+   5. STATUS CHIP STRIP (hero area / breadcrumb)
+   ================================================================== */
+
+.int-hero-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+}
+
+.int-hero-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.88);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 100px;
+    padding: 6px 14px;
+    white-space: nowrap;
+}
+
+/* Extend breadcrumb to accommodate chips */
+.pp-breadcrumb-wrapper.int-has-chips {
+    padding-bottom: 48px;
+}
+
+/* ==================================================================
+   6. DEVELOPER / API DARK BAND
+   ================================================================== */
+
+.int-api-section {
+    background: linear-gradient(160deg, #1A192E 0%, #2d1b5e 40%, #1A192E 100%);
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+.int-api-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 25% 50%, rgba(123, 31, 228, 0.28) 0%, transparent 65%);
+    pointer-events: none;
+}
+
+/* Code block visual */
+.int-code-block {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.int-code-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 12px 20px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.55);
+    font-family: "DM Sans", sans-serif;
+}
+
+.int-code-topbar .int-badge-api {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #c4b5fd;
+    background: rgba(196, 181, 253, 0.12);
+    border: 1px solid rgba(196, 181, 253, 0.25);
+    border-radius: 100px;
+    padding: 2px 9px;
+}
+
+.int-code-pre {
+    margin: 0;
+    padding: 24px 20px;
+    font-size: 13px;
+    line-height: 1.75;
+    background: transparent;
+    color: #e2e8f0;
+    overflow-x: auto;
+    font-family: "Fira Code", "Consolas", "Menlo", monospace;
+    white-space: pre;
+    tab-size: 2;
+}
+/* Comment lines */
+.int-code-pre .cc { color: #6b7280; }
+/* String / value highlight */
+.int-code-pre .sv { color: #86efac; }
+
+/* API section text utilities */
+.int-api-section .pp-section-title span {
+    color: #c4b5fd;
+}
+.int-api-section .pp-section-title span::before,
+.int-api-section .pp-section-title span::after {
+    background: linear-gradient(270deg, #c4b5fd 0%, #a78bfa 100%);
+}
+.int-api-section h2 {
+    color: var(--pp-white);
+}
+.int-api-section .pp-text {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+/* Check list inside API section */
+.int-check-list {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 0;
+}
+.int-check-list li {
+    position: relative;
+    padding-left: 26px;
+    margin-bottom: 12px;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+}
+.int-check-list li::before {
+    content: "\f00c";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 1px;
+    color: #a78bfa;
+    font-size: 13px;
+}
+
+/* ==================================================================
+   7. ROADMAP REQUEST CTA ROW
+   ================================================================== */
+
+.int-roadmap-cta {
+    margin-top: 52px;
+    padding: 32px 40px;
+    border-radius: 20px;
+    background: var(--pp-white);
+    border: 1.5px solid rgba(155, 154, 165, 0.22);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+.int-roadmap-cta-copy p {
+    margin: 0;
+    font-family: "DM Sans", sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--pp-header);
+}
+.int-roadmap-cta-copy span {
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--pp-text);
+    margin-top: 4px;
+}
+
+/* ==================================================================
+   8. FINAL CTA BAND
+   ================================================================== */
+
+.int-cta-band {
+    background: linear-gradient(160deg, #1A192E 0%, #2d1b5e 40%, #1A192E 100%);
+    padding: 80px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.int-cta-band::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 60%, rgba(123, 31, 228, 0.3) 0%, transparent 65%);
+    pointer-events: none;
+}
+.int-cta-band .pp-section-title span {
+    color: #c4b5fd;
+}
+.int-cta-band .pp-section-title span::before,
+.int-cta-band .pp-section-title span::after {
+    background: linear-gradient(270deg, #c4b5fd 0%, #a78bfa 100%);
+}
+.int-cta-band h2 {
+    color: var(--pp-white);
+}
+.int-cta-band .pp-text {
+    color: rgba(255, 255, 255, 0.75);
+}
