@@ -1,20 +1,32 @@
 /**
  * pricing.spec.ts — Pricing page functionality.
  *
+ * The pricing page uses Bootstrap 5 tabs (not a checkbox toggle):
+ *   - #pt-annual-tab  (default active, aria-selected="true")
+ *   - #pt-monthly-tab (inactive by default)
+ *   - #pt-annual      (tab pane, default visible: show active)
+ *   - #pt-monthly     (tab pane, initially hidden)
+ *
  * Verifies:
- *   - Four plan tiers (Free, Solo, Team, Enterprise) are present
- *   - Annual billing is the default headline; monthly is revealed by toggling
- *   - Clicking the billing toggle flips aria-checked and the [hidden] attribute
- *   - After the [hidden] { display: none !important } fix (styles.css), toggling
- *     also visually hides the non-active price (not just the DOM attribute)
- *   - The comparison table renders with all five column headers
+ *   - Annual tab is active by default
+ *   - Four tiers (Free / Solo / Team / Enterprise) in the annual pane
+ *   - Annual prices: Solo $12, Team $18
+ *   - Switching to monthly shows Solo $16, Team $24
+ *   - Annual pane is hidden after switching to monthly
+ *   - Feature comparison table renders with 5 column headers
  */
 
 import { test, expect, type Page } from '@playwright/test';
 
-// The <input> is pointer-covered by .billing-toggle-track — click the label.
-async function clickBillingToggle(page: Page) {
-  await page.locator('label.billing-toggle').click();
+async function clickMonthlyTab(page: Page) {
+  await page.locator('#pt-monthly-tab').click();
+  // Wait for Bootstrap tab transition to complete
+  await expect(page.locator('#pt-monthly')).toBeVisible();
+}
+
+async function clickAnnualTab(page: Page) {
+  await page.locator('#pt-annual-tab').click();
+  await expect(page.locator('#pt-annual')).toBeVisible();
 }
 
 test.describe('pricing page', () => {
@@ -22,8 +34,21 @@ test.describe('pricing page', () => {
     await page.goto('/pricing.html');
   });
 
-  test('shows four pricing tiers: Free, Solo, Team, Enterprise', async ({ page }) => {
-    const tiers = page.locator('.pricing-tier-name');
+  // ── Tab default state ──────────────────────────────────────────
+  test('annual tab is active by default (aria-selected="true")', async ({ page }) => {
+    await expect(page.locator('#pt-annual-tab')).toHaveAttribute('aria-selected', 'true');
+    await expect(page.locator('#pt-monthly-tab')).toHaveAttribute('aria-selected', 'false');
+  });
+
+  test('annual pane is visible and monthly pane is hidden by default', async ({ page }) => {
+    await expect(page.locator('#pt-annual')).toBeVisible();
+    await expect(page.locator('#pt-monthly')).not.toBeVisible();
+  });
+
+  // ── Four tiers in annual pane ──────────────────────────────────
+  test('annual pane shows four tiers: Free, Solo, Team, Enterprise', async ({ page }) => {
+    const annualPane = page.locator('#pt-annual');
+    const tiers = annualPane.locator('.pp-pricing-header h5');
     await expect(tiers).toHaveCount(4);
     await expect(tiers.nth(0)).toHaveText('Free');
     await expect(tiers.nth(1)).toHaveText('Solo');
@@ -31,96 +56,60 @@ test.describe('pricing page', () => {
     await expect(tiers.nth(3)).toHaveText('Enterprise');
   });
 
-  test('annual billing is the default: checkbox checked, aria-checked true, monthly carries [hidden]', async ({ page }) => {
-    const toggle = page.locator('#billing-cycle');
-    await expect(toggle).toBeChecked();
-    await expect(toggle).toHaveAttribute('aria-checked', 'true');
-
-    // Annual containers should NOT have [hidden] (visible by default)
-    const annualPrice = page.locator('.price-display.price-annual').first();
-    const annualHidden = await annualPrice.evaluate((el) => el.hasAttribute('hidden'));
-    expect(annualHidden, 'annual price must not have [hidden] on load').toBe(false);
-
-    // Monthly containers start with [hidden] attribute
-    const monthlyPrice = page.locator('.price-display.price-monthly').first();
-    const monthlyHidden = await monthlyPrice.evaluate((el) => el.hasAttribute('hidden'));
-    expect(monthlyHidden, 'monthly price must carry [hidden] on load').toBe(true);
+  // ── Annual prices ──────────────────────────────────────────────
+  test('annual Solo price is $12', async ({ page }) => {
+    const annualPane = page.locator('#pt-annual');
+    // Solo is the 2nd card (index 1), after Free
+    const soloH2 = annualPane.locator('.pp-pricing-main-item').nth(1).locator('.pp-pricing-header h2');
+    await expect(soloH2).toContainText('$12');
   });
 
-  test('annual Solo price is $12 (default headline)', async ({ page }) => {
-    // Solo is the 2nd card (index 1) — Free is first
-    const soloAnnual = page
-      .locator('.pricing-card')
-      .nth(1)
-      .locator('.price-annual .price-number');
-    await expect(soloAnnual).toHaveText('$12');
-  });
-
-  test('annual Team price is $18 (default headline)', async ({ page }) => {
+  test('annual Team price is $18', async ({ page }) => {
+    const annualPane = page.locator('#pt-annual');
     // Team is the 3rd card (index 2)
-    const teamAnnual = page
-      .locator('.pricing-card')
-      .nth(2)
-      .locator('.price-annual .price-number');
-    await expect(teamAnnual).toHaveText('$18');
+    const teamH2 = annualPane.locator('.pp-pricing-main-item').nth(2).locator('.pp-pricing-header h2');
+    await expect(teamH2).toContainText('$18');
   });
 
-  test('toggling to monthly: aria-checked flips to false, annual gets [hidden], monthly loses [hidden] and is visible', async ({ page }) => {
-    await clickBillingToggle(page);
+  // ── Tab toggle to monthly ──────────────────────────────────────
+  test('switching to monthly: monthly pane visible, annual pane hidden', async ({ page }) => {
+    await clickMonthlyTab(page);
 
-    const toggle = page.locator('#billing-cycle');
-    await expect(toggle).toHaveAttribute('aria-checked', 'false');
-
-    // Annual containers now carry [hidden]
-    const annualPrice = page.locator('.price-display.price-annual').first();
-    const annualHidden = await annualPrice.evaluate((el) => el.hasAttribute('hidden'));
-    expect(annualHidden, 'annual price must carry [hidden] after switching to monthly').toBe(true);
-
-    // Annual price is visually hidden ([hidden] { display: none !important } fix)
-    await expect(annualPrice).not.toBeVisible();
-
-    // Monthly containers lose [hidden] and are visible
-    const monthlyPrice = page.locator('.price-display.price-monthly').first();
-    const monthlyHidden = await monthlyPrice.evaluate((el) => el.hasAttribute('hidden'));
-    expect(monthlyHidden, 'monthly price must not have [hidden] after switching to monthly').toBe(false);
-    await expect(monthlyPrice).toBeVisible();
+    await expect(page.locator('#pt-monthly')).toBeVisible();
+    await expect(page.locator('#pt-annual')).not.toBeVisible();
+    await expect(page.locator('#pt-monthly-tab')).toHaveAttribute('aria-selected', 'true');
+    await expect(page.locator('#pt-annual-tab')).toHaveAttribute('aria-selected', 'false');
   });
 
   test('monthly Solo price is $16', async ({ page }) => {
-    await clickBillingToggle(page);
-
-    const soloMonthly = page
-      .locator('.pricing-card')
-      .nth(1)
-      .locator('.price-monthly .price-number');
-    await expect(soloMonthly).toHaveText('$16');
+    await clickMonthlyTab(page);
+    const monthlyPane = page.locator('#pt-monthly');
+    const soloH2 = monthlyPane.locator('.pp-pricing-main-item').nth(1).locator('.pp-pricing-header h2');
+    await expect(soloH2).toContainText('$16');
   });
 
   test('monthly Team price is $24', async ({ page }) => {
-    await clickBillingToggle(page);
-
-    const teamMonthly = page
-      .locator('.pricing-card')
-      .nth(2)
-      .locator('.price-monthly .price-number');
-    await expect(teamMonthly).toHaveText('$24');
+    await clickMonthlyTab(page);
+    const monthlyPane = page.locator('#pt-monthly');
+    const teamH2 = monthlyPane.locator('.pp-pricing-main-item').nth(2).locator('.pp-pricing-header h2');
+    await expect(teamH2).toContainText('$24');
   });
 
-  test('toggling back to annual restores aria-checked to true', async ({ page }) => {
-    const toggle = page.locator('#billing-cycle');
-    await clickBillingToggle(page); // → monthly
-    await clickBillingToggle(page); // → annual
+  test('switching back to annual restores annual tab as active', async ({ page }) => {
+    await clickMonthlyTab(page);
+    await clickAnnualTab(page);
 
-    await expect(toggle).toHaveAttribute('aria-checked', 'true');
-
-    const annualPrice = page.locator('.price-display.price-annual').first();
-    const annualHidden = await annualPrice.evaluate((el) => el.hasAttribute('hidden'));
-    expect(annualHidden, 'annual price must not have [hidden] after toggling back to annual').toBe(false);
+    await expect(page.locator('#pt-annual-tab')).toHaveAttribute('aria-selected', 'true');
+    await expect(page.locator('#pt-annual')).toBeVisible();
+    await expect(page.locator('#pt-monthly')).not.toBeVisible();
   });
 
-  test('comparison table renders with five column headers: Feature, Free, Solo, Team, Enterprise', async ({ page }) => {
-    const table = page.locator('table.compare-table');
-    await expect(table).toBeVisible();
+  // ── Feature comparison table ───────────────────────────────────
+  test('comparison table has 5 column headers: Feature, Free, Solo, Team, Enterprise', async ({ page }) => {
+    const table = page.locator('table.fj-compare-table');
+    // Scroll into view to trigger WOW.js reveal (it holds visibility:hidden until viewport entry)
+    await table.scrollIntoViewIfNeeded();
+    await expect(table).toBeVisible({ timeout: 5000 });
 
     const headers = table.locator('thead th');
     await expect(headers).toHaveCount(5);
@@ -131,8 +120,9 @@ test.describe('pricing page', () => {
     await expect(headers.nth(4)).toHaveText('Enterprise');
   });
 
-  test('comparison table has data rows', async ({ page }) => {
-    const bodyRows = page.locator('table.compare-table tbody tr');
+  test('comparison table has more than 10 body rows', async ({ page }) => {
+    await page.locator('table.fj-compare-table').scrollIntoViewIfNeeded();
+    const bodyRows = page.locator('table.fj-compare-table tbody tr');
     const count = await bodyRows.count();
     expect(count).toBeGreaterThan(10);
   });

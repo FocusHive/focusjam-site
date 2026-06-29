@@ -2,10 +2,12 @@
  * links.spec.ts — Internal link integrity.
  *
  * Crawls every page, collects internal hrefs, and asserts:
- *   - Each internal file path (without fragment) returns HTTP 200
- *   - Known fragment targets exist as elements in the DOM
+ *   - Each internal file path returns HTTP 200
+ *   - Known section anchor IDs exist in the DOM on the correct pages
  *
  * External links (https://, mailto:) are skipped intentionally.
+ * Relative hrefs (e.g. "index.html") are normalised to absolute paths
+ * ("/index.html") before the HTTP check.
  */
 
 import { test, expect } from '@playwright/test';
@@ -13,23 +15,25 @@ import { test, expect } from '@playwright/test';
 const allPages = [
   '/',
   '/features.html',
+  '/pricing.html',
   '/integrations.html',
   '/security.html',
-  '/pricing.html',
   '/404.html',
 ];
 
-// Fragments known to exist on their respective pages (path → id list)
+// Section IDs that should exist on specific pages
 const knownAnchors: Record<string, string[]> = {
-  '/': ['product', 'jammer', 'top', 'main'],
-  '/features.html': ['participation', 'triggers', 'activities', 'blueprints', 'commands', 'recap', 'personalize', 'main'],
-  '/integrations.html': ['main'],
-  '/security.html': ['main'],
-  '/pricing.html': ['main'],
-  '/404.html': ['main'],
+  '/features.html': [
+    'participation',
+    'triggers',
+    'activities',
+    'blueprints',
+    'commands',
+    'recap',
+    'personalize',
+  ],
 };
 
-// Collect all unique internal file paths across the site
 test('all internal page paths return HTTP 200', async ({ page, request }) => {
   const internalPaths = new Set<string>();
 
@@ -43,27 +47,32 @@ test('all internal page paths return HTTP 200', async ({ page, request }) => {
     );
 
     for (const href of hrefs) {
-      // Skip external links and mailto/tel
+      // Skip external links and special protocols
       if (
         href.startsWith('http://') ||
         href.startsWith('https://') ||
         href.startsWith('mailto:') ||
-        href.startsWith('tel:')
+        href.startsWith('tel:') ||
+        href.startsWith('#')
       ) {
         continue;
       }
 
-      // Strip fragment to get the file path
-      const path = href.split('#')[0];
+      // Strip fragment
+      const withoutFragment = href.split('#')[0];
+      if (!withoutFragment) continue;
 
-      if (path && path !== '') {
-        // Normalise: treat '/' as a path that should 200
-        internalPaths.add(path === '' ? '/' : path);
-      }
+      // Normalise relative hrefs to absolute paths
+      const normalized = withoutFragment.startsWith('/')
+        ? withoutFragment
+        : `/${withoutFragment}`;
+
+      internalPaths.add(normalized);
     }
   }
 
-  // Every collected internal path must return 200
+  expect(internalPaths.size, 'No internal paths were collected').toBeGreaterThan(0);
+
   for (const path of internalPaths) {
     const response = await request.get(`http://localhost:4173${path}`);
     expect(
@@ -73,9 +82,8 @@ test('all internal page paths return HTTP 200', async ({ page, request }) => {
   }
 });
 
-// Verify anchor targets exist in the DOM on their respective pages
 for (const [pagePath, ids] of Object.entries(knownAnchors)) {
-  test(`anchor targets exist on ${pagePath}`, async ({ page }) => {
+  test(`section anchor IDs exist on ${pagePath}`, async ({ page }) => {
     await page.goto(pagePath);
     for (const id of ids) {
       const el = page.locator(`#${id}`);

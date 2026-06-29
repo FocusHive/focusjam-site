@@ -1,0 +1,309 @@
+/*
+ * pricing-page.css — FocusJam Cloudly Pricing page
+ * Load order: main.css → site-overrides.css → pricing-page.css (10th)
+ * Scoped to the pricing page; does NOT override shared Cloudly tokens.
+ */
+
+/* ================================================================
+   1. Neutralise pp-pricing-section box — it's designed to be embedded
+      in a wider layout; on a full pricing page we want edge-to-edge.
+   ================================================================ */
+.pp-pricing-section {
+    margin: 0;
+    border-radius: 0;
+}
+
+/* ================================================================
+   2. Pricing card sub-heading (tier tagline, e.g. "For growing teams")
+   ================================================================ */
+.pp-pricing-header .fj-tier-tag {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--pp-text);
+    margin-bottom: 0;
+}
+
+/* ================================================================
+   3. Billing note under price ("billed annually — $144/yr")
+   ================================================================ */
+.pp-pricing-header .fj-price-note {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--pp-text);
+    margin-top: 6px;
+}
+
+/* Enterprise "from" anchor line */
+.fj-enterprise-from {
+    font-size: 14px;
+    color: var(--pp-text);
+    margin-top: 8px;
+}
+
+/* ================================================================
+   4. Featured (Team — Most Popular) card — purple gradient
+   ================================================================ */
+.pp-pricing-main-item.fj-pricing-featured {
+    /* Elevate slightly so it stands out */
+    transform: translateY(-8px);
+}
+.pp-pricing-main-item.fj-pricing-featured:hover {
+    transform: translateY(-20px);
+}
+
+.pp-pricing-main-item.fj-pricing-featured .pp-pricing-card-item.pp-style-2 {
+    background: linear-gradient(145deg, #7B1FE4 0%, #A121CA 100%);
+}
+
+.pp-pricing-main-item.fj-pricing-featured .pp-pricing-card-item .pp-pricing-header {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+.pp-pricing-main-item.fj-pricing-featured .pp-pricing-card-item .pp-pricing-header h5,
+.pp-pricing-main-item.fj-pricing-featured .pp-pricing-card-item .pp-pricing-header h2,
+.pp-pricing-main-item.fj-pricing-featured .pp-pricing-card-item .pp-pricing-header h2 span {
+    color: #ffffff;
+}
+
+.pp-pricing-main-item.fj-pricing-featured .pp-pricing-card-item .pp-pricing-header .fj-tier-tag {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.pp-pricing-main-item.fj-pricing-featured .pp-pricing-card-item .pp-pricing-header .fj-price-note {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.pp-pricing-main-item.fj-pricing-featured .pp-pricing-card-item .pp-pricing-list li {
+    color: #ffffff;
+}
+
+/* ================================================================
+   5. "Most popular" badge (inside featured card header)
+   ================================================================ */
+.fj-most-popular-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: "DM Sans", sans-serif;
+    padding: 4px 14px;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    margin-bottom: 10px;
+    letter-spacing: 0.04em;
+}
+
+/* ================================================================
+   6. "Save 25%" badge inside the Annual tab button
+   ================================================================ */
+.fj-save-badge {
+    display: inline-block;
+    background: var(--pp-theme);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 100px;
+    margin-left: 6px;
+    vertical-align: middle;
+    line-height: 1.6;
+}
+
+/* Keep badge colour when the Annual tab is active (active = white bg) */
+.pp-pricing-section .nav .nav-link.pp-style-2.active .fj-save-badge {
+    background: var(--pp-theme);
+    color: #ffffff;
+}
+
+/* ================================================================
+   7. Value / positioning line strip
+   ================================================================ */
+.fj-positioning-line {
+    max-width: 820px;
+    margin: 0 auto 32px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--pp-text);
+    text-align: center;
+    padding: 14px 24px;
+    background: #FAF8FF;
+    border-left: 4px solid var(--pp-theme);
+    border-radius: 8px;
+}
+
+/* ================================================================
+   8. Feature comparison table
+   ================================================================ */
+.fj-compare-section {
+    background: #f9f8ff;
+}
+
+.fj-compare-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 16px;
+    box-shadow: 0 2px 24px rgba(123, 31, 228, 0.07);
+}
+
+.fj-compare-table {
+    width: 100%;
+    min-width: 680px;
+    border-collapse: collapse;
+    font-size: 15px;
+    background: #ffffff;
+}
+
+/* Header row */
+.fj-compare-table thead th {
+    padding: 18px 20px;
+    text-align: center;
+    font-family: "DM Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--pp-header);
+    background: #ffffff;
+    border-bottom: 2px solid #ede9f8;
+}
+
+.fj-compare-table thead th:first-child {
+    text-align: left;
+    min-width: 220px;
+}
+
+/* Featured column (Team) */
+.fj-compare-table thead th.col-featured {
+    background: linear-gradient(145deg, #7B1FE4 0%, #A121CA 100%);
+    color: #ffffff;
+}
+
+.fj-compare-table tbody td.col-featured {
+    background: rgba(123, 31, 228, 0.04);
+}
+
+/* Category header rows */
+.fj-compare-table tbody tr.fj-cat-row td {
+    font-family: "DM Sans", sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--pp-theme);
+    padding: 16px 20px 8px;
+    background: #f4f0fd;
+    border-top: 1px solid #ede9f8;
+}
+
+/* Data rows */
+.fj-compare-table tbody tr th,
+.fj-compare-table tbody tr td {
+    padding: 13px 20px;
+    border-bottom: 1px solid #ede9f8;
+    text-align: center;
+    color: var(--pp-header);
+    vertical-align: middle;
+}
+
+.fj-compare-table tbody tr th {
+    text-align: left;
+    font-weight: 400;
+    color: var(--pp-text);
+}
+
+.fj-compare-table tbody tr:hover td,
+.fj-compare-table tbody tr:hover th {
+    background: #faf8ff;
+}
+
+/* Honour featured bg on hover */
+.fj-compare-table tbody tr:hover td.col-featured {
+    background: rgba(123, 31, 228, 0.07);
+}
+
+/* Check / cross marks */
+.fj-chk {
+    color: #7B1FE4;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.fj-x {
+    color: #cccccc;
+    font-size: 16px;
+}
+
+/* ================================================================
+   9. FAQ accordion (Bootstrap 5 base, Cloudly-themed overrides)
+   ================================================================ */
+.fj-faq-section .accordion-item {
+    border: 1px solid rgba(204, 203, 209, 0.5);
+    border-radius: 12px !important;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.fj-faq-section .accordion-button {
+    font-family: "DM Sans", sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--pp-header);
+    background: #ffffff;
+    padding: 20px 24px;
+    border-radius: 12px;
+}
+
+.fj-faq-section .accordion-button:not(.collapsed) {
+    color: var(--pp-theme);
+    background: #FAF8FF;
+    box-shadow: none;
+}
+
+.fj-faq-section .accordion-body {
+    font-size: 15px;
+    color: var(--pp-text);
+    line-height: 1.75;
+    padding: 0 24px 20px;
+    background: #FAF8FF;
+}
+
+/* ================================================================
+   10. Final CTA section
+   ================================================================ */
+.fj-cta-section {
+    background: linear-gradient(135deg, #7B1FE4 0%, #A121CA 100%);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.fj-cta-section h2 {
+    color: #ffffff;
+    margin-bottom: 16px;
+}
+
+.fj-cta-section p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 17px;
+    max-width: 600px;
+    margin: 0 auto 36px;
+}
+
+/* Ghost CTA button on purple bg */
+.fj-cta-ghost-btn {
+    display: inline-block;
+    border: 2px solid rgba(255, 255, 255, 0.65);
+    color: #ffffff;
+    padding: 13px 30px;
+    border-radius: 100px;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-left: 12px;
+}
+
+.fj-cta-ghost-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.9);
+}

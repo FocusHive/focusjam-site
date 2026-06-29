@@ -1,184 +1,403 @@
-<!doctype html>
 <!--
-  ╔═══════════════════════════════════════════════════════════════════╗
-  ║  FocusJam — CANONICAL PARTIALS                                    ║
-  ║  Copy the marked blocks verbatim into every page.                 ║
-  ║                                                                   ║
-  ║  RULES FOR PAGE AGENTS                                            ║
-  ║  1. CSS link order:                                               ║
-  ║       <link rel="stylesheet" href="/styles.css">   ← FIRST       ║
-  ║       <link rel="stylesheet" href="/PAGENAME.css"> ← page-local  ║
-  ║     Every page has its own <page>.css file alongside it.         ║
-  ║     Example: features.html → features.css                        ║
-  ║                                                                   ║
-  ║  2. Copy <header> and <footer> VERBATIM. Do not alter class      ║
-  ║     names, attribute names, or element structure — site.js        ║
-  ║     depends on exact selectors.                                   ║
-  ║                                                                   ║
-  ║  3. Active nav state: on the matching nav link set                ║
-  ║       aria-current="page"                                         ║
-  ║     This is the ONLY allowed per-page edit inside <header>.       ║
-  ║                                                                   ║
-  ║  4. site.js contracts (do not break):                             ║
-  ║     • [data-header]  → header receives .is-scrolled at scroll>12 ║
-  ║     • .nav-toggle    → button, aria-expanded="false|true",        ║
-  ║                        aria-controls="site-nav"                   ║
-  ║     • #site-nav / .site-nav → nav panel, toggled .is-open        ║
-  ║     • [data-year]    → textContent replaced with current year     ║
-  ║     • .reveal        → gets .is-visible via IntersectionObserver  ║
-  ║                                                                   ║
-  ║  5. Include <script src="/site.js" defer></script> at end of      ║
-  ║     <body>, after all markup.                                     ║
-  ║                                                                   ║
-  ║  6. Set per-page <title>, <meta name="description">, og:* tags,  ║
-  ║     and <link rel="canonical"> in the <head> placeholder block.  ║
-  ╚═══════════════════════════════════════════════════════════════════╝
+==========================================================================
+  FocusJam — Cloudly Template Partials Reference
+  Branch: rebuild/cloudly
+==========================================================================
+
+  HOW PAGE AGENTS USE THIS FILE
+  ─────────────────────────────
+  This is NOT a deployable page — it is the canonical copy-source.
+  Each page agent:
+    1. Copies the <head> block verbatim, then sets its own <title> and
+       meta description.
+    2. Copies the Preloader, Back-to-top, Offcanvas, and Header blocks
+       verbatim, then adds class="active" to the correct <li> in the
+       main nav.
+    3. Copies the Footer block verbatim.
+    4. Copies the JS <script> block verbatim (before </body>).
+    5. Injects its own page sections between </header> and <footer>.
+
+  CSS LOAD ORDER (every page — must preserve this exact order):
+    1. bootstrap.min.css      — Bootstrap 5 grid + components
+    2. animate.css            — WOW.js animation classes
+    3. magnific-popup.css     — lightbox
+    4. meanmenu.css           — mobile accordion nav
+    5. swiper-bundle.min.css  — carousel
+    6. nice-select.css        — custom selects
+    7. FA Free 6 CDN          — Font Awesome Free 6 via jsDelivr
+                                (replaces FA Pro all.min.css — NOT committed)
+    8. main.css               — Cloudly hand-written CSS, color tokens
+                                Color tokens: --pp-theme #7B1FE4 (purple)
+                                Fonts: DM Sans (headings) + Open Sans (body)
+    9. site-overrides.css     — FocusJam tweaks (wordmark, footer gradient, etc.)
+   10. [page-specific].css    — optional per-page styles (e.g. pricing-toggle)
+
+  JS LOAD ORDER (every page — end of <body>):
+    1. jquery-3.7.1.min.js
+    2. viewport.jquery.js
+    3. bootstrap.bundle.min.js
+    4. jquery.nice-select.min.js
+    5. jquery.waypoints.js
+    6. jquery.counterup.min.js
+    7. swiper-bundle.min.js
+    8. jquery.meanmenu.min.js
+    9. jquery.magnific-popup.min.js
+   10. wow.min.js
+   11. parallaxie.js
+   12. main.js                — Cloudly init: sticky header, preloader,
+                                back-to-top, meanmenu, WOW, counterup, etc.
+   13. inline: footer-year    — document.getElementById('footer-year')...
+   14. [page-specific inline] — optional
+
+  ACTIVE NAV STATE
+  ────────────────
+  Add class="active" to the <li> that matches the current page in both
+  the main nav and the offcanvas mobile nav. That is the ONLY required
+  per-page edit inside the header block.
+
+  IMAGE PLACEHOLDER CONVENTION
+  ────────────────────────────
+  Every image slot needing a real photo carries:
+    • data-needs-image attribute on the wrapper element or <img> parent
+    • TODO: replace with [description] photo (hardmagic pass)
+  site-overrides.css renders [data-needs-image] as a purple gradient
+  (#7B1FE4 → #A121CA) until a real image is swapped in.
+
+  FA PRO → FA FREE ICON SWAP
+  ──────────────────────────
+  The template's assets/css/all.min.css is FA Pro 6 (NOT committed).
+  We load FA Free 6.x via jsDelivr CDN. Available in FA Free:
+    fa-solid (fas), fa-regular (far), fa-brands (fab)
+  NOT available in Free: fa-light (fal), fa-thin, fa-duotone (fad)
+  Swap rule: replace fal/fad/fat with the nearest fa-solid equivalent.
+
+==========================================================================
 -->
-
-<!-- ═══════════════════════════════════════════════════
-     BLOCK 1: <head> BOILERPLATE
-     Paste into every page. Fill in the PER-PAGE section.
-     ═══════════════════════════════════════════════════ -->
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#071510" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<!--<< Head Area >>-->
+<head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="FocusJam">
+    <!-- PAGE AGENT: replace description -->
+    <meta name="description" content="FocusJam — AI-powered meeting intelligence">
+    <!-- ======== Page Title ========== -->
+    <!-- PAGE AGENT: replace title -->
+    <title>FocusJam — AI-powered meeting intelligence</title>
+    <!-- Favicon (our shield-check SVG) -->
+    <link rel="shortcut icon" href="favicon.svg">
+    <!-- 1. Bootstrap 5 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- 2. Animate.css (WOW.js) -->
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <!-- 3. Magnific Popup -->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <!-- 4. MeanMenu (mobile accordion nav) -->
+    <link rel="stylesheet" href="assets/css/meanmenu.css">
+    <!-- 5. Swiper Bundle -->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <!-- 6. Nice Select -->
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <!-- 7. Font Awesome FREE 6 via jsDelivr CDN
+         Replaces FA Pro all.min.css (commercial, NOT committed to repo).
+         FA Free provides: fa-solid, fa-regular, fa-brands -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css">
+    <!-- 8. Cloudly main CSS (--pp-theme #7B1FE4, DM Sans + Open Sans) -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- 9. FocusJam site overrides (wordmark, footer gradient, breadcrumb, etc.) -->
+    <link rel="stylesheet" href="assets/css/site-overrides.css">
+    <!-- 10. PAGE AGENT: add per-page CSS <link> here if needed -->
+</head>
+<body>
 
-    <!-- CSS: global FIRST, then page-local -->
-    <link rel="stylesheet" href="/styles.css" />
-    <link rel="stylesheet" href="/PAGENAME.css" />
+    <!-- ============================================================
+         PRELOADER
+         ============================================================ -->
+    <div id="preloader" class="preloader">
+        <div class="animation-preloader">
+            <div class="spinner"></div>
+            <div class="txt-loading">
+                <span data-text-preloader="F" class="letters-loading">F</span>
+                <span data-text-preloader="O" class="letters-loading">O</span>
+                <span data-text-preloader="C" class="letters-loading">C</span>
+                <span data-text-preloader="U" class="letters-loading">U</span>
+                <span data-text-preloader="S" class="letters-loading">S</span>
+                <span data-text-preloader="J" class="letters-loading">J</span>
+                <span data-text-preloader="A" class="letters-loading">A</span>
+                <span data-text-preloader="M" class="letters-loading">M</span>
+            </div>
+            <p class="text-center">Loading</p>
+        </div>
+        <div class="loader">
+            <div class="row">
+                <div class="col-3 loader-section section-left"><div class="bg"></div></div>
+                <div class="col-3 loader-section section-left"><div class="bg"></div></div>
+                <div class="col-3 loader-section section-right"><div class="bg"></div></div>
+                <div class="col-3 loader-section section-right"><div class="bg"></div></div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader End -->
 
-    <!-- ── PER-PAGE: replace everything below this line ── -->
-    <meta name="description" content="PAGE DESCRIPTION" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="PAGE TITLE — FocusJam" />
-    <meta property="og:description" content="PAGE OG DESCRIPTION" />
-    <meta property="og:url" content="https://focusjam.com/PAGENAME.html" />
-    <meta property="og:image" content="https://focusjam.com/social-card.svg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="canonical" href="https://focusjam.com/PAGENAME.html" />
-    <title>PAGE TITLE — FocusJam</title>
-    <!-- ── END PER-PAGE ── -->
-  </head>
+    <!-- Back To Top -->
+    <button id="pp-back-top" class="pp-back-to-top show" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
-<!-- ═══════════════════════════════════════════════════
-     BLOCK 2: SKIP LINK
-     Paste immediately after <body> on every page.
-     ═══════════════════════════════════════════════════ -->
-  <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+    <!-- Mouse Cursor -->
+    <div class="mouseCursor cursor-outer"></div>
+    <div class="mouseCursor cursor-inner"></div>
 
-<!-- ═══════════════════════════════════════════════════
-     BLOCK 3: CANONICAL <header>
-     Copy verbatim. Set aria-current="page" on the active
-     nav link only. No other edits inside this block.
+    <!-- ============================================================
+         OFFCANVAS (mobile sidebar)
+         PAGE AGENT: add class="active" to the matching <li>
+         ============================================================ -->
+    <div class="fix-area">
+        <div class="offcanvas__info">
+            <div class="offcanvas__wrapper">
+                <div class="offcanvas__content">
+                    <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
+                        <div class="offcanvas__logo">
+                            <a href="index.html" class="fj-wordmark">
+                                <img src="favicon.svg" alt="FocusJam" class="fj-wordmark-icon">
+                                <span class="fj-wordmark-text" style="color: var(--pp-header);">FocusJam</span>
+                            </a>
+                        </div>
+                        <div class="offcanvas__close">
+                            <button aria-label="Close menu">
+                                <!-- fa-xmark is FA Free solid (replaces fal fa-times) -->
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mobile-menu fix mb-3"></div>
+                    <div class="offcanvas__contact">
+                        <div class="header-button mt-4 d-flex flex-column gap-2">
+                            <a href="https://join.focusjam.com" class="pp-btn-outline text-center">
+                                Join a meeting
+                            </a>
+                            <a href="https://app.focusjam.com" class="pp-theme-btn text-center">
+                                Open FocusJam <i class="fa-solid fa-arrow-right-long"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas__overlay"></div>
+    <!-- Offcanvas End -->
 
-     Nav items:
-       Product        → index.html#product
-       Features       → features.html
-       Integrations   → integrations.html
-       Security       → security.html
-       Pricing        → pricing.html
-       Join a meeting → https://join.focusjam.com  (mobile-visible)
-       Open FocusJam  → https://app.focusjam.com   (primary CTA)
-     ═══════════════════════════════════════════════════ -->
-    <header class="site-header" data-header>
-      <a class="brand" href="/" aria-label="FocusJam home">
-        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
-          <path d="M7 8.5 20 3l13 5.5v10.8c0 8.4-5.2 14.4-13 17.7C12.2 33.7 7 27.7 7 19.3Z" />
-          <path d="m14.2 20.2 3.7 3.7 8.2-8.7" />
-        </svg>
-        <span>FocusJam</span>
-      </a>
+    <!-- ============================================================
+         HEADER / NAVBAR
+         PAGE AGENT: add class="active" to the <li> for the current page.
+         The five primary nav items are: Home, Features, Pricing,
+         Integrations, Security — in that order.
+         ============================================================ -->
+    <header id="header-sticky" class="header-1 header-2">
+        <div class="container">
+            <div class="mega-menu-wrapper">
+                <div class="header-main">
 
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-        <span class="sr-only">Toggle navigation</span>
-        <span></span><span></span>
-      </button>
+                    <!-- Wordmark (text + favicon shield-check — no external logo image) -->
+                    <div class="logo">
+                        <a href="index.html" class="header-logo fj-wordmark">
+                            <img src="favicon.svg" alt="FocusJam" class="fj-wordmark-icon">
+                            <span class="fj-wordmark-text">FocusJam</span>
+                        </a>
+                        <a href="index.html" class="header-logo-2 fj-wordmark">
+                            <img src="favicon.svg" alt="FocusJam" class="fj-wordmark-icon">
+                            <span class="fj-wordmark-text">FocusJam</span>
+                        </a>
+                    </div>
 
-      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
-        <a href="/index.html#product">Product</a>
-        <a href="/features.html">Features</a>
-        <a href="/integrations.html">Integrations</a>
-        <a href="/security.html">Security</a>
-        <a href="/pricing.html">Pricing</a>
-        <a href="https://join.focusjam.com" class="nav-join">Join a meeting</a>
-        <a href="https://app.focusjam.com" class="button button-small">Open FocusJam</a>
-      </nav>
+                    <!-- Desktop / accordion nav -->
+                    <div class="mean__menu-wrapper">
+                        <div class="main-menu">
+                            <nav id="mobile-menu" aria-label="Primary navigation">
+                                <ul>
+                                    <!-- PAGE AGENT: add class="active" to the matching <li> -->
+                                    <li>
+                                        <a href="index.html">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="features.html">Features</a>
+                                    </li>
+                                    <li>
+                                        <a href="pricing.html">Pricing</a>
+                                    </li>
+                                    <li>
+                                        <a href="integrations.html">Integrations</a>
+                                    </li>
+                                    <li>
+                                        <a href="security.html">Security</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- Header right: secondary CTA + primary CTA + hamburger -->
+                    <div class="header-right d-flex justify-content-end align-items-center gap-2">
+                        <a href="https://join.focusjam.com" class="pp-btn-outline d-none d-lg-inline-block">
+                            Join a meeting
+                        </a>
+                        <a href="https://app.focusjam.com" class="pp-theme-btn">
+                            Open FocusJam <i class="fa-solid fa-arrow-right-long"></i>
+                        </a>
+                        <!-- Mobile hamburger toggle -->
+                        <div class="header__hamburger d-xl-none my-auto">
+                            <div class="sidebar__toggle" aria-label="Open menu" role="button">
+                                <div class="header-bar">
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </header>
-    <!-- ── END HEADER ── -->
+    <!-- Header End -->
 
-    <!-- MAIN CONTENT: wrap in <main id="main"> … </main> -->
+    <!-- ============================================================
+         PAGE AGENT: insert page <section> blocks here
+         (between </header> and <footer>)
+         ============================================================ -->
 
-<!-- ═══════════════════════════════════════════════════
-     BLOCK 4: CANONICAL <footer>
-     Copy verbatim. No per-page edits needed.
 
-     Columns:
-       Brand    — wordmark + tagline + sovereign AI note
-       Product  — page links
-       Meeting  — app/join links
-       Company  — legal + copyright (data-year auto-set by site.js)
-     ═══════════════════════════════════════════════════ -->
-    <footer class="site-footer">
-      <div class="section-shell">
-        <div class="footer-cols">
+    <!-- ============================================================
+         FOOTER
+         Copy verbatim. No per-page edits needed.
+         ============================================================ -->
+    <footer class="pp-footer-section-2">
+        <div class="container">
+            <div class="pp-footer-widget-wrapper pp-style-2">
+                <div class="row justify-content-between">
 
-          <!-- Brand column -->
-          <div class="footer-col-brand">
-            <a class="brand" href="/" aria-label="FocusJam home">
-              <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
-                <path d="M7 8.5 20 3l13 5.5v10.8c0 8.4-5.2 14.4-13 17.7C12.2 33.7 7 27.7 7 19.3Z" />
-                <path d="m14.2 20.2 3.7 3.7 8.2-8.7" />
-              </svg>
-              <span>FocusJam</span>
-            </a>
-            <p>Jam with your team — with an AI Jammer that actually keeps up.</p>
-            <p>Every session gets an AI Jammer that takes notes, tracks decisions, and answers questions live. All AI runs on your own infrastructure — no external APIs, no data leaving your boundary.</p>
-          </div>
+                    <!-- Brand column -->
+                    <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
+                        <div class="pp-footer-widget-items">
+                            <div class="pp-widget-head">
+                                <a href="index.html" class="pp-footer-logo fj-wordmark">
+                                    <img src="favicon.svg" alt="FocusJam" class="fj-wordmark-icon">
+                                    <span class="fj-wordmark-text">FocusJam</span>
+                                </a>
+                            </div>
+                            <div class="pp-footer-content">
+                                <p>AI-powered meeting intelligence that keeps your team focused, aligned, and moving forward.</p>
+                                <div class="social-icon d-flex align-items-center">
+                                    <a href="https://x.com/focusjam" aria-label="X / Twitter">
+                                        <i class="fa-brands fa-x-twitter"></i>
+                                    </a>
+                                    <a href="https://linkedin.com/company/focusjam" aria-label="LinkedIn">
+                                        <i class="fa-brands fa-linkedin-in"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-          <!-- Product column -->
-          <div>
-            <span class="footer-col-heading">Product</span>
-            <nav class="footer-col-links" aria-label="Product pages">
-              <a href="/index.html#product">Product</a>
-              <a href="/features.html">Features</a>
-              <a href="/integrations.html">Integrations</a>
-              <a href="/security.html">Security</a>
-              <a href="/pricing.html">Pricing</a>
-            </nav>
-          </div>
+                    <!-- Product links -->
+                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6 wow fadeInUp" data-wow-delay=".3s">
+                        <div class="pp-footer-widget-items">
+                            <div class="pp-widget-head">
+                                <h3>Product</h3>
+                            </div>
+                            <ul class="pp-list-area">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="features.html">Features</a></li>
+                                <li><a href="pricing.html">Pricing</a></li>
+                                <li><a href="integrations.html">Integrations</a></li>
+                                <li><a href="security.html">Security</a></li>
+                            </ul>
+                        </div>
+                    </div>
 
-          <!-- Meeting column -->
-          <div>
-            <span class="footer-col-heading">Meeting</span>
-            <nav class="footer-col-links" aria-label="Meeting links">
-              <a href="https://join.focusjam.com">Join a meeting</a>
-              <a href="https://app.focusjam.com">Open FocusJam</a>
-            </nav>
-          </div>
+                    <!-- Meeting links -->
+                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6 wow fadeInUp" data-wow-delay=".4s">
+                        <div class="pp-footer-widget-items">
+                            <div class="pp-widget-head">
+                                <h3>Meeting</h3>
+                            </div>
+                            <ul class="pp-list-area">
+                                <li><a href="https://join.focusjam.com">Join a meeting</a></li>
+                                <li><a href="https://app.focusjam.com">Open FocusJam</a></li>
+                            </ul>
+                        </div>
+                    </div>
 
-          <!-- Company column -->
-          <div>
-            <span class="footer-col-heading">Company</span>
-            <nav class="footer-col-links" aria-label="Company links">
-              <a href="mailto:hello@focushive.com">Contact</a>
-              <a href="mailto:support@focusjam.com">Support</a>
-            </nav>
-          </div>
+                    <!-- Company links -->
+                    <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".5s">
+                        <div class="pp-footer-widget-items">
+                            <div class="pp-widget-head">
+                                <h3>Company</h3>
+                            </div>
+                            <ul class="pp-list-area">
+                                <li><a href="mailto:hello@focusjam.com">Contact</a></li>
+                                <li><a href="mailto:support@focusjam.com">Support</a></li>
+                            </ul>
+                        </div>
+                    </div>
 
+                </div>
+            </div>
         </div>
 
-        <div class="footer-bottom">
-          <small>© <span data-year>2026</span> FocusHive Inc.</small>
+        <!-- Footer bottom bar -->
+        <div class="footer-bottom3">
+            <div class="container">
+                <div class="pp-footer-bottom-wrapper">
+                    <p class="wow fadeInUp" data-wow-delay=".3s">
+                        Copyright &copy; <span id="footer-year"></span> <b>FocusJam</b>. All rights reserved.
+                    </p>
+                    <ul class="pp-footer-list wow fadeInUp" data-wow-delay=".5s">
+                        <li><a href="mailto:hello@focusjam.com">Contact</a></li>
+                        <li><a href="mailto:support@focusjam.com">Support</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
     </footer>
-    <!-- ── END FOOTER ── -->
+    <!-- Footer End -->
 
-    <!-- SCRIPTS: always last in <body> -->
-    <script src="/site.js" defer></script>
-  </body>
+    <!-- ============================================================
+         JS INCLUDES — end of <body>, copy verbatim on every page.
+         Load order: jQuery → viewport → Bootstrap → plugins → main.js
+         ============================================================ -->
+    <!-- 1. jQuery -->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <!-- 2. Viewport -->
+    <script src="assets/js/viewport.jquery.js"></script>
+    <!-- 3. Bootstrap Bundle (includes Popper) -->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <!-- 4. Nice Select -->
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <!-- 5. Waypoints -->
+    <script src="assets/js/jquery.waypoints.js"></script>
+    <!-- 6. Counter Up -->
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <!-- 7. Swiper -->
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <!-- 8. MeanMenu (mobile accordion nav) -->
+    <script src="assets/js/jquery.meanmenu.min.js"></script>
+    <!-- 9. Magnific Popup -->
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <!-- 10. WOW.js (scroll-triggered animations) -->
+    <script src="assets/js/wow.min.js"></script>
+    <!-- 11. Parallaxie -->
+    <script src="assets/js/parallaxie.js"></script>
+    <!-- 12. Cloudly main.js — inits sticky header, preloader, back-to-top,
+          meanmenu, WOW, counterup, magnific-popup, nice-select, swiper, etc. -->
+    <script src="assets/js/main.js"></script>
+    <!-- 13. Dynamic footer year -->
+    <script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
+    <!-- PAGE AGENT: add page-specific inline <script> here if needed -->
+
+</body>
 </html>

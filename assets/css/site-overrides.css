@@ -1,0 +1,222 @@
+/*
+ * FocusJam site-overrides.css
+ * Layers on top of Cloudly's main.css.  Keep this file thin — the purple
+ * Cloudly palette (#7B1FE4 → #A121CA) is intentional and must NOT be
+ * overridden here.
+ *
+ * Load order (enforced in every page <head>):
+ *   bootstrap.min.css → vendor CSS → FA Free CDN → main.css → site-overrides.css
+ */
+
+/* ================================================================
+   0. SKIP LINK — accessibility (hidden until focused)
+   ================================================================ */
+
+.skip-link {
+    position: absolute;
+    top: -48px;
+    left: 0;
+    background: var(--pp-theme, #7B1FE4);
+    color: #fff;
+    padding: 10px 18px;
+    z-index: 99999;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    border-radius: 0 0 6px 0;
+    transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 3px solid #fff;
+    outline-offset: 2px;
+}
+
+/* ================================================================
+   1. WORDMARK — FocusJam text + favicon shield-check mark
+   ================================================================ */
+
+.fj-wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.fj-wordmark-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+}
+
+.fj-wordmark-text {
+    font-family: "DM Sans", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--pp-white);
+    letter-spacing: -0.02em;
+}
+
+/* Sticky / scrolled state — header background turns light; wordmark text goes dark */
+.header-1.sticky .fj-wordmark-text,
+.header-2.sticky .fj-wordmark-text {
+    color: var(--pp-header);
+}
+
+/* ================================================================
+   2. HEADER NAV — simplified (no mega-menu / home-thumb dropdowns)
+   ================================================================ */
+
+/* Remove the mega-menu home thumbnail block entirely — we use plain links */
+.main-menu nav#mobile-menu > ul > li.menu-thumb > ul.has-homemenu {
+    display: none !important;
+}
+
+/* Tighten CTA button cluster */
+.header-right .pp-theme-btn {
+    padding: 13px 20px;
+    font-size: 14px;
+}
+
+.header-right .pp-theme-btn + .pp-theme-btn {
+    margin-left: 8px;
+}
+
+/* "Join a meeting" secondary CTA — outlined style */
+.pp-btn-outline {
+    font-size: 14px;
+    font-weight: 600;
+    font-family: "DM Sans", sans-serif;
+    background: transparent;
+    border: 2px solid var(--pp-white);
+    color: var(--pp-white);
+    padding: 11px 20px;
+    border-radius: 100px;
+    display: inline-block;
+    transition: all 300ms ease;
+    white-space: nowrap;
+}
+
+.pp-btn-outline:hover {
+    background: var(--pp-white);
+    color: var(--pp-theme);
+}
+
+.header-1.sticky .pp-btn-outline,
+.header-2.sticky .pp-btn-outline {
+    border-color: var(--pp-theme);
+    color: var(--pp-theme);
+}
+
+.header-1.sticky .pp-btn-outline:hover,
+.header-2.sticky .pp-btn-outline:hover {
+    background: var(--pp-theme);
+    color: var(--pp-white);
+}
+
+/* ================================================================
+   3. FOOTER
+   ================================================================ */
+
+/* Footer uses CSS gradient instead of stock bg photo */
+.pp-footer-section-2 {
+    background-image: none !important;
+    background: linear-gradient(160deg, #1A192E 0%, #12111f 100%);
+}
+
+/* Footer newsletter section — keep Cloudly layout but remove form (no backend) */
+.pp-footer-newsletter form {
+    display: none;
+}
+
+/* Dynamic copyright year */
+#footer-year {
+    font-weight: 700;
+}
+
+/* ================================================================
+   4. IMAGE PLACEHOLDERS
+   ================================================================ */
+
+/*
+ * Any <img data-needs-image> or <div data-needs-image> gets a branded
+ * placeholder gradient until a real image is dropped in.
+ * Page agents: add data-needs-image to every image slot that needs a
+ * real photo, plus a TODO comment.
+ */
+[data-needs-image] {
+    background: linear-gradient(135deg, #7B1FE4 0%, #A121CA 100%);
+    display: block;
+    min-height: 200px;
+    border-radius: 8px;
+}
+
+[data-needs-image] img {
+    display: none;
+}
+
+/* ================================================================
+   5. PRELOADER — swap "CLOUDLY" text for "FOCUSJAM"
+   ================================================================ */
+
+/* Handled in partials.html markup — no CSS change needed */
+
+/* ================================================================
+   6. 404 PAGE
+   ================================================================ */
+
+.fj-404-section {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
+.fj-404-code {
+    font-family: "DM Sans", sans-serif;
+    font-size: clamp(100px, 20vw, 180px);
+    font-weight: 900;
+    line-height: 1;
+    background: linear-gradient(270deg, #A121CA 0%, #7B1FE4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 24px;
+}
+
+.fj-404-title {
+    font-size: clamp(24px, 4vw, 40px);
+    font-weight: 700;
+    color: var(--pp-header);
+    margin-bottom: 16px;
+}
+
+.fj-404-text {
+    font-size: 18px;
+    color: var(--pp-text);
+    margin-bottom: 40px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ================================================================
+   7. BREADCRUMB — CSS gradient bg replaces stock photo
+   ================================================================ */
+
+.pp-breadcrumb-wrapper {
+    background-image: none !important;
+    background: linear-gradient(160deg, #1A192E 0%, #2d1b5e 50%, #1A192E 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.pp-breadcrumb-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 60% 50%, rgba(123, 31, 228, 0.3) 0%, transparent 70%);
+    pointer-events: none;
+}

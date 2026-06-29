@@ -1,0 +1,227 @@
+/*
+ * home-page.css — FocusJam home page overrides
+ * Loaded last; layers on top of main.css + site-overrides.css
+ * Scope: index.html only — do not import from other pages.
+ */
+
+/* ================================================================
+   1. HERO — gradient background replaces the template bg-cover photo
+   ================================================================ */
+
+.pp-hero-section.pp-hero-2 {
+    background-image: none !important;
+    background: linear-gradient(160deg, #1A192E 0%, #2d1b5e 55%, #12111f 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Floating image placeholder sizing so gradient fill is visible */
+.pp-hero-image-1[data-needs-image] {
+    min-height: 260px;
+    width: 320px;
+    border-radius: 16px;
+}
+
+.pp-hero-image-2[data-needs-image] {
+    min-height: 200px;
+    width: 240px;
+    border-radius: 12px;
+}
+
+/* ================================================================
+   2. TRUST / CREDENTIAL STRIP
+   ================================================================ */
+
+.fj-trust-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 24px;
+    color: var(--pp-header);
+}
+
+.fj-trust-badge i {
+    font-size: 20px;
+    color: var(--pp-theme);
+    flex-shrink: 0;
+}
+
+.fj-trust-badge span {
+    font-family: "DM Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* ================================================================
+   3. PRODUCT HIGHLIGHTS — link treatment inside why-benefit items
+   ================================================================ */
+
+.pp-why-benefit-item a.fj-learn-more {
+    display: inline-block;
+    margin-top: 10px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--pp-theme);
+    text-decoration: none;
+    transition: opacity 200ms ease;
+}
+
+.pp-why-benefit-item a.fj-learn-more:hover {
+    opacity: 0.75;
+}
+
+/* ================================================================
+   4. AI JAMMER SPOTLIGHT — dark purple section
+   ================================================================ */
+
+.pp-feature-section-2.fj-jammer-spotlight {
+    background-image: none !important;
+    background: linear-gradient(160deg, #1A192E 0%, #2d1b5e 55%, #12111f 100%);
+}
+
+/* Bubble-list for Jammer feature bullets */
+.pp-feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 30px;
+}
+
+.pp-feature-list li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 11px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.pp-feature-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #A121CA;
+}
+
+/* ================================================================
+   5. FEATURED PRICING CARD (Team plan)
+   ================================================================ */
+
+.pp-pricing-main-item.fj-featured {
+    position: relative;
+}
+
+.pp-pricing-main-item.fj-featured .pp-pricing-card-item {
+    background: var(--pp-theme);
+    border-color: transparent;
+}
+
+.pp-pricing-main-item.fj-featured .pp-pricing-header h5,
+.pp-pricing-main-item.fj-featured .pp-pricing-header h2,
+.pp-pricing-main-item.fj-featured .pp-pricing-header h2 span {
+    color: #fff !important;
+}
+
+.pp-pricing-main-item.fj-featured .pp-pricing-list li {
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.pp-pricing-main-item.fj-featured .pp-pricing-list li img {
+    filter: brightness(0) invert(1);
+}
+
+.pp-pricing-main-item.fj-featured .pricing-button .pp-theme-btn {
+    background: #fff;
+    color: var(--pp-theme);
+    border-color: #fff;
+}
+
+.pp-pricing-main-item.fj-featured .pricing-button .pp-theme-btn:hover {
+    background: transparent;
+    color: #fff;
+    border-color: #fff;
+}
+
+/* "Most popular" badge inside featured plan */
+.fj-plan-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.22);
+    color: #fff;
+    font-family: "DM Sans", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+}
+
+/* Pricing note below the tier row */
+.fj-pricing-note {
+    text-align: center;
+    margin-top: 30px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.fj-pricing-note a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: underline;
+}
+
+.fj-pricing-note a:hover {
+    color: #fff;
+}
+
+/* ================================================================
+   6. HOW-A-JAM-WORKS — step counter color
+   ================================================================ */
+
+.pp-how-work-items h6 {
+    color: var(--pp-theme);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+/* ================================================================
+   7. OFFER / CONFIGURABLE TEASER — clickable cards
+   ================================================================ */
+
+.pp-offer-box-item {
+    cursor: default;
+}
+
+a.fj-offer-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+a.fj-offer-card-link .pp-offer-box-item {
+    transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+a.fj-offer-card-link:hover .pp-offer-box-item {
+    transform: translateY(-4px);
+}
+
+a.fj-offer-card-link .fj-explore-arrow {
+    display: inline-block;
+    margin-top: 8px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--pp-theme);
+}

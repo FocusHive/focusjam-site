@@ -1,96 +1,98 @@
 /**
- * mobile-nav.spec.ts — Mobile navigation toggle behavior.
+ * mobile-nav.spec.ts — Mobile navigation / offcanvas sidebar.
  *
- * Forces the Pixel 5 viewport so the hamburger toggle is visible.
+ * The Cloudly template uses two mobile nav mechanisms:
+ *   1. Offcanvas sidebar — triggered by .sidebar__toggle in the header.
+ *      jQuery adds/removes info-open on .offcanvas__info and
+ *      overlay-open on .offcanvas__overlay.
+ *   2. meanmenu — runs on #mobile-menu for viewports ≤1199 px, injects
+ *      its toggle into .mobile-menu inside the offcanvas, used for
+ *      accordion sub-menu expansion (no sub-menus on this site).
  *
- * Verifies:
- *   - .nav-toggle is visible on mobile
- *   - Clicking toggle opens #site-nav: aria-expanded → "true", .is-open added
- *   - Body scroll lock (overflow: hidden) is applied when nav opens
- *   - Clicking toggle again closes nav: aria-expanded → "false", .is-open removed
- *   - Body overflow is cleared when nav closes
- *   - Clicking a nav link while open closes the nav
+ * Tests focus on the offcanvas pattern since that's the primary mobile
+ * navigation entry point.
  */
 
 import { test, expect, devices } from '@playwright/test';
 
-// Force mobile viewport for the entire file regardless of the active project
 test.use({ ...devices['Pixel 5'] });
 
-test.describe('mobile nav toggle', () => {
+test.describe('mobile offcanvas sidebar', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
   });
 
-  test('.nav-toggle is visible on mobile viewport', async ({ page }) => {
-    const toggle = page.locator('.nav-toggle');
+  test('.sidebar__toggle hamburger is visible on mobile viewport', async ({ page }) => {
+    // .header__hamburger.d-xl-none is shown at < 1200 px (Pixel 5 = 393 px)
+    const hamburger = page.locator('.header__hamburger');
+    await expect(hamburger).toBeVisible();
+    const toggle = page.locator('.sidebar__toggle');
     await expect(toggle).toBeVisible();
   });
 
-  test('clicking toggle opens the nav', async ({ page }) => {
-    const toggle = page.locator('.nav-toggle');
-    const nav = page.locator('#site-nav');
+  test('clicking .sidebar__toggle opens the offcanvas sidebar', async ({ page }) => {
+    const toggle = page.locator('.sidebar__toggle');
+    const sidebar = page.locator('.offcanvas__info');
 
-    // Initial state
-    await expect(toggle).toHaveAttribute('aria-expanded', 'false');
-    await expect(nav).not.toHaveClass(/is-open/);
+    // Initial state: sidebar closed (no info-open class)
+    await expect(sidebar).not.toHaveClass(/info-open/);
 
     await toggle.click();
 
-    await expect(toggle).toHaveAttribute('aria-expanded', 'true');
-    await expect(nav).toHaveClass(/is-open/);
+    // After click: info-open added by jQuery sidebar__toggle handler
+    await expect(sidebar).toHaveClass(/info-open/);
   });
 
-  test('body scroll is locked when nav is open', async ({ page }) => {
-    const toggle = page.locator('.nav-toggle');
+  test('overlay becomes active when sidebar opens', async ({ page }) => {
+    const toggle = page.locator('.sidebar__toggle');
     await toggle.click();
-    await expect(toggle).toHaveAttribute('aria-expanded', 'true');
-
-    const overflow = await page.evaluate(
-      () => document.body.style.overflow,
-    );
-    expect(overflow).toBe('hidden');
+    await expect(page.locator('.offcanvas__overlay')).toHaveClass(/overlay-open/);
   });
 
-  test('clicking toggle again closes the nav', async ({ page }) => {
-    const toggle = page.locator('.nav-toggle');
-    const nav = page.locator('#site-nav');
+  test('clicking close button closes the sidebar', async ({ page }) => {
+    const toggle = page.locator('.sidebar__toggle');
+    const sidebar = page.locator('.offcanvas__info');
 
-    // Open
     await toggle.click();
-    await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+    await expect(sidebar).toHaveClass(/info-open/);
 
-    // Close
-    await toggle.click();
-    await expect(toggle).toHaveAttribute('aria-expanded', 'false');
-    await expect(nav).not.toHaveClass(/is-open/);
+    // Close via the ✕ button inside the sidebar
+    await page.locator('.offcanvas__close button').click();
+    await expect(sidebar).not.toHaveClass(/info-open/);
+    await expect(page.locator('.offcanvas__overlay')).not.toHaveClass(/overlay-open/);
   });
 
-  test('body scroll is restored when nav is closed', async ({ page }) => {
-    const toggle = page.locator('.nav-toggle');
-
-    await toggle.click(); // open
-    await toggle.click(); // close
-
-    const overflow = await page.evaluate(
-      () => document.body.style.overflow,
-    );
-    expect(overflow).toBe('');
-  });
-
-  test('clicking a nav link closes the nav', async ({ page }) => {
-    const toggle = page.locator('.nav-toggle');
-    const nav = page.locator('#site-nav');
+  test('clicking the overlay closes the sidebar', async ({ page }) => {
+    const toggle = page.locator('.sidebar__toggle');
+    const sidebar = page.locator('.offcanvas__info');
 
     await toggle.click();
-    await expect(nav).toHaveClass(/is-open/);
+    await expect(sidebar).toHaveClass(/info-open/);
 
-    // Click the Features link (a safe same-origin page)
-    const featuresLink = nav.locator('a[href="/features.html"]');
-    await featuresLink.click();
+    await page.locator('.offcanvas__overlay').click();
+    await expect(sidebar).not.toHaveClass(/info-open/);
+  });
 
-    // After navigation the toggle should be back to collapsed
-    await expect(toggle).toHaveAttribute('aria-expanded', 'false');
-    await expect(nav).not.toHaveClass(/is-open/);
+  test('sidebar contains nav links for all 5 pages', async ({ page }) => {
+    const toggle = page.locator('.sidebar__toggle');
+    await toggle.click();
+
+    const sidebar = page.locator('.offcanvas__info');
+    await expect(sidebar).toHaveClass(/info-open/);
+
+    // meanmenu clones the nav into .mean-nav inside .mobile-menu; OR the
+    // offcanvas shows the mean-nav items. Check for the 5 expected hrefs.
+    for (const href of ['index.html', 'features.html', 'pricing.html', 'integrations.html', 'security.html']) {
+      // mean-nav items or original nav (meanmenu may clone into .mean-nav)
+      const link = page.locator(`.mean-nav a[href="${href}"], nav#mobile-menu a[href="${href}"]`).first();
+      await expect(link).toHaveCount(1);
+    }
+  });
+
+  test('offcanvas CTA "Open FocusJam" links to app.focusjam.com', async ({ page }) => {
+    await page.locator('.sidebar__toggle').click();
+    const cta = page.locator('.offcanvas__contact a.pp-theme-btn');
+    await expect(cta).toContainText('Open FocusJam');
+    await expect(cta).toHaveAttribute('href', 'https://app.focusjam.com');
   });
 });
