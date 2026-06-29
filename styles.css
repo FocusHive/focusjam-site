@@ -504,6 +504,8 @@ h1 em {
   border-left: 2px solid var(--amber);
 }
 
+/* .ask-ringi is a deprecated alias — new markup should use .ask-jammer */
+.ask-jammer,
 .ask-ringi {
   display: flex;
   align-items: center;
@@ -516,6 +518,7 @@ h1 em {
   font-size: 0.55rem;
 }
 
+.ask-jammer b,
 .ask-ringi b {
   color: var(--green-bright);
 }
