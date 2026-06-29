@@ -61,11 +61,12 @@ e2e:
       - scheduler_failure
   variables:
     CI: "true"
-    # Use browsers pre-installed in the Playwright noble image so the npm
-    # package version mismatch with v1.58.2 does not cause a browser download.
-    PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
   script:
     - npm ci || npm install
+    # Install the chromium revision that matches the npm-installed @playwright/test
+    # version (package.json pins "latest" so it may differ from the image's v1.58.2).
+    # The noble image ships all OS-level browser dependencies, so --with-deps is fast.
+    - npx playwright install --with-deps chromium
     - npm run test:e2e
   artifacts:
     when: always
