@@ -1,0 +1,135 @@
+# .gitlab-ci.yml — FocusJam marketing site quality gates
+#
+# Stages: lint → test
+#   lint : HTMLHint + Stylelint (via launch-sequence .preflight:lint)
+#   test : Playwright e2e, linkcheck (allow_failure), pa11y-ci (allow_failure)
+#
+# Deploy: handled by GitHub Pages mirror (push-mirror main → GitHub).
+#         CI does NOT build or deploy.
+#
+# Image:  org Playwright noble image ships Node, python3, and chromium — used
+#         for all jobs so tooling is consistent and npm/npx are always available.
+
+include:
+  - project: 'DroidOpsInc/launch-sequence'
+    ref: main
+    file: '/jobs/preflight.yml'
+
+stages:
+  - lint
+  - test
+
+variables:
+  IMAGE_REGISTRY: harbor.focuscell.org
+  # Override PREFLIGHT_IMAGE so the default alpine/k8s base (no npm/npx) is
+  # replaced by the noble Playwright image, which ships Node, python3, chromium.
+  PREFLIGHT_IMAGE: ${IMAGE_REGISTRY}/mcr-proxy/playwright:v1.58.2-noble
+
+# ---------------------------------------------------------------------------
+# lint — HTMLHint + Stylelint
+# ---------------------------------------------------------------------------
+lint:
+  extends: .preflight:lint
+  # Override the template's stage (preflight) to match this pipeline's stages.
+  stage: lint
+  variables:
+    PREFLIGHT_REQUIRED_TOOLS: node npx python3
+    PREFLIGHT_COMMANDS: |
+      echo "=== HTMLHint ==="
+      npx --yes htmlhint $(find . -name "*.html" \
+        -not -path "./node_modules/*" \
+        -not -path "./playwright-report/*" \
+        -not -path "./test-results/*")
+      echo "=== Stylelint ==="
+      npx --yes stylelint "**/*.css" --allow-empty-input \
+        || echo "stylelint: no config found or non-zero exit (non-fatal, continuing)"
+
+# ---------------------------------------------------------------------------
+# e2e — Playwright (Chromium + mobile-Chrome)
+# ---------------------------------------------------------------------------
+# playwright.config.ts starts its own python3 http.server on port 4173 via
+# webServer.command when CI=true (reuseExistingServer: !process.env.CI).
+# No manual server startup needed here.
+e2e:
+  stage: test
+  image: ${PREFLIGHT_IMAGE}
+  retry:
+    max: 1
+    when:
+      - runner_system_failure
+      - stuck_or_timeout_failure
+      - scheduler_failure
+  variables:
+    CI: "true"
+    # Use browsers pre-installed in the Playwright noble image so the npm
+    # package version mismatch with v1.58.2 does not cause a browser download.
+    PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+  script:
+    - npm ci || npm install
+    - npm run test:e2e
+  artifacts:
+    when: always
+    expire_in: 1 week
+    paths:
+      - playwright-report/
+      - test-results/
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: '$CI_COMMIT_BRANCH =~ /^renovate\//'
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+# ---------------------------------------------------------------------------
+# linkcheck — crawl all internal links for 404s
+# ---------------------------------------------------------------------------
+# Port 8080 is used here to avoid colliding with Playwright's port 4173.
+linkcheck:
+  stage: test
+  image: ${PREFLIGHT_IMAGE}
+  allow_failure: true
+  retry:
+    max: 1
+    when:
+      - runner_system_failure
+      - stuck_or_timeout_failure
+      - scheduler_failure
+  script:
+    - python3 -m http.server 8080 &
+    - sleep 2
+    - >-
+      npx --yes linkinator http://localhost:8080
+      --recurse
+      --skip "^(?!http://localhost)"
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: '$CI_COMMIT_BRANCH =~ /^renovate\//'
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+# ---------------------------------------------------------------------------
+# a11y — accessibility scan (pa11y-ci) over the 5 primary pages
+# ---------------------------------------------------------------------------
+# Port 8080 is used here (same reasoning as linkcheck; jobs run in separate
+# containers so there is no port conflict between them).
+a11y:
+  stage: test
+  image: ${PREFLIGHT_IMAGE}
+  allow_failure: true
+  retry:
+    max: 1
+    when:
+      - runner_system_failure
+      - stuck_or_timeout_failure
+      - scheduler_failure
+  script:
+    - python3 -m http.server 8080 &
+    - sleep 2
+    - >-
+      npx --yes pa11y-ci
+      http://localhost:8080/index.html
+      http://localhost:8080/features.html
+      http://localhost:8080/pricing.html
+      http://localhost:8080/integrations.html
+      http://localhost:8080/security.html
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: '$CI_COMMIT_BRANCH =~ /^renovate\//'
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
