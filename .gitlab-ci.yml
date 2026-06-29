@@ -61,12 +61,13 @@ e2e:
       - scheduler_failure
   variables:
     CI: "true"
+    # Override the image's PLAYWRIGHT_BROWSERS_PATH=/ms-playwright (root-owned)
+    # so the non-root CI runner can write the chromium binary.  The noble image
+    # already ships all OS-level browser deps, so no --with-deps is needed.
+    PLAYWRIGHT_BROWSERS_PATH: ${CI_PROJECT_DIR}/.pw-browsers
   script:
     - npm ci || npm install
-    # Install the chromium revision that matches the npm-installed @playwright/test
-    # version (package.json pins "latest" so it may differ from the image's v1.58.2).
-    # The noble image ships all OS-level browser dependencies, so --with-deps is fast.
-    - npx playwright install --with-deps chromium
+    - npx playwright install chromium
     - npm run test:e2e
   artifacts:
     when: always
