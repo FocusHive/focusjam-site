@@ -1,0 +1,883 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#071510" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <!-- CSS: global FIRST, then page-local -->
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/features.css" />
+
+    <meta name="description" content="Every feature of your AI Jammer — participation levels, wake triggers, live actions, blueprints, slash commands, and post-meeting recap. Configure everything, own everything." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Features — FocusJam" />
+    <meta property="og:description" content="Everything your AI Jammer can do — configured exactly the way you want it." />
+    <meta property="og:url" content="https://focusjam.com/features.html" />
+    <meta property="og:image" content="https://focusjam.com/social-card.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://focusjam.com/features.html" />
+    <title>Features — FocusJam</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-header>
+      <a class="brand" href="/" aria-label="FocusJam home">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+          <path d="M7 8.5 20 3l13 5.5v10.8c0 8.4-5.2 14.4-13 17.7C12.2 33.7 7 27.7 7 19.3Z" />
+          <path d="m14.2 20.2 3.7 3.7 8.2-8.7" />
+        </svg>
+        <span>FocusJam</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Toggle navigation</span>
+        <span></span><span></span>
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+        <a href="/index.html#product">Product</a>
+        <a href="/features.html" aria-current="page">Features</a>
+        <a href="/integrations.html">Integrations</a>
+        <a href="/security.html">Security</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="https://join.focusjam.com" class="nav-join">Join a meeting</a>
+        <a href="https://app.focusjam.com" class="button button-small">Open FocusJam</a>
+      </nav>
+    </header>
+
+    <main id="main">
+
+      <!-- ══════════════════════════════════════════
+           HERO
+           ══════════════════════════════════════════ -->
+      <section class="feat-hero section-shell">
+        <div class="feat-hero-copy">
+          <p class="eyebrow"><span></span> All Features</p>
+          <h1>Your Jammer, <em>exactly</em> how you want it</h1>
+          <p class="feat-hero-lead lead">From a silent note-taker to a confident cohost — dial in participation, wire up triggers, pick your outputs. Every setting is yours.</p>
+          <div class="hero-actions">
+            <a href="https://app.focusjam.com" class="button">Start a jam</a>
+            <a href="#participation" class="button button-ghost">Explore features <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+
+        <!-- CSS-built config panel -->
+        <div class="feat-hero-panel" aria-hidden="true">
+          <div class="feat-panel-top">
+            <span class="feat-panel-label">AI Jammer config</span>
+            <span class="feat-panel-live"><span class="live-dot"></span> Live</span>
+          </div>
+          <div class="feat-panel-jammer">
+            <div class="feat-panel-orb">
+              <div class="feat-panel-wave"><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+            <div>
+              <div class="feat-panel-name">Aria</div>
+              <div class="feat-panel-sub">AI Jammer · Cohost mode</div>
+            </div>
+          </div>
+          <div class="feat-panel-bar-wrap">
+            <div class="feat-panel-bar-labels">
+              <span>Watch</span><span>Assist</span><span>Cohost</span><span>Lead</span>
+            </div>
+            <div class="feat-panel-track">
+              <div class="feat-panel-fill" style="width:62%"></div>
+              <div class="feat-panel-thumb" style="left:62%"></div>
+            </div>
+          </div>
+          <div class="feat-panel-triggers">
+            <div class="feat-panel-trigger feat-panel-trigger--on">
+              <span class="feat-ptoggle feat-ptoggle--on"></span> Wake phrase
+            </div>
+            <div class="feat-panel-trigger feat-panel-trigger--on">
+              <span class="feat-ptoggle feat-ptoggle--on"></span> Direct questions
+            </div>
+            <div class="feat-panel-trigger feat-panel-trigger--on">
+              <span class="feat-ptoggle feat-ptoggle--on"></span> End summary
+            </div>
+            <div class="feat-panel-trigger">
+              <span class="feat-ptoggle"></span> Fill silence
+            </div>
+          </div>
+          <div class="feat-panel-stats">
+            <div class="feat-panel-stat">
+              <span class="feat-panel-stat-val">12</span>
+              <span class="feat-panel-stat-key">actions</span>
+            </div>
+            <div class="feat-panel-stat">
+              <span class="feat-panel-stat-val">4</span>
+              <span class="feat-panel-stat-key">decisions</span>
+            </div>
+            <div class="feat-panel-stat">
+              <span class="feat-panel-stat-val">87</span>
+              <span class="feat-panel-stat-key">health</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           A: PARTICIPATION LEVELS
+           ══════════════════════════════════════════ -->
+      <section id="participation" class="pt-section pb-section section-shell">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow"><span></span> Participation</p>
+            <h2>How involved should<br>your Jammer be?</h2>
+          </div>
+          <p class="lead feat-section-aside">Four presets, one custom dial. Flip between them mid-jam — no restart needed.</p>
+        </div>
+
+        <div class="grid-4 gap-md feat-level-grid">
+          <article class="card feat-level-card reveal">
+            <div class="feat-level-icon" aria-hidden="true">👀</div>
+            <p class="feat-level-range">Assertiveness 1–2</p>
+            <h3>Watch</h3>
+            <p>Silent observer. Only speaks when summoned by wake phrase or chat command. Perfect for sensitive negotiations or exec reviews.</p>
+          </article>
+
+          <article class="card feat-level-card reveal">
+            <div class="feat-level-icon" aria-hidden="true">🤝</div>
+            <p class="feat-level-range">Assertiveness 3–5</p>
+            <h3>Assist</h3>
+            <p>Jumps in when it genuinely helps — answering questions, flagging decisions, catching action items. Stays out of your way otherwise.</p>
+          </article>
+
+          <article class="card feat-level-card feat-level-card--active reveal">
+            <div class="feat-level-badge">Most popular</div>
+            <div class="feat-level-icon" aria-hidden="true">🎙</div>
+            <p class="feat-level-range">Assertiveness 6–8</p>
+            <h3>Cohost</h3>
+            <p>Actively co-runs the jam — keeps you on agenda, calls out risks, summarizes on the fly, and nudges the room when energy dips.</p>
+          </article>
+
+          <article class="card feat-level-card reveal">
+            <div class="feat-level-icon" aria-hidden="true">🚀</div>
+            <p class="feat-level-range">Assertiveness 9–10</p>
+            <h3>Lead</h3>
+            <p>Your Jammer drives the meeting. Opens, guides, timeboxes, and closes — you focus on the conversation, it handles the structure.</p>
+          </article>
+        </div>
+
+        <div class="card feat-custom-strip reveal">
+          <div class="feat-custom-inner">
+            <div class="feat-custom-copy">
+              <div class="feat-level-icon" aria-hidden="true">🎛</div>
+              <h3>Custom</h3>
+              <p>Set the exact assertiveness value (1–10) and choose precisely which triggers are active. Your Jammer, dialed in to the decimal.</p>
+            </div>
+            <div class="feat-assertiveness-visual" aria-hidden="true">
+              <div class="feat-assert-label">Assertiveness</div>
+              <div class="feat-assert-track">
+                <div class="feat-assert-fill" style="width:70%"></div>
+                <div class="feat-assert-thumb" style="left:70%">7</div>
+              </div>
+              <div class="feat-assert-ends">
+                <span>Quiet</span>
+                <span>Confident</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           B: WAKE TRIGGERS
+           ══════════════════════════════════════════ -->
+      <section id="triggers" class="dark-section grain glow">
+        <div class="section-shell">
+          <div class="section-heading reveal">
+            <div>
+              <p class="eyebrow"><span></span> Wake Triggers</p>
+              <h2>Eight ways to wake<br>your Jammer</h2>
+            </div>
+            <p class="lead feat-section-aside" style="color:#aebdb4">Toggle exactly which signals your Jammer listens for. Each trigger is fully independent.</p>
+          </div>
+
+          <div class="grid-2 gap-md feat-triggers-grid">
+
+            <article class="card card-dark feat-trigger-card reveal">
+              <div class="feat-trigger-top">
+                <span class="feat-trigger-icon" aria-hidden="true">🗣</span>
+                <span class="feat-toggle feat-toggle--on" role="img" aria-label="Enabled"></span>
+              </div>
+              <h3>Wake phrase</h3>
+              <p>Say "hey [your Jammer's name]" out loud — fuzzy, typo-tolerant matching means it catches you even mid-sentence. You choose the name.</p>
+              <div class="pill-row">
+                <span class="badge badge-light">Fuzzy match</span>
+                <span class="tag">Typo-tolerant</span>
+              </div>
+            </article>
+
+            <article class="card card-dark feat-trigger-card reveal">
+              <div class="feat-trigger-top">
+                <span class="feat-trigger-icon" aria-hidden="true">💬</span>
+                <span class="feat-toggle feat-toggle--on" role="img" aria-label="Enabled"></span>
+              </div>
+              <h3>Typed chat &amp; @mentions</h3>
+              <p>Slash commands and @YourJammer in the meeting chat get an instant response — no mic needed, works for introverts too.</p>
+              <div class="pill-row">
+                <span class="badge badge-light">Slash commands</span>
+                <span class="tag">@mention</span>
+              </div>
+            </article>
+
+            <article class="card card-dark feat-trigger-card reveal">
+              <div class="feat-trigger-top">
+                <span class="feat-trigger-icon" aria-hidden="true">❓</span>
+                <span class="feat-toggle feat-toggle--on" role="img" aria-label="Enabled"></span>
+              </div>
+              <h3>Direct questions</h3>
+              <p>Detects when someone asks a question out loud — rhetorical or genuine — and steps in only when it can genuinely add value.</p>
+              <div class="pill-row">
+                <span class="badge badge-light">Voice intent detection</span>
+              </div>
+            </article>
+
+            <article class="card card-dark feat-trigger-card reveal">
+              <div class="feat-trigger-top">
+                <span class="feat-trigger-icon" aria-hidden="true">✨</span>
+                <span class="feat-toggle feat-toggle--on" role="img" aria-label="Enabled"></span>
+              </div>
+              <h3>Semantic / proactive</h3>
+              <p>Your Jammer judges when interjecting actually adds value — not just what was said, but whether this is the right moment to speak.</p>
+              <div class="pill-row">
+                <span class="badge badge-light">Sensitivity: Low / Med / High</span>
+                <span class="tag">Cooldown 5–300 s</span>
+              </div>
+            </article>
+
+            <article class="card card-dark feat-trigger-card reveal">
+              <div class="feat-trigger-top">
+                <span class="feat-trigger-icon" aria-hidden="true">🔇</span>
+                <span class="feat-toggle" role="img" aria-label="Disabled"></span>
+              </div>
+              <h3>Fill-the-silence</h3>
+              <p>After a configurable silence period, your Jammer gently nudges the room — perfect for async moments and cross-cultural pauses.</p>
+              <div class="pill-row">
+                <span class="badge badge-neutral">Default: 20 s</span>
+                <span class="tag">Configurable</span>
+              </div>
+            </article>
+
+            <article class="card card-dark feat-trigger-card reveal">
+              <div class="feat-trigger-top">
+                <span class="feat-trigger-icon" aria-hidden="true">📋</span>
+                <span class="feat-toggle feat-toggle--on" role="img" aria-label="Enabled"></span>
+              </div>
+              <h3>Agenda / timebox checkpoints</h3>
+              <p>Time-based check-ins every N minutes keep the jam on track. Your Jammer announces where you are and what's left on the agenda.</p>
+              <div class="pill-row">
+                <span class="badge badge-light">Every 1–60 min</span>
+              </div>
+            </article>
+
+            <article class="card card-dark feat-trigger-card reveal">
+              <div class="feat-trigger-top">
+                <span class="feat-trigger-icon" aria-hidden="true">🏃</span>
+                <span class="feat-toggle feat-toggle--on" role="img" aria-label="Enabled"></span>
+              </div>
+              <h3>Late-join catch-up</h3>
+              <p>When someone joins mid-jam, your Jammer auto-briefs them on what they missed — quietly in chat, without interrupting the room.</p>
+              <div class="pill-row">
+                <span class="badge badge-light">Auto-detect join</span>
+                <span class="tag">Delivered via chat</span>
+              </div>
+            </article>
+
+            <article class="card card-dark feat-trigger-card reveal">
+              <div class="feat-trigger-top">
+                <span class="feat-trigger-icon" aria-hidden="true">🎯</span>
+                <span class="feat-toggle feat-toggle--on" role="img" aria-label="Enabled"></span>
+              </div>
+              <h3>End-of-meeting summary</h3>
+              <p>Wraps the jam automatically — decisions made, actions assigned, questions open, next steps clear. Every time, without asking.</p>
+              <div class="pill-row">
+                <span class="badge badge-light">Auto-wrap</span>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           C: ACTIVITIES / ACTIONS
+           ══════════════════════════════════════════ -->
+      <section id="activities" class="pt-section pb-section section-shell">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow"><span></span> Activities &amp; Actions</p>
+            <h2>What your Jammer<br>produces</h2>
+          </div>
+          <p class="lead feat-section-aside">Each activity can run continuously, fire on trigger, or stay off. Mix and match.</p>
+        </div>
+
+        <div class="feat-activities reveal">
+
+          <div class="feat-activity-row">
+            <div class="feat-activity-icon" aria-hidden="true">📝</div>
+            <div class="feat-activity-body">
+              <h3>Live transcription</h3>
+              <p>Word-for-word record with speaker attribution, timestamps, and evidence links back to the exact moment.</p>
+            </div>
+            <div class="feat-activity-modes" role="group" aria-label="Mode for live transcription">
+              <span class="feat-mode feat-mode--active">Always</span>
+              <span class="feat-mode">On trigger</span>
+              <span class="feat-mode">Off</span>
+            </div>
+          </div>
+
+          <div class="feat-activity-row">
+            <div class="feat-activity-icon" aria-hidden="true">📓</div>
+            <div class="feat-activity-body">
+              <h3>Smart notes</h3>
+              <p>Structured meeting notes — not a raw transcript, but organized key points ready to paste anywhere.</p>
+            </div>
+            <div class="feat-activity-modes" role="group" aria-label="Mode for smart notes">
+              <span class="feat-mode feat-mode--active">Always</span>
+              <span class="feat-mode">On trigger</span>
+              <span class="feat-mode">Off</span>
+            </div>
+          </div>
+
+          <div class="feat-activity-row">
+            <div class="feat-activity-icon" aria-hidden="true">✅</div>
+            <div class="feat-activity-body">
+              <h3>Decisions</h3>
+              <p>Captures every "we decided to…" moment with supporting evidence quote and surrounding context.</p>
+            </div>
+            <div class="feat-activity-modes" role="group" aria-label="Mode for decisions">
+              <span class="feat-mode feat-mode--active">Always</span>
+              <span class="feat-mode">On trigger</span>
+              <span class="feat-mode">Off</span>
+            </div>
+          </div>
+
+          <div class="feat-activity-row">
+            <div class="feat-activity-icon" aria-hidden="true">⚡</div>
+            <div class="feat-activity-body">
+              <h3>Action items</h3>
+              <p>Auto-detects commitments and extracts owner + due date. Assignees are flagged the moment the commitment is made.</p>
+            </div>
+            <div class="feat-activity-modes" role="group" aria-label="Mode for action items">
+              <span class="feat-mode feat-mode--active">Always</span>
+              <span class="feat-mode">On trigger</span>
+              <span class="feat-mode">Off</span>
+            </div>
+          </div>
+
+          <div class="feat-activity-row">
+            <div class="feat-activity-icon" aria-hidden="true">⭐</div>
+            <div class="feat-activity-body">
+              <h3>Highlights</h3>
+              <p>Quotable moments, big ideas, and standout contributions — your Jammer surfaces the best bits automatically.</p>
+            </div>
+            <div class="feat-activity-modes" role="group" aria-label="Mode for highlights">
+              <span class="feat-mode">Always</span>
+              <span class="feat-mode feat-mode--active">On trigger</span>
+              <span class="feat-mode">Off</span>
+            </div>
+          </div>
+
+          <div class="feat-activity-row">
+            <div class="feat-activity-icon" aria-hidden="true">⚠️</div>
+            <div class="feat-activity-body">
+              <h3>Risks</h3>
+              <p>Flags concerns and blockers with severity levels — Low, Med, High — so nothing slips through the cracks.</p>
+            </div>
+            <div class="feat-activity-modes" role="group" aria-label="Mode for risks">
+              <span class="feat-mode">Always</span>
+              <span class="feat-mode feat-mode--active">On trigger</span>
+              <span class="feat-mode">Off</span>
+            </div>
+          </div>
+
+          <div class="feat-activity-row">
+            <div class="feat-activity-icon" aria-hidden="true">🔴</div>
+            <div class="feat-activity-body">
+              <h3>Recording</h3>
+              <p>Session recording capability — when enabled, gives you a full playback archive. Host-controlled and consent-aware.</p>
+            </div>
+            <div class="feat-activity-modes" role="group" aria-label="Mode for recording">
+              <span class="feat-mode">Always</span>
+              <span class="feat-mode feat-mode--active">On trigger</span>
+              <span class="feat-mode">Off</span>
+            </div>
+          </div>
+
+          <div class="feat-activity-row">
+            <div class="feat-activity-icon" aria-hidden="true">📢</div>
+            <div class="feat-activity-body">
+              <h3>Response channels</h3>
+              <p>Your Jammer can reply in chat, speak via voice, or both simultaneously. Configure once per Jammer profile.</p>
+            </div>
+            <div class="feat-activity-modes" role="group" aria-label="Channel for responses">
+              <span class="feat-mode feat-mode--active">Chat</span>
+              <span class="feat-mode">Voice</span>
+              <span class="feat-mode">Both</span>
+            </div>
+          </div>
+
+          <div class="feat-activity-row">
+            <div class="feat-activity-icon" aria-hidden="true">⏩</div>
+            <div class="feat-activity-body">
+              <h3>Catch-up</h3>
+              <p>On demand or automatic — delivers a condensed briefing of everything since a specific moment or the start of the jam.</p>
+            </div>
+            <div class="feat-activity-modes" role="group" aria-label="Mode for catch-up">
+              <span class="feat-mode">Always</span>
+              <span class="feat-mode feat-mode--active">On trigger</span>
+              <span class="feat-mode">Off</span>
+            </div>
+          </div>
+
+          <div class="feat-activity-row">
+            <div class="feat-activity-icon" aria-hidden="true">🔄</div>
+            <div class="feat-activity-body">
+              <h3>Rolling summary</h3>
+              <p>Auto-generates a fresh summary every N minutes so even three-hour jams stay navigable and easy to follow.</p>
+            </div>
+            <div class="feat-activity-modes" role="group" aria-label="Mode for rolling summary">
+              <span class="feat-mode feat-mode--active">Every 15 min</span>
+              <span class="feat-mode">Custom</span>
+              <span class="feat-mode">Off</span>
+            </div>
+          </div>
+
+          <div class="feat-activity-row">
+            <div class="feat-activity-icon" aria-hidden="true">🧠</div>
+            <div class="feat-activity-body">
+              <h3>Smart extraction</h3>
+              <p>Pulls structured insights every N conversation turns — ideas, blockers, commitments — all clean, citable, and organized.</p>
+            </div>
+            <div class="feat-activity-modes" role="group" aria-label="Mode for smart extraction">
+              <span class="feat-mode">Always</span>
+              <span class="feat-mode feat-mode--active">Every 10 turns</span>
+              <span class="feat-mode">Off</span>
+            </div>
+          </div>
+
+          <div class="feat-activity-row">
+            <div class="feat-activity-icon" aria-hidden="true">💚</div>
+            <div class="feat-activity-body">
+              <h3>Meeting-health score</h3>
+              <p>0–100 score tracking speaker balance, dominant talkers, unanswered questions, and unassigned actions. Live or post-jam.</p>
+            </div>
+            <div class="feat-activity-modes" role="group" aria-label="Mode for health score">
+              <span class="feat-mode feat-mode--active">Live</span>
+              <span class="feat-mode">Post-jam</span>
+              <span class="feat-mode">Off</span>
+            </div>
+          </div>
+
+          <div class="feat-activity-row">
+            <div class="feat-activity-icon" aria-hidden="true">📦</div>
+            <div class="feat-activity-body">
+              <h3>Post-meeting package</h3>
+              <p>Full artifact bundle delivered instantly after the jam — ready to paste into docs, email, or your ticket system.</p>
+            </div>
+            <div class="feat-activity-modes" role="group" aria-label="Mode for post-meeting package">
+              <span class="feat-mode feat-mode--active">Always</span>
+              <span class="feat-mode">On trigger</span>
+              <span class="feat-mode">Off</span>
+            </div>
+          </div>
+
+          <div class="feat-activity-row">
+            <div class="feat-activity-icon" aria-hidden="true">🔒</div>
+            <div class="feat-activity-body">
+              <h3>Privacy controls</h3>
+              <p>Pause with <code>/pause</code> — all capture stops, nothing is stored. Resume with <code>/resume</code>. Host-only access.</p>
+            </div>
+            <div class="feat-activity-modes" role="group" aria-label="Mode for privacy controls">
+              <span class="feat-mode feat-mode--active">Host-only</span>
+              <span class="feat-mode">Always-on</span>
+              <span class="feat-mode">Off</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           D: BLUEPRINTS
+           ══════════════════════════════════════════ -->
+      <section id="blueprints" class="feat-blueprints-band grain">
+        <div class="section-shell">
+          <div class="section-heading reveal">
+            <div>
+              <p class="eyebrow"><span></span> Blueprints</p>
+              <h2>One-click<br>meeting setups</h2>
+            </div>
+            <p class="lead feat-section-aside">Blueprints pre-configure participation, triggers, and actions for the jam type. Fully editable after you load one.</p>
+          </div>
+
+          <div class="grid-4 gap-md">
+
+            <article class="card feat-blueprint-card reveal">
+              <div class="feat-blueprint-icon" aria-hidden="true">⚖️</div>
+              <h3>Decision</h3>
+              <p>Captures every option discussed, records the final call with rationale, and flags open questions before the call ends.</p>
+              <ul class="feat-blueprint-details">
+                <li><span class="badge">Cohost</span></li>
+                <li>Decisions · Action items · Risks</li>
+                <li>End-of-meeting summary on</li>
+              </ul>
+            </article>
+
+            <article class="card feat-blueprint-card reveal">
+              <div class="feat-blueprint-icon" aria-hidden="true">💡</div>
+              <h3>Brainstorm</h3>
+              <p>Focuses on ideas and highlights — your Jammer captures every concept without judging, then surfaces the best at the end.</p>
+              <ul class="feat-blueprint-details">
+                <li><span class="badge badge-neutral">Assist</span></li>
+                <li>Highlights · Smart notes</li>
+                <li>Rolling summary every 10 min</li>
+              </ul>
+            </article>
+
+            <article class="card feat-blueprint-card reveal">
+              <div class="feat-blueprint-icon" aria-hidden="true">🔁</div>
+              <h3>Standup</h3>
+              <p>Lightweight and fast — tracks what's done, what's next, and any blockers. Done in 15 minutes, every time.</p>
+              <ul class="feat-blueprint-details">
+                <li><span class="badge badge-neutral">Watch</span></li>
+                <li>Action items · Risks</li>
+                <li>Auto wrap at timebox</li>
+              </ul>
+            </article>
+
+            <article class="card feat-blueprint-card reveal">
+              <div class="feat-blueprint-icon" aria-hidden="true">🎤</div>
+              <h3>Interview</h3>
+              <p>Structured note-taking — questions, answers, and candidate highlights organized by topic, automatically.</p>
+              <ul class="feat-blueprint-details">
+                <li><span class="badge badge-neutral">Watch</span></li>
+                <li>Notes · Highlights · Transcript</li>
+                <li>Post-meeting package</li>
+              </ul>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           E: SLASH COMMANDS
+           ══════════════════════════════════════════ -->
+      <section id="commands" class="dark-section grain pt-section pb-section">
+        <div class="section-shell">
+          <div class="section-heading reveal">
+            <div>
+              <p class="eyebrow"><span></span> Slash Commands</p>
+              <h2>Command your Jammer<br><em class="italic-serif">mid-jam</em></h2>
+            </div>
+            <p class="lead feat-section-aside" style="color:#aebdb4">Type in chat or speak — your Jammer responds instantly. No interruptions, no muting required.</p>
+          </div>
+
+          <div class="feat-cmd-palette reveal" role="table" aria-label="Slash command reference">
+            <div class="feat-cmd-header" role="row">
+              <span class="feat-cmd-pill" role="columnheader">Command palette</span>
+              <span class="feat-cmd-ctx" role="columnheader">Jam in progress · 23 min</span>
+            </div>
+            <div class="feat-cmd-grid" role="rowgroup">
+
+              <div class="feat-cmd-row" role="row">
+                <code role="cell">@Jammer &lt;question&gt;</code>
+                <span role="cell">Ask your Jammer anything about this jam</span>
+              </div>
+              <div class="feat-cmd-row" role="row">
+                <code role="cell">/ask &lt;question&gt;</code>
+                <span role="cell">Same as @mention — works from the chat box</span>
+              </div>
+              <div class="feat-cmd-row" role="row">
+                <code role="cell">/summary</code>
+                <span role="cell">Deliver a full rolling summary right now</span>
+              </div>
+              <div class="feat-cmd-row" role="row">
+                <code role="cell">/catchup</code>
+                <span role="cell">Alias for /summary — catch up fast</span>
+              </div>
+              <div class="feat-cmd-row" role="row">
+                <code role="cell">/actions</code>
+                <span role="cell">List all action items captured so far</span>
+              </div>
+              <div class="feat-cmd-row" role="row">
+                <code role="cell">/decisions</code>
+                <span role="cell">Every decision logged in this jam</span>
+              </div>
+              <div class="feat-cmd-row" role="row">
+                <code role="cell">/questions</code>
+                <span role="cell">Open questions still unanswered by the room</span>
+              </div>
+              <div class="feat-cmd-row" role="row">
+                <code role="cell">/health</code>
+                <span role="cell">Live meeting-health score + full breakdown</span>
+              </div>
+              <div class="feat-cmd-row" role="row">
+                <code role="cell">/highlight [text]</code>
+                <span role="cell">Mark this exact moment as a highlight</span>
+              </div>
+              <div class="feat-cmd-row" role="row">
+                <code role="cell">/risks</code>
+                <span role="cell">All flagged risks and blockers in one view</span>
+              </div>
+              <div class="feat-cmd-row" role="row">
+                <code role="cell">/risk &lt;text&gt;</code>
+                <span role="cell">Manually log a risk right now</span>
+              </div>
+              <div class="feat-cmd-row" role="row">
+                <code role="cell">/note &lt;text&gt;</code>
+                <span role="cell">Add a note directly to the meeting record</span>
+              </div>
+              <div class="feat-cmd-row feat-cmd-row--host" role="row">
+                <code role="cell">/pause</code>
+                <span role="cell">Stop all capture — off the record <span class="feat-cmd-host-badge">host only</span></span>
+              </div>
+              <div class="feat-cmd-row feat-cmd-row--host" role="row">
+                <code role="cell">/offrecord</code>
+                <span role="cell">Alias for /pause <span class="feat-cmd-host-badge">host only</span></span>
+              </div>
+              <div class="feat-cmd-row feat-cmd-row--host" role="row">
+                <code role="cell">/resume</code>
+                <span role="cell">Resume capture — back on the record <span class="feat-cmd-host-badge">host only</span></span>
+              </div>
+              <div class="feat-cmd-row" role="row">
+                <code role="cell">/help</code>
+                <span role="cell">Print this entire command list in chat for everyone</span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           F: RECAP / ARTIFACTS
+           ══════════════════════════════════════════ -->
+      <section id="recap" class="pt-section pb-section section-shell">
+        <div class="split reveal">
+          <div class="feat-recap-copy">
+            <p class="eyebrow"><span></span> Your Recap</p>
+            <h2>Walk away with <em>everything</em></h2>
+            <p class="lead">Every artifact is evidence-linked — every decision, action, and highlight traces back to the exact moment it was said. Download as Markdown or JSON.</p>
+            <ul class="feat-recap-checklist">
+              <li>Rolling summary + full transcript</li>
+              <li>Decisions with rationale and evidence</li>
+              <li>Action items with owner + due date</li>
+              <li>Highlights, risks, open questions</li>
+              <li>Speaker participation stats</li>
+              <li>Meeting-health score breakdown</li>
+            </ul>
+            <div class="pill-row" style="margin-top:2rem">
+              <span class="badge">Markdown export</span>
+              <span class="badge">JSON export</span>
+              <span class="badge badge-neutral">Evidence-linked</span>
+            </div>
+          </div>
+
+          <!-- CSS-built recap card -->
+          <div class="feat-recap-mock" aria-hidden="true">
+            <div class="feat-recap-card">
+              <div class="feat-recap-head">
+                <span class="feat-recap-type">Post-Jam Recap</span>
+                <span class="feat-recap-meta">Product Sync · 47 min · 5 participants</span>
+              </div>
+
+              <div class="feat-recap-block">
+                <div class="feat-recap-block-label">✅ Decisions (3)</div>
+                <div class="feat-recap-line">
+                  <span>Go with option B for the new onboarding flow</span>
+                  <span class="feat-recap-cite">→ 14:23</span>
+                </div>
+                <div class="feat-recap-line">
+                  <span>Delay launch to Q3 to allow mobile parity</span>
+                  <span class="feat-recap-cite">→ 31:07</span>
+                </div>
+                <div class="feat-recap-line">
+                  <span>Priya owns design review by Friday</span>
+                  <span class="feat-recap-cite">→ 39:54</span>
+                </div>
+              </div>
+
+              <div class="feat-recap-block">
+                <div class="feat-recap-block-label">⚡ Actions (4)</div>
+                <div class="feat-recap-action">
+                  <span>Update roadmap</span>
+                  <span class="feat-recap-owner">@Marcus</span>
+                  <span class="feat-recap-due">Jun 30</span>
+                </div>
+                <div class="feat-recap-action">
+                  <span>Finalize copy</span>
+                  <span class="feat-recap-owner">@Jade</span>
+                  <span class="feat-recap-due">Jul 2</span>
+                </div>
+                <div class="feat-recap-action">
+                  <span>Schedule mobile testing</span>
+                  <span class="feat-recap-owner">@Dev team</span>
+                  <span class="feat-recap-due">Jul 5</span>
+                </div>
+              </div>
+
+              <div class="feat-recap-block feat-recap-block--last">
+                <div class="feat-recap-block-label">💚 Meeting-health score</div>
+                <div class="feat-recap-health">
+                  <div class="feat-recap-health-bar">
+                    <div class="feat-recap-health-fill" style="width:82%"></div>
+                  </div>
+                  <span class="feat-recap-health-val">82</span>
+                </div>
+                <div class="feat-recap-health-sub">Good speaker balance · 0 open actions · 1 open question</div>
+              </div>
+
+              <div class="feat-recap-footer">
+                <span class="badge">Download Markdown</span>
+                <span class="badge badge-neutral">Download JSON</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           G: MAKE IT YOURS
+           ══════════════════════════════════════════ -->
+      <section id="personalize" class="feat-personalize-section grain glow">
+        <div class="section-shell">
+          <div class="split feat-personalize-split reveal">
+
+            <div class="feat-personalize-copy">
+              <p class="eyebrow"><span></span> Make It Yours</p>
+              <h2>Your Jammer, your name, your vibe</h2>
+              <p class="lead">Name it anything up to 40 characters. Pick its voice. Write its personality. Set its wake phrase. Run multiple distinctly-named Jammers in different rooms simultaneously.</p>
+              <div class="feat-personalize-rows">
+                <div class="feat-prow">
+                  <span class="feat-prow-label">Name</span>
+                  <span class="feat-prow-value">1–40 characters, any name you like</span>
+                </div>
+                <div class="feat-prow">
+                  <span class="feat-prow-label">Voice</span>
+                  <span class="feat-prow-value">Choose from available voice options</span>
+                </div>
+                <div class="feat-prow">
+                  <span class="feat-prow-label">Wake phrase</span>
+                  <span class="feat-prow-value">"Hey [name]" — fully customizable</span>
+                </div>
+                <div class="feat-prow">
+                  <span class="feat-prow-label">Personality</span>
+                  <span class="feat-prow-value">System prompt — write it your way</span>
+                </div>
+                <div class="feat-prow">
+                  <span class="feat-prow-label">Multiple Jammers</span>
+                  <span class="feat-prow-value">Run distinct Jammers across rooms</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- CSS-built Jammer identity card -->
+            <div class="feat-jammer-wrap" aria-hidden="true">
+              <div class="feat-jammer-card">
+                <div class="feat-jammer-orb">
+                  <div class="feat-jammer-wave">
+                    <i></i><i></i><i></i><i></i><i></i>
+                  </div>
+                </div>
+                <div class="feat-jammer-name">Aria</div>
+                <div class="feat-jammer-sub">Your AI Jammer</div>
+                <div class="pill-row feat-jammer-badges">
+                  <span class="badge">Cohost</span>
+                  <span class="badge badge-neutral">Voice: Ember</span>
+                  <span class="badge badge-neutral">Assertiveness 7</span>
+                </div>
+                <div class="feat-jammer-prompt">
+                  "Be direct and warm. Focus on decisions. Flag risks early and keep us moving."
+                </div>
+                <div class="feat-jammer-wake">
+                  <span class="feat-jammer-wake-label">Wake phrase</span>
+                  <span class="feat-jammer-wake-val">Hey Aria</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           CTA
+           ══════════════════════════════════════════ -->
+      <div class="section-shell feat-cta-wrap">
+        <div class="cta-section reveal">
+          <div>
+            <p class="eyebrow" style="color:rgba(255,255,255,0.45)">
+              <span style="background:rgba(255,255,255,0.35)"></span> Get Started
+            </p>
+            <h2>Ready to meet your<br><em class="italic-serif">AI Jammer?</em></h2>
+          </div>
+          <div class="cta-actions">
+            <a href="https://app.focusjam.com" class="button button-light">Open FocusJam</a>
+            <a href="/pricing.html" class="text-link text-link-light">See pricing <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="section-shell">
+        <div class="footer-cols">
+
+          <div class="footer-col-brand">
+            <a class="brand" href="/" aria-label="FocusJam home">
+              <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+                <path d="M7 8.5 20 3l13 5.5v10.8c0 8.4-5.2 14.4-13 17.7C12.2 33.7 7 27.7 7 19.3Z" />
+                <path d="m14.2 20.2 3.7 3.7 8.2-8.7" />
+              </svg>
+              <span>FocusJam</span>
+            </a>
+            <p>Jam with your team — with an AI Jammer that actually keeps up.</p>
+            <p>Every session gets an AI Jammer that takes notes, tracks decisions, and answers questions live. All AI runs on your own infrastructure — no external APIs, no data leaving your boundary.</p>
+          </div>
+
+          <div>
+            <span class="footer-col-heading">Product</span>
+            <nav class="footer-col-links" aria-label="Product pages">
+              <a href="/index.html#product">Product</a>
+              <a href="/features.html">Features</a>
+              <a href="/integrations.html">Integrations</a>
+              <a href="/security.html">Security</a>
+              <a href="/pricing.html">Pricing</a>
+            </nav>
+          </div>
+
+          <div>
+            <span class="footer-col-heading">Meeting</span>
+            <nav class="footer-col-links" aria-label="Meeting links">
+              <a href="https://join.focusjam.com">Join a meeting</a>
+              <a href="https://app.focusjam.com">Open FocusJam</a>
+            </nav>
+          </div>
+
+          <div>
+            <span class="footer-col-heading">Company</span>
+            <nav class="footer-col-links" aria-label="Company links">
+              <a href="mailto:hello@focushive.com">Contact</a>
+              <a href="mailto:support@focusjam.com">Support</a>
+            </nav>
+          </div>
+
+        </div>
+
+        <div class="footer-bottom">
+          <small>© <span data-year>2026</span> FocusHive Inc.</small>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/site.js" defer></script>
+  </body>
+</html>

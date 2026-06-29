@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#071510" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <!-- CSS: global FIRST, then page-local -->
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/integrations.css" />
+
+    <!-- ── PER-PAGE ── -->
+    <meta name="description" content="Connect FocusJam to your existing workflow. SIP dial-in, calendar invite links, SSO, session recording, and a developer API are live today. Zoom, Teams, Slack, and more on the roadmap." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Integrations — FocusJam" />
+    <meta property="og:description" content="Plug FocusJam into your stack. Live connectors for SIP, calendar, SSO, recording, and API. More on the roadmap." />
+    <meta property="og:url" content="https://focusjam.com/integrations.html" />
+    <meta property="og:image" content="https://focusjam.com/social-card.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://focusjam.com/integrations.html" />
+    <title>Integrations — FocusJam</title>
+    <!-- ── END PER-PAGE ── -->
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-header>
+      <a class="brand" href="/" aria-label="FocusJam home">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+          <path d="M7 8.5 20 3l13 5.5v10.8c0 8.4-5.2 14.4-13 17.7C12.2 33.7 7 27.7 7 19.3Z" />
+          <path d="m14.2 20.2 3.7 3.7 8.2-8.7" />
+        </svg>
+        <span>FocusJam</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Toggle navigation</span>
+        <span></span><span></span>
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+        <a href="/index.html#product">Product</a>
+        <a href="/features.html">Features</a>
+        <a href="/integrations.html" aria-current="page">Integrations</a>
+        <a href="/security.html">Security</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="https://join.focusjam.com" class="nav-join">Join a meeting</a>
+        <a href="https://app.focusjam.com" class="button button-small">Open FocusJam</a>
+      </nav>
+    </header>
+
+    <main id="main">
+
+      <!-- ─── Hero ─── -->
+      <section class="int-hero section-shell glow">
+        <div class="int-hero-copy reveal">
+          <p class="eyebrow"><span></span>Integrations</p>
+          <h1>Your stack,<br>your <em>jam</em>.</h1>
+          <p class="lead">
+            FocusJam is your sovereign meeting platform — not a plugin for someone else's.
+            Plug it into your calendar, your identity provider, your phone network, and your
+            developer workflow. Your meetings, your infrastructure, your data.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="https://app.focusjam.com">Start a jam</a>
+            <a class="text-link" href="#developer">
+              Explore the API
+              <span aria-hidden="true">↓</span>
+            </a>
+          </div>
+          <div class="trust-line" aria-label="Integration highlights">
+            <span>SIP dial-in live today</span>
+            <span>Calendar invite links</span>
+            <span>SSO via OIDC</span>
+          </div>
+        </div>
+
+        <!-- Decorative live-connector status strip -->
+        <div class="int-hero-chips" aria-hidden="true">
+          <span class="int-chip">
+            <span class="live-dot"></span>SIP / PSTN dial-in
+          </span>
+          <span class="int-chip">
+            <span class="live-dot"></span>Calendar invite links
+          </span>
+          <span class="int-chip">
+            <span class="live-dot"></span>SSO / OIDC identity
+          </span>
+          <span class="int-chip">
+            <span class="live-dot"></span>Session recording
+          </span>
+          <span class="int-chip">
+            <span class="live-dot"></span>Bot protection
+          </span>
+          <span class="int-chip">
+            <span class="live-dot"></span>API &amp; artifact export
+          </span>
+        </div>
+      </section>
+
+      <!-- ─── Available now ─── -->
+      <section class="section-shell pt-section pb-section" aria-labelledby="live-heading">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow"><span></span>Available today</p>
+            <h2 id="live-heading">Live connectors</h2>
+          </div>
+          <p class="text-muted text-sm int-section-note">
+            Six real integrations, shipping today. No bots. No screen scraping. No empty promises.
+          </p>
+        </div>
+
+        <div class="grid-3 gap-lg">
+
+          <!-- 1 — SIP / PSTN -->
+          <article class="card int-card-live reveal">
+            <div class="int-glyph" aria-hidden="true">
+              <svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 5h6l2 5-3 2a14 14 0 0 0 9 9l2-3 5 2v6a2 2 0 0 1-2 2C10 28 4 22 4 7a2 2 0 0 1 2-2z"/>
+              </svg>
+            </div>
+            <div class="pill-row mb-sm">
+              <span class="badge">Live</span>
+              <span class="tag">SIP / PSTN</span>
+            </div>
+            <h3>Phone dial-in</h3>
+            <p>
+              Bring any phone caller into a jam via standard SIP trunks. No app required —
+              just a dial-in number and a PIN. Powered by LiveKit SipClient, works with
+              any SIP-compatible trunk.
+            </p>
+          </article>
+
+          <!-- 2 — Calendar invite links -->
+          <article class="card int-card-live reveal">
+            <div class="int-glyph" aria-hidden="true">
+              <svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="7" width="24" height="21" rx="3"/>
+                <path d="M4 13h24M11 4v6M21 4v6M10 20h3v3h-3z"/>
+              </svg>
+            </div>
+            <div class="pill-row mb-sm">
+              <span class="badge">Live</span>
+              <span class="tag">Google Calendar</span>
+              <span class="tag">Outlook</span>
+              <span class="tag">Apple Calendar</span>
+            </div>
+            <h3>Calendar invite links</h3>
+            <p>
+              Drop a signed jam link into any calendar invite. Attendees join with one click —
+              no FocusJam account needed. Issue single-use, multi-use, or email-bound tokens.
+              Works wherever you paste a URL.
+            </p>
+          </article>
+
+          <!-- 3 — SSO / Identity -->
+          <article class="card int-card-live reveal">
+            <div class="int-glyph" aria-hidden="true">
+              <svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="14" r="5"/>
+                <path d="M16 14h12M24 11l4 3-4 3M20 14v3l2 2"/>
+              </svg>
+            </div>
+            <div class="pill-row mb-sm">
+              <span class="badge">Live</span>
+              <span class="tag">OIDC</span>
+              <span class="badge badge-neutral">Enterprise</span>
+            </div>
+            <h3>SSO &amp; identity</h3>
+            <p>
+              Authenticate with Keycloak or FocusPass OIDC single sign-on. Lock jams to an
+              invitee allow-list. Enterprise-grade access control with zero third-party
+              identity exposure — your IdP, your rules.
+            </p>
+          </article>
+
+          <!-- 4 — Recording -->
+          <article class="card int-card-live reveal">
+            <div class="int-glyph" aria-hidden="true">
+              <svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="16" cy="16" r="11"/>
+                <circle cx="16" cy="16" r="5" fill="currentColor" stroke="none" opacity="0.65"/>
+              </svg>
+            </div>
+            <div class="pill-row mb-sm">
+              <span class="badge">Live</span>
+              <span class="tag">MP4</span>
+            </div>
+            <h3>Session recording</h3>
+            <p>
+              Record any jam to MP4 via LiveKit Egress. Recordings stay within your
+              infrastructure boundary — no cloud upload, no third-party storage. Archive
+              or share on your own terms.
+            </p>
+          </article>
+
+          <!-- 5 — Cloudflare Turnstile -->
+          <article class="card int-card-live reveal">
+            <div class="int-glyph" aria-hidden="true">
+              <svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 3 28 8v11c0 6-5 10-12 13C9 29 4 25 4 19V8z"/>
+                <path d="M11 16l3.5 3.5 6.5-7"/>
+              </svg>
+            </div>
+            <div class="pill-row mb-sm">
+              <span class="badge">Live</span>
+              <span class="tag">Turnstile</span>
+              <span class="badge badge-neutral">Optional</span>
+            </div>
+            <h3>Bot protection</h3>
+            <p>
+              Add a Cloudflare Turnstile challenge to guest access. Privacy-respecting,
+              non-intrusive verification keeps bots out without fingerprinting real
+              attendees. Toggle it per jam or per org.
+            </p>
+          </article>
+
+          <!-- 6 — API & Artifacts -->
+          <article class="card int-card-live reveal">
+            <div class="int-glyph" aria-hidden="true">
+              <svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 10 4 16l6 6M22 10l6 6-6 6M18 6l-4 20"/>
+              </svg>
+            </div>
+            <div class="pill-row mb-sm">
+              <span class="badge">Live</span>
+              <span class="tag">Markdown</span>
+              <span class="tag">JSON</span>
+            </div>
+            <h3>API &amp; artifact export</h3>
+            <p>
+              Every jam produces a signed recap — notes, decisions, action items — exportable
+              as Markdown or JSON. The token-server REST API lets you automate invite
+              creation, roster management, and artifact retrieval.
+            </p>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ─── How connecting works ─── -->
+      <section class="section-shell pt-section pb-section int-how-section" aria-labelledby="how-heading">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow"><span></span>Step by step</p>
+            <h2 id="how-heading">How connecting works</h2>
+          </div>
+        </div>
+
+        <div class="split int-how-split">
+          <div>
+
+            <div class="feature-row reveal">
+              <span class="feature-row-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+                </svg>
+              </span>
+              <h3>Drop a link into any calendar invite</h3>
+              <p>
+                Create a jam in FocusJam and copy the signed invite link. Paste it into
+                your Google Calendar, Outlook, or Apple Calendar event. Attendees join with
+                one click — no app, no account, no friction.
+              </p>
+            </div>
+
+            <div class="feature-row reveal">
+              <span class="feature-row-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.5 19.8 19.8 0 0 1 1.62 2.84 2 2 0 0 1 3.62.66h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.3A16 16 0 0 0 16 16.39l1.7-1.7a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 24 16.92z"/>
+                </svg>
+              </span>
+              <h3>Let phone callers dial straight in</h3>
+              <p>
+                Include the SIP dial-in number and PIN in the invite. Anyone on a phone —
+                landline or mobile — dials in and participates in the jam just like any
+                browser attendee. Powered by LiveKit SipClient.
+              </p>
+            </div>
+
+            <div class="feature-row reveal">
+              <span class="feature-row-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+              </span>
+              <h3>Wire up SSO in one afternoon</h3>
+              <p>
+                Point your Keycloak or FocusPass OIDC provider at FocusJam's token server.
+                Set your invitee allow-list. From that point on, your users authenticate
+                with their existing identity — no separate FocusJam account required.
+              </p>
+            </div>
+
+            <div class="feature-row reveal">
+              <span class="feature-row-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+                </svg>
+              </span>
+              <h3>Call the API to automate the rest</h3>
+              <p>
+                Use the token-server REST API to generate invite tokens, retrieve session
+                artifacts, and pipe jam recaps into your own tools — Markdown or JSON,
+                your choice, on every session end.
+              </p>
+            </div>
+
+          </div>
+
+          <!-- Sticky flow diagram -->
+          <div class="int-how-visual reveal" aria-hidden="true">
+            <div class="int-flow-card">
+              <p class="int-flow-label">Typical invite flow</p>
+              <div class="int-flow-step">
+                <span class="int-flow-num">1</span>
+                <div>
+                  <strong>Create jam</strong>
+                  <span>app.focusjam.com</span>
+                </div>
+              </div>
+              <div class="int-flow-connector"></div>
+              <div class="int-flow-step">
+                <span class="int-flow-num">2</span>
+                <div>
+                  <strong>Copy signed link</strong>
+                  <span>focusjam.com/j/abc123</span>
+                </div>
+              </div>
+              <div class="int-flow-connector"></div>
+              <div class="int-flow-step">
+                <span class="int-flow-num">3</span>
+                <div>
+                  <strong>Paste anywhere</strong>
+                  <span>Calendar · Email · Doc · Chat</span>
+                </div>
+              </div>
+              <div class="int-flow-connector"></div>
+              <div class="int-flow-step">
+                <span class="int-flow-num int-flow-num-done">✓</span>
+                <div>
+                  <strong>Attendees join instantly</strong>
+                  <span>One click. Zero installs.</span>
+                </div>
+              </div>
+
+              <div class="int-flow-divider"></div>
+
+              <p class="int-flow-label">Session ends → artifacts ready</p>
+              <div class="int-flow-artifacts">
+                <span>
+                  <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+                    <path d="M3 2h7l3 3v9H3z"/><path d="M10 2v4h4"/>
+                  </svg>
+                  recap.md
+                </span>
+                <span>
+                  <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+                    <path d="M3 2h7l3 3v9H3z"/><path d="M10 2v4h4"/>
+                  </svg>
+                  artifacts.json
+                </span>
+                <span>
+                  <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+                    <path d="M3 2h7l3 3v9H3z"/><path d="M10 2v4h4"/>
+                  </svg>
+                  recording.mp4
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── Roadmap ─── -->
+      <section class="section-shell pt-section pb-section int-roadmap-section" aria-labelledby="roadmap-heading">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow"><span></span>On the roadmap</p>
+            <h2 id="roadmap-heading">Coming to FocusJam</h2>
+          </div>
+          <p class="text-muted text-sm int-section-note">
+            These connectors are planned — not live today. We believe in honest roadmaps.
+            Vote with your request.
+          </p>
+        </div>
+
+        <div class="grid-4 gap-md">
+
+          <!-- Zoom -->
+          <article class="card int-roadmap-card reveal">
+            <div class="int-glyph int-glyph-muted" aria-hidden="true">
+              <svg viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="10" width="17" height="13" rx="3"/>
+                <path d="M20 14 29 9v15l-9-5z"/>
+              </svg>
+            </div>
+            <div class="pill-row mb-sm">
+              <span class="badge badge-neutral">Coming soon</span>
+            </div>
+            <h3>Zoom bridge</h3>
+            <p>Join Zoom calls from inside FocusJam — with your AI Jammer in the room.</p>
+          </article>
+
+          <!-- Google Meet -->
+          <article class="card int-roadmap-card reveal">
+            <div class="int-glyph int-glyph-muted" aria-hidden="true">
+              <svg viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="10" width="17" height="13" rx="3"/>
+                <path d="M20 15 28 10v13l-8-5z"/>
+              </svg>
+            </div>
+            <div class="pill-row mb-sm">
+              <span class="badge badge-neutral">Coming soon</span>
+            </div>
+            <h3>Google Meet bridge</h3>
+            <p>Bridge Meet sessions so your AI Jammer attends, takes notes, and exports artifacts.</p>
+          </article>
+
+          <!-- Microsoft Teams -->
+          <article class="card int-roadmap-card reveal">
+            <div class="int-glyph int-glyph-muted" aria-hidden="true">
+              <svg viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="11" width="15" height="13" rx="2.5"/>
+                <path d="M19 15h6v9a2 2 0 0 1-2 2h-4"/>
+                <circle cx="11" cy="8" r="3"/>
+                <circle cx="22" cy="9" r="2.3"/>
+              </svg>
+            </div>
+            <div class="pill-row mb-sm">
+              <span class="badge badge-neutral">Coming soon</span>
+            </div>
+            <h3>Teams bridge</h3>
+            <p>Plug your AI Jammer into Microsoft Teams calls without replacing your workflow.</p>
+          </article>
+
+          <!-- Webex -->
+          <article class="card int-roadmap-card reveal">
+            <div class="int-glyph int-glyph-muted" aria-hidden="true">
+              <svg viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="16" cy="16" r="11"/>
+                <circle cx="16" cy="16" r="4.5"/>
+                <path d="M16 5v3M16 24v3M5 16h3M24 16h3"/>
+              </svg>
+            </div>
+            <div class="pill-row mb-sm">
+              <span class="badge badge-neutral">Coming soon</span>
+            </div>
+            <h3>Webex bridge</h3>
+            <p>Bring FocusJam's AI Jammer to Webex meetings — intelligence without lock-in.</p>
+          </article>
+
+          <!-- Slack -->
+          <article class="card int-roadmap-card reveal">
+            <div class="int-glyph int-glyph-muted" aria-hidden="true">
+              <svg viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 4a3 3 0 0 1 0 6H9a3 3 0 0 1 0-6h3zM12 22a3 3 0 0 1 0 6H9a3 3 0 0 1 0-6h3zM20 12a3 3 0 0 1 6 0v3a3 3 0 0 1-6 0v-3zM4 12a3 3 0 0 1 6 0v3a3 3 0 0 1-6 0v-3z"/>
+              </svg>
+            </div>
+            <div class="pill-row mb-sm">
+              <span class="badge badge-neutral">Coming soon</span>
+            </div>
+            <h3>Slack notifications</h3>
+            <p>Post jam recaps, decisions, and action items to a Slack channel when a session ends.</p>
+          </article>
+
+          <!-- Calendar two-way sync -->
+          <article class="card int-roadmap-card reveal">
+            <div class="int-glyph int-glyph-muted" aria-hidden="true">
+              <svg viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="7" width="24" height="21" rx="3"/>
+                <path d="M4 13h24M11 4v6M21 4v6"/>
+                <path d="M9 21l2 2 2-2M23 21l-2 2-2-2"/>
+                <path d="M11 23V19M21 23v-4"/>
+              </svg>
+            </div>
+            <div class="pill-row mb-sm">
+              <span class="badge badge-neutral">Coming soon</span>
+            </div>
+            <h3>Calendar two-way sync</h3>
+            <p>Auto-create jam rooms from calendar events and write recaps back when sessions end.</p>
+          </article>
+
+          <!-- CRM / task writeback -->
+          <article class="card int-roadmap-card reveal">
+            <div class="int-glyph int-glyph-muted" aria-hidden="true">
+              <svg viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="10" height="10" rx="2"/>
+                <rect x="19" y="19" width="10" height="10" rx="2"/>
+                <path d="M13 8h6a3 3 0 0 1 3 3v8M8 13v6a3 3 0 0 0 3 3h8"/>
+              </svg>
+            </div>
+            <div class="pill-row mb-sm">
+              <span class="badge badge-neutral">Coming soon</span>
+            </div>
+            <h3>CRM &amp; task writeback</h3>
+            <p>Push jam action items and decisions to Notion, Jira, or Salesforce automatically.</p>
+          </article>
+
+          <!-- Translation -->
+          <article class="card int-roadmap-card reveal">
+            <div class="int-glyph int-glyph-muted" aria-hidden="true">
+              <svg viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="16" cy="16" r="12"/>
+                <path d="M16 4c-3.5 4-3.5 20 0 24M16 4c3.5 4 3.5 20 0 24M4 16h24"/>
+              </svg>
+            </div>
+            <div class="pill-row mb-sm">
+              <span class="badge badge-neutral">Coming soon</span>
+            </div>
+            <h3>Live translation</h3>
+            <p>Real-time transcript translation so multilingual teams can jam without a language barrier.</p>
+          </article>
+
+        </div>
+
+        <!-- Request CTA -->
+        <div class="int-roadmap-cta reveal">
+          <div>
+            <p>Need something specific?</p>
+            <p class="text-muted text-sm">Priority is determined by demand — the more requests we get, the sooner it ships.</p>
+          </div>
+          <a href="mailto:hello@focushive.com" class="button button-ghost">
+            Request an integration
+            <span aria-hidden="true" style="margin-left:0.4rem">↗</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ─── Developer / API band ─── -->
+      <section class="dark-section grain" id="developer" aria-labelledby="dev-heading">
+        <div class="section-shell">
+          <div class="split int-dev-split gap-xl">
+
+            <div>
+              <p class="eyebrow"><span></span>For developers</p>
+              <h2 id="dev-heading">API-first from day one</h2>
+              <p>
+                FocusJam's token server exposes a clean REST API for everything your team
+                needs to automate. Generate signed invite tokens, retrieve session artifacts,
+                and integrate jam recaps into your own pipeline.
+              </p>
+              <ul class="check-list">
+                <li>Signed invite tokens — single-use, multi-use, or email-bound</li>
+                <li>Session artifact export — Markdown &amp; JSON recaps, decisions, action items</li>
+                <li>Artifact webhooks — trigger downstream systems when a jam ends</li>
+                <li>Self-hostable — your infrastructure, your keys, your audit logs</li>
+              </ul>
+              <div class="hero-actions" style="margin-top: 2.2rem">
+                <a class="button button-light" href="mailto:hello@focushive.com">Request API access</a>
+                <a class="text-link text-link-light" href="mailto:hello@focushive.com">
+                  Discuss self-hosting
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Code visual -->
+            <div class="int-code-visual reveal" aria-label="Example token-server API request and response">
+              <div class="int-code-block">
+                <div class="int-code-topbar">
+                  <span>token-server &middot; REST API</span>
+                  <span class="badge badge-light">v1</span>
+                </div>
+<pre class="int-code-pre"><code><span class="cc">&#35; Generate a signed invite token</span>
+POST /api/tokens
+Authorization: Bearer &lt;api_key&gt;
+
+{
+  "jam_id": "prod-strategy-q3",
+  "mode": "multi_use",
+  "allowed_emails": [
+    "alex@acme.com",
+    "jordan@acme.com"
+  ],
+  "ttl_hours": 48
+}
+
+<span class="cc">&#35; → 201 Created</span>
+{
+  "token": "fjt_abc123…",
+  "join_url": "https://join.focusjam.com/j/abc123",
+  "expires_at": "2026-07-01T09:00:00Z"
+}</code></pre>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── Final CTA ─── -->
+      <div class="section-shell" style="padding-block: clamp(4rem, 7vw, 7rem)">
+        <div class="cta-section reveal">
+          <div>
+            <p class="eyebrow eyebrow-light"><span></span>Get started</p>
+            <h2>Your next jam is one link away.</h2>
+          </div>
+          <div class="cta-actions">
+            <a class="button button-light" href="https://app.focusjam.com">Open FocusJam</a>
+            <a class="text-link text-link-light" href="https://join.focusjam.com">
+              Join with an invite
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="section-shell">
+        <div class="footer-cols">
+
+          <!-- Brand column -->
+          <div class="footer-col-brand">
+            <a class="brand" href="/" aria-label="FocusJam home">
+              <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+                <path d="M7 8.5 20 3l13 5.5v10.8c0 8.4-5.2 14.4-13 17.7C12.2 33.7 7 27.7 7 19.3Z" />
+                <path d="m14.2 20.2 3.7 3.7 8.2-8.7" />
+              </svg>
+              <span>FocusJam</span>
+            </a>
+            <p>Jam with your team — with an AI Jammer that actually keeps up.</p>
+            <p>Every session gets an AI Jammer that takes notes, tracks decisions, and answers questions live. All AI runs on your own infrastructure — no external APIs, no data leaving your boundary.</p>
+          </div>
+
+          <!-- Product column -->
+          <div>
+            <span class="footer-col-heading">Product</span>
+            <nav class="footer-col-links" aria-label="Product pages">
+              <a href="/index.html#product">Product</a>
+              <a href="/features.html">Features</a>
+              <a href="/integrations.html">Integrations</a>
+              <a href="/security.html">Security</a>
+              <a href="/pricing.html">Pricing</a>
+            </nav>
+          </div>
+
+          <!-- Meeting column -->
+          <div>
+            <span class="footer-col-heading">Meeting</span>
+            <nav class="footer-col-links" aria-label="Meeting links">
+              <a href="https://join.focusjam.com">Join a meeting</a>
+              <a href="https://app.focusjam.com">Open FocusJam</a>
+            </nav>
+          </div>
+
+          <!-- Company column -->
+          <div>
+            <span class="footer-col-heading">Company</span>
+            <nav class="footer-col-links" aria-label="Company links">
+              <a href="mailto:hello@focushive.com">Contact</a>
+              <a href="mailto:support@focusjam.com">Support</a>
+            </nav>
+          </div>
+
+        </div>
+
+        <div class="footer-bottom">
+          <small>© <span data-year>2026</span> FocusHive Inc.</small>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/site.js" defer></script>
+  </body>
+</html>

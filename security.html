@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#071510" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <!-- CSS: global FIRST, then page-local -->
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/security.css" />
+
+    <!-- ── PER-PAGE ── -->
+    <meta name="description" content="FocusJam is built on a foundation of sovereign AI, end-to-end encrypted media, and zero-trust infrastructure. Your conversations never leave your estate." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Security — FocusJam" />
+    <meta property="og:description" content="Sovereign AI, end-to-end encrypted jams, and infrastructure you control. Nothing leaves your estate." />
+    <meta property="og:url" content="https://focusjam.com/security.html" />
+    <meta property="og:image" content="https://focusjam.com/social-card.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://focusjam.com/security.html" />
+    <title>Security — FocusJam</title>
+    <!-- ── END PER-PAGE ── -->
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-header>
+      <a class="brand" href="/" aria-label="FocusJam home">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+          <path d="M7 8.5 20 3l13 5.5v10.8c0 8.4-5.2 14.4-13 17.7C12.2 33.7 7 27.7 7 19.3Z" />
+          <path d="m14.2 20.2 3.7 3.7 8.2-8.7" />
+        </svg>
+        <span>FocusJam</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Toggle navigation</span>
+        <span></span><span></span>
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+        <a href="/index.html#product">Product</a>
+        <a href="/features.html">Features</a>
+        <a href="/integrations.html">Integrations</a>
+        <a href="/security.html" aria-current="page">Security</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="https://join.focusjam.com" class="nav-join">Join a meeting</a>
+        <a href="https://app.focusjam.com" class="button button-small">Open FocusJam</a>
+      </nav>
+    </header>
+    <!-- ── END HEADER ── -->
+
+    <main id="main">
+
+      <!-- ═══════════════════════════════════════
+           HERO
+           ═══════════════════════════════════════ -->
+      <section class="sec-hero section-shell">
+        <div class="sec-hero-copy reveal">
+          <p class="eyebrow"><span></span>Security &amp; Privacy</p>
+          <h1>Your meetings.<br><em>Your AI.</em><br>Your infrastructure.</h1>
+          <p class="lead">
+            Every jam stays inside your estate. The AI Jammer runs on FocusJam's
+            own GPUs. Media is encrypted end-to-end. Nothing — not a single transcript
+            word, not a frame of video — leaves your boundary to a third-party AI service.
+          </p>
+          <div class="trust-line" aria-label="Security highlights">
+            <span>Zero external AI APIs</span>
+            <span>AES-GCM-256 media encryption</span>
+            <span>Zero-trust networking</span>
+            <span>Self-hostable</span>
+          </div>
+        </div>
+
+        <!-- Estate boundary diagram -->
+        <div class="estate-diagram reveal" aria-label="Diagram: all AI and media stays inside your FocusJam estate">
+          <div class="estate-outer">
+            <div class="estate-label-top">
+              <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" fill="none">
+                <circle cx="7" cy="7" r="6.5" stroke="currentColor"/>
+                <path d="M7 4v3l2 1.5" stroke="currentColor" stroke-linecap="round"/>
+              </svg>
+              Internet
+            </div>
+
+            <div class="estate-inner">
+              <div class="estate-inner-label">
+                <svg width="12" height="14" viewBox="0 0 40 40" aria-hidden="true">
+                  <path d="M7 8.5 20 3l13 5.5v10.8c0 8.4-5.2 14.4-13 17.7C12.2 33.7 7 27.7 7 19.3Z" fill="currentColor"/>
+                </svg>
+                Your FocusJam Estate
+              </div>
+
+              <div class="estate-nodes">
+                <div class="estate-node estate-node-media">
+                  <div class="estate-node-icon">🔐</div>
+                  <span>E2E Encrypted<br>Media</span>
+                </div>
+                <div class="estate-node-flow">
+                  <svg width="28" height="12" viewBox="0 0 28 12" aria-hidden="true" fill="none">
+                    <path d="M0 6h24M18 1l6 5-6 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div class="estate-node estate-node-ai">
+                  <div class="estate-node-icon">🤖</div>
+                  <span>AI Jammer<br>(own GPUs)</span>
+                </div>
+              </div>
+
+              <div class="estate-models">
+                <span class="tag">Whisper</span>
+                <span class="tag">Qwen 3.6 27B</span>
+                <span class="tag">Kokoro</span>
+              </div>
+            </div>
+
+            <div class="estate-wall">
+              <div class="estate-wall-segment"><span>OpenZiti ZTNA</span></div>
+              <div class="estate-wall-segment"><span>Cloudflare Edge</span></div>
+              <div class="estate-wall-segment"><span>Zero-Trust Perimeter</span></div>
+            </div>
+
+            <div class="estate-outside-note">
+              <span class="badge badge-neutral">OpenAI</span>
+              <span class="badge badge-neutral">Google AI</span>
+              <span class="badge badge-neutral">Any 3rd-party AI</span>
+              <p class="estate-outside-label">Never receives your data</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════
+           SOVEREIGN AI — dark section, flagship
+           ═══════════════════════════════════════ -->
+      <section class="dark-section grain glow sec-sovereign" aria-labelledby="sovereign-heading">
+        <div class="section-shell">
+          <div class="sec-sovereign-layout">
+            <div class="sec-sovereign-copy reveal">
+              <p class="eyebrow eyebrow-light"><span></span>Sovereign AI</p>
+              <h2 id="sovereign-heading">
+                The AI Jammer runs<br>on <em class="italic-serif">our</em> hardware.<br>Full stop.
+              </h2>
+              <p>
+                Most conferencing AI phones home to OpenAI, Google, or another cloud vendor
+                every time someone speaks. FocusJam does not. All speech-to-text, intelligence,
+                and voice synthesis runs on FocusJam-operated GPUs — $0 AI or media data
+                leaves your estate to any third party.
+              </p>
+              <ul class="check-list" aria-label="Sovereign AI properties">
+                <li>Whisper runs on-premise for speech recognition</li>
+                <li>Qwen 3.6 27B powers the AI Jammer's intelligence, on your estate</li>
+                <li>Kokoro voice synthesis stays fully in-house</li>
+                <li>Zero API calls to OpenAI, Anthropic, Google, or any external AI service</li>
+                <li>Your conversation content is never used to train external models</li>
+              </ul>
+            </div>
+
+            <div class="sec-sovereign-visual reveal" aria-hidden="true">
+              <div class="sovereign-stack">
+                <div class="sovereign-row">
+                  <div class="sovereign-layer sovereign-layer-top">
+                    <span class="sovereign-layer-label">AI Jammer response</span>
+                    <div class="sovereign-layer-badge"><span class="badge badge-light">in your estate</span></div>
+                  </div>
+                </div>
+                <div class="sovereign-connector"></div>
+                <div class="sovereign-row">
+                  <div class="sovereign-model">
+                    <div class="sovereign-model-orb">
+                      <i></i><i></i><i></i><i></i><i></i>
+                    </div>
+                    <div>
+                      <div class="sovereign-model-name">Qwen 3.6 27B</div>
+                      <div class="sovereign-model-role">Jammer intelligence</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="sovereign-connector"></div>
+                <div class="sovereign-row sovereign-row-split">
+                  <div class="sovereign-chip">
+                    <span class="sovereign-chip-icon">🎙</span>
+                    <div>
+                      <div class="sovereign-chip-name">Whisper</div>
+                      <div class="sovereign-chip-role">Speech → Text</div>
+                    </div>
+                  </div>
+                  <div class="sovereign-chip">
+                    <span class="sovereign-chip-icon">🔊</span>
+                    <div>
+                      <div class="sovereign-chip-name">Kokoro</div>
+                      <div class="sovereign-chip-role">Text → Voice</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="sovereign-connector"></div>
+                <div class="sovereign-row">
+                  <div class="sovereign-layer sovereign-layer-bottom">
+                    <span class="sovereign-layer-label">Your encrypted media stream</span>
+                  </div>
+                </div>
+
+                <!-- "wall" separating from cloud vendors -->
+                <div class="sovereign-wall" aria-label="Barrier: never reaches external AI">
+                  <div class="sovereign-wall-line"></div>
+                  <span>External AI vendors never reached</span>
+                  <div class="sovereign-wall-line"></div>
+                </div>
+                <div class="sovereign-vendors">
+                  <span>OpenAI</span>
+                  <span>Google AI</span>
+                  <span>Azure AI</span>
+                  <span>AWS AI</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- stat band -->
+          <div class="sec-sovereign-stats reveal">
+            <div class="stat">
+              <span class="stat-value" style="color:var(--green-bright)">$0</span>
+              <span class="stat-label" style="color:#aebdb4">AI/media data to third parties</span>
+            </div>
+            <div class="sovereign-stat-divider"></div>
+            <div class="stat">
+              <span class="stat-value" style="color:var(--green-bright)">3</span>
+              <span class="stat-label" style="color:#aebdb4">fully self-hosted AI models</span>
+            </div>
+            <div class="sovereign-stat-divider"></div>
+            <div class="stat">
+              <span class="stat-value" style="color:var(--green-bright)">100%</span>
+              <span class="stat-label" style="color:#aebdb4">inference on FocusJam GPUs</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════
+           END-TO-END ENCRYPTION
+           ═══════════════════════════════════════ -->
+      <section class="section-shell sec-e2ee" aria-labelledby="e2ee-heading">
+        <div class="sec-e2ee-layout">
+          <div class="sec-e2ee-copy reveal">
+            <p class="eyebrow"><span></span>End-to-end encryption</p>
+            <h2 id="e2ee-heading">The media server<br>can't read a word.</h2>
+            <p class="lead">
+              AES-GCM-256 insertable streams encrypt every jam end-to-end by default.
+              The SFU media server routes packets it cannot decrypt. The AI Jammer
+              is a trusted in-room key-holder — it hears what participants hear, inside
+              the encrypted session, not outside it.
+            </p>
+            <ul class="check-list">
+              <li>Per-room AES-GCM-256 keys, never shared outside the session</li>
+              <li>WebRTC Insertable Streams — encryption happens before the packet leaves your device</li>
+              <li>SFU media server stays blind to all content</li>
+              <li>AI Jammer participates as a trusted in-room peer, decrypting only what the session permits</li>
+            </ul>
+          </div>
+
+          <div class="sec-e2ee-visual reveal" aria-hidden="true">
+            <div class="e2ee-diagram">
+              <div class="e2ee-peer e2ee-peer-left">
+                <div class="e2ee-peer-icon">👤</div>
+                <span>Participant A</span>
+              </div>
+
+              <div class="e2ee-path">
+                <div class="e2ee-stream e2ee-stream-enc">
+                  <span class="e2ee-key-icon">🔐</span>
+                  <div class="e2ee-stream-label">Encrypted stream</div>
+                  <div class="e2ee-stream-algo">AES-GCM-256</div>
+                </div>
+                <div class="e2ee-server">
+                  <div class="e2ee-server-icon">⚡</div>
+                  <span>SFU Media Server</span>
+                  <span class="e2ee-blind-badge">Blind to content</span>
+                </div>
+                <div class="e2ee-stream e2ee-stream-enc">
+                  <span class="e2ee-key-icon">🔐</span>
+                  <div class="e2ee-stream-label">Encrypted stream</div>
+                </div>
+              </div>
+
+              <div class="e2ee-peers-right">
+                <div class="e2ee-peer">
+                  <div class="e2ee-peer-icon">👤</div>
+                  <span>Participant B</span>
+                </div>
+                <div class="e2ee-peer e2ee-peer-ai">
+                  <div class="e2ee-peer-icon e2ee-peer-icon-ai">
+                    <i></i><i></i><i></i>
+                  </div>
+                  <span>AI Jammer</span>
+                  <span class="badge badge-light">Trusted key-holder</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════
+           ACCESS CONTROL & MEETING PRIVACY
+           ═══════════════════════════════════════ -->
+      <section class="sec-access" aria-labelledby="access-heading">
+        <div class="section-shell">
+          <div class="sec-access-header reveal">
+            <p class="eyebrow"><span></span>Access control</p>
+            <h2 id="access-heading">Every jam is<br><em class="italic-serif">invitation-only</em> by design.</h2>
+            <p class="lead text-muted">
+              Granular controls over who enters, how they're verified, and what permissions they carry —
+              from signed invite tokens to real-time lobby decisions.
+            </p>
+          </div>
+
+          <div class="grid-3 gap-lg sec-access-grid reveal">
+
+            <article class="card">
+              <div class="feature-row-icon" aria-hidden="true" style="margin-bottom:1.2rem">🎟</div>
+              <h3>Signed invite tokens</h3>
+              <p>HMAC-signed tokens are single-use or multi-use, and can be bound to a specific email address. A leaked link is useless once redeemed or expired.</p>
+              <div class="pill-row" style="margin-top:1.2rem">
+                <span class="tag">HMAC signed</span>
+                <span class="tag">Single / multi-use</span>
+                <span class="tag">Email-bindable</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="feature-row-icon" aria-hidden="true" style="margin-bottom:1.2rem">🚪</div>
+              <h3>Lobby &amp; waiting room</h3>
+              <p>Anyone who isn't on the OIDC allow-list lands in the lobby. The host admits or denies — no one enters the jam unannounced.</p>
+              <div class="pill-row" style="margin-top:1.2rem">
+                <span class="tag">Host admit / deny</span>
+                <span class="tag">Real-time control</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="feature-row-icon" aria-hidden="true" style="margin-bottom:1.2rem">🔒</div>
+              <h3>Room lock &amp; PIN</h3>
+              <p>Lock a room mid-jam to prevent new entrants. Optionally require a PIN — stored as a SHA-256 hash, raw value never persisted anywhere.</p>
+              <div class="pill-row" style="margin-top:1.2rem">
+                <span class="tag">Room lock</span>
+                <span class="tag">SHA-256 PIN hash</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="feature-row-icon" aria-hidden="true" style="margin-bottom:1.2rem">🪪</div>
+              <h3>Invitee vs. guest modes</h3>
+              <p>Named invitees authenticate via OIDC and carry verified identity. Guest participants enter under a scoped, time-limited credential that cannot escalate privileges.</p>
+              <div class="pill-row" style="margin-top:1.2rem">
+                <span class="tag">OIDC invitee mode</span>
+                <span class="tag">Guest scoping</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="feature-row-icon" aria-hidden="true" style="margin-bottom:1.2rem">🛡</div>
+              <h3>Least-privilege tokens</h3>
+              <p>Participant tokens carry only what they need — no room admin, create, list, or record grants by default. Capabilities are additive, never inherited.</p>
+              <div class="pill-row" style="margin-top:1.2rem">
+                <span class="tag">No admin by default</span>
+                <span class="tag">Additive grants</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="feature-row-icon" aria-hidden="true" style="margin-bottom:1.2rem">👁</div>
+              <h3>Participant visibility controls</h3>
+              <p>Hosts see the full room roster and lobby queue. Guests see only what the host chooses to surface. The AI Jammer's presence is always disclosed to all participants.</p>
+              <div class="pill-row" style="margin-top:1.2rem">
+                <span class="tag">Host roster view</span>
+                <span class="tag">AI presence disclosed</span>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════
+           PRIVACY-FIRST CAPTURE CONTROLS
+           ═══════════════════════════════════════ -->
+      <section class="sec-capture section-shell" aria-labelledby="capture-heading">
+        <div class="sec-capture-layout">
+          <div class="sec-capture-copy reveal">
+            <p class="eyebrow"><span></span>Capture controls</p>
+            <h2 id="capture-heading">You control what<br>the Jammer <em class="italic-serif">hears.</em></h2>
+            <p class="lead">
+              Privacy controls are slash commands away. When you pause or go off the record,
+              that speech never touches the AI pipeline, transcript, notes, or any artifact —
+              it is discarded at the source.
+            </p>
+          </div>
+
+          <div class="sec-capture-features reveal">
+            <div class="feature-row">
+              <div class="feature-row-icon" aria-hidden="true">⏸</div>
+              <div>
+                <h3>/pause</h3>
+                <p>Suspends AI capture immediately. Speech is discarded before it reaches transcription, the Jammer, or any downstream artifact. Resume any time with <code>/resume</code>.</p>
+              </div>
+            </div>
+
+            <div class="feature-row">
+              <div class="feature-row-icon" aria-hidden="true">🤫</div>
+              <div>
+                <h3>/offrecord</h3>
+                <p>Marks a segment as off the record. Audio is not transcribed, not included in meeting notes, and not stored. The Jammer acknowledges the boundary aloud.</p>
+              </div>
+            </div>
+
+            <div class="feature-row">
+              <div class="feature-row-icon" aria-hidden="true">⏱</div>
+              <div>
+                <h3>7-day artifact expiry</h3>
+                <p>Transcripts, notes, and session artifacts auto-expire after 7 days. Download them before expiry or delete on demand — you are never locked in to our retention.</p>
+              </div>
+            </div>
+
+            <div class="feature-row">
+              <div class="feature-row-icon" aria-hidden="true">⬇</div>
+              <div>
+                <h3>Download &amp; delete</h3>
+                <p>All artifacts are downloadable at any time. Delete a session and its artifacts are purged immediately — no shadow copies, no delayed removal.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════
+           INFRASTRUCTURE & OPERATIONS
+           ═══════════════════════════════════════ -->
+      <section class="sec-infra" aria-labelledby="infra-heading">
+        <div class="section-shell">
+          <div class="sec-infra-header reveal">
+            <p class="eyebrow"><span></span>Infrastructure</p>
+            <h2 id="infra-heading">Zero trust, all the way<br>down the <em class="italic-serif">stack.</em></h2>
+            <p class="lead text-muted">
+              FocusJam is built on hardened, auditable, GitOps-driven infrastructure —
+              every layer chosen for security and sovereignty.
+            </p>
+          </div>
+
+          <div class="grid-2 gap-lg sec-infra-grid reveal">
+
+            <div class="feature-row">
+              <div class="feature-row-icon" aria-hidden="true">🌐</div>
+              <div>
+                <h3>OpenZiti ZTNA</h3>
+                <p>All admin and agent planes run over a zero-trust private overlay network. No public exposure for internal services — every connection is mutually authenticated and encrypted in transit.</p>
+              </div>
+            </div>
+
+            <div class="feature-row">
+              <div class="feature-row-icon" aria-hidden="true">🔑</div>
+              <div>
+                <h3>Azure Key Vault secrets</h3>
+                <p>All runtime secrets are sourced from Azure Key Vault via ExternalSecret + SOPS (AGE). No credentials are committed to source control — ever.</p>
+              </div>
+            </div>
+
+            <div class="feature-row">
+              <div class="feature-row-icon" aria-hidden="true">☁</div>
+              <div>
+                <h3>Cloudflare edge &amp; bot challenge</h3>
+                <p>Public-facing endpoints sit behind Cloudflare for DDoS mitigation and optional Turnstile bot challenge. The real-time media path bypasses Cloudflare to protect latency.</p>
+              </div>
+            </div>
+
+            <div class="feature-row">
+              <div class="feature-row-icon" aria-hidden="true">⚙</div>
+              <div>
+                <h3>ArgoCD GitOps on Talos Kubernetes</h3>
+                <p>Every infrastructure change flows through Git and ArgoCD — no manual kubectl, no configuration drift. Talos Linux provides an immutable, minimal attack surface for the control plane.</p>
+              </div>
+            </div>
+
+            <div class="feature-row">
+              <div class="feature-row-icon" aria-hidden="true">🏢</div>
+              <div>
+                <h3>Self-hostable for Enterprise</h3>
+                <p>Enterprise customers can run the full FocusJam stack on their own hardware or private cloud. Your data never leaves infrastructure you own and operate.</p>
+              </div>
+            </div>
+
+            <div class="feature-row">
+              <div class="feature-row-icon" aria-hidden="true">📋</div>
+              <div>
+                <h3>Supply-chain assurance</h3>
+                <p>Container images are built with BuildKit, scanned for CVEs before deployment, and signed. SBOMs are generated per release so you can audit every dependency in your estate.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════
+           IDENTITY
+           ═══════════════════════════════════════ -->
+      <section class="sec-identity section-shell" aria-labelledby="identity-heading">
+        <div class="sec-identity-layout reveal">
+          <div class="sec-identity-copy">
+            <p class="eyebrow"><span></span>Identity</p>
+            <h2 id="identity-heading">Enterprise SSO<br>from day one.</h2>
+            <p class="lead">
+              FocusJam uses Keycloak (FocusPass) as its OIDC identity provider.
+              Enterprise customers can federate their own IdP — Active Directory,
+              Okta, Google Workspace — in minutes. Authentication is handled
+              before a participant ever enters a jam.
+            </p>
+            <ul class="check-list">
+              <li>Keycloak / FocusPass OIDC SSO</li>
+              <li>Federate any SAML 2.0 or OIDC-compliant IdP</li>
+              <li>Per-room OIDC allow-lists for invitee verification</li>
+              <li>Session tokens are short-lived and non-transferable</li>
+            </ul>
+          </div>
+
+          <div class="sec-identity-visual" aria-hidden="true">
+            <div class="identity-flow">
+              <div class="identity-idp">
+                <div class="identity-idp-logo">
+                  <svg width="28" height="28" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+                    <rect width="40" height="40" rx="10" fill="rgba(70,219,145,0.12)"/>
+                    <path d="M20 8l10 4v8c0 5-4 9-10 11C10 29 6 25 6 20v-8l14-4z" fill="var(--green)"/>
+                    <path d="M14 20l4 4 8-8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="identity-idp-name">FocusPass / Keycloak</div>
+                  <div class="identity-idp-sub">OIDC identity provider</div>
+                </div>
+              </div>
+
+              <div class="identity-flow-connector">
+                <svg width="2" height="40" viewBox="0 0 2 40" aria-hidden="true">
+                  <line x1="1" y1="0" x2="1" y2="40" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="4 3"/>
+                </svg>
+                <span class="identity-flow-label">JWT assertion</span>
+              </div>
+
+              <div class="identity-idp identity-idp-room">
+                <div class="identity-idp-logo" style="background:rgba(21,122,83,0.1);color:var(--green)">🎯</div>
+                <div>
+                  <div class="identity-idp-name">Room access granted</div>
+                  <div class="identity-idp-sub">Scoped, short-lived token</div>
+                </div>
+              </div>
+
+              <div class="identity-flow-connector">
+                <svg width="2" height="40" viewBox="0 0 2 40" aria-hidden="true">
+                  <line x1="1" y1="0" x2="1" y2="40" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="4 3"/>
+                </svg>
+                <span class="identity-flow-label">Verified participant</span>
+              </div>
+
+              <div class="identity-idp">
+                <div class="identity-idp-logo" style="background:rgba(21,122,83,0.1);color:var(--green)">✦</div>
+                <div>
+                  <div class="identity-idp-name">In the jam</div>
+                  <div class="identity-idp-sub">Least-privilege session</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="identity-federate">
+              <p class="text-xs text-muted" style="margin-bottom:0.6rem">Also integrates with</p>
+              <div class="pill-row">
+                <span class="tag">Azure AD</span>
+                <span class="tag">Okta</span>
+                <span class="tag">Google Workspace</span>
+                <span class="tag">Any OIDC / SAML 2.0 IdP</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════
+           COMPLIANCE POSTURE / PRINCIPLES BAND
+           ═══════════════════════════════════════ -->
+      <section class="sec-principles dark-section grain" aria-labelledby="principles-heading">
+        <div class="section-shell">
+          <div class="sec-principles-header reveal">
+            <p class="eyebrow eyebrow-light"><span></span>Design principles</p>
+            <h2 id="principles-heading">Security is architecture,<br>not a <em class="italic-serif">checkbox.</em></h2>
+          </div>
+
+          <div class="grid-4 gap-lg sec-principles-grid reveal">
+
+            <div class="card card-dark">
+              <div class="principle-icon" aria-hidden="true">🔬</div>
+              <h3>Data minimisation</h3>
+              <p>We collect only what is necessary for the session. No advertising profiles, no behavioral analytics, no cross-session tracking.</p>
+            </div>
+
+            <div class="card card-dark">
+              <div class="principle-icon" aria-hidden="true">🏛</div>
+              <h3>Sovereignty</h3>
+              <p>Your meeting data belongs to you. It runs on infrastructure you choose, under jurisdiction you control. Enterprise customers can self-host everything.</p>
+            </div>
+
+            <div class="card card-dark">
+              <div class="principle-icon" aria-hidden="true">🔒</div>
+              <h3>Least privilege</h3>
+              <p>Every component — token, service account, API key — carries only the minimum grants it needs. Elevation is explicit, auditable, and time-bounded.</p>
+            </div>
+
+            <div class="card card-dark">
+              <div class="principle-icon" aria-hidden="true">🔦</div>
+              <h3>Transparency</h3>
+              <p>The AI Jammer always announces its presence. All capture controls and their effects are documented and predictable. No hidden recording or processing.</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════
+           CTA
+           ═══════════════════════════════════════ -->
+      <section class="section-shell sec-cta-wrapper">
+        <div class="cta-section reveal">
+          <div>
+            <p class="eyebrow eyebrow-light" style="margin-bottom:1.4rem"><span></span>Enterprise &amp; self-host</p>
+            <h2>Run FocusJam on<br>your own estate.</h2>
+            <p style="color:#aebdb4;max-width:520px;margin-top:1rem">
+              Enterprise customers get a fully self-hosted FocusJam deployment —
+              your data, your hardware, your jurisdiction. Talk to us about
+              requirements, security review, and custom SLAs.
+            </p>
+          </div>
+          <div class="cta-actions">
+            <a class="button button-light" href="mailto:hello@focushive.com">Talk to us about Enterprise</a>
+            <a class="text-link text-link-light" href="/pricing.html">See pricing <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="section-shell">
+        <div class="footer-cols">
+
+          <!-- Brand column -->
+          <div class="footer-col-brand">
+            <a class="brand" href="/" aria-label="FocusJam home">
+              <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+                <path d="M7 8.5 20 3l13 5.5v10.8c0 8.4-5.2 14.4-13 17.7C12.2 33.7 7 27.7 7 19.3Z" />
+                <path d="m14.2 20.2 3.7 3.7 8.2-8.7" />
+              </svg>
+              <span>FocusJam</span>
+            </a>
+            <p>Jam with your team — with an AI Jammer that actually keeps up.</p>
+            <p>Every session gets an AI Jammer that takes notes, tracks decisions, and answers questions live. All AI runs on your own infrastructure — no external APIs, no data leaving your boundary.</p>
+          </div>
+
+          <!-- Product column -->
+          <div>
+            <span class="footer-col-heading">Product</span>
+            <nav class="footer-col-links" aria-label="Product pages">
+              <a href="/index.html#product">Product</a>
+              <a href="/features.html">Features</a>
+              <a href="/integrations.html">Integrations</a>
+              <a href="/security.html">Security</a>
+              <a href="/pricing.html">Pricing</a>
+            </nav>
+          </div>
+
+          <!-- Meeting column -->
+          <div>
+            <span class="footer-col-heading">Meeting</span>
+            <nav class="footer-col-links" aria-label="Meeting links">
+              <a href="https://join.focusjam.com">Join a meeting</a>
+              <a href="https://app.focusjam.com">Open FocusJam</a>
+            </nav>
+          </div>
+
+          <!-- Company column -->
+          <div>
+            <span class="footer-col-heading">Company</span>
+            <nav class="footer-col-links" aria-label="Company links">
+              <a href="mailto:hello@focushive.com">Contact</a>
+              <a href="mailto:support@focusjam.com">Support</a>
+            </nav>
+          </div>
+
+        </div>
+
+        <div class="footer-bottom">
+          <small>© <span data-year>2026</span> FocusHive Inc.</small>
+        </div>
+      </div>
+    </footer>
+    <!-- ── END FOOTER ── -->
+
+    <script src="/site.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,340 @@
+/* ── integrations.css — page-specific styles only ── */
+
+/* ─── Hero ─── */
+.int-hero {
+  display: grid;
+  grid-template-columns: 0.65fr 0.35fr;
+  gap: clamp(3rem, 6vw, 6rem);
+  align-items: center;
+  padding-block: clamp(5rem, 9vw, 9rem) clamp(4rem, 7vw, 7rem);
+}
+
+/* ─── Hero: live-status chip strip (decorative) ─── */
+.int-hero-chips {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  align-items: flex-start;
+}
+
+.int-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  font-size: 0.78rem;
+  font-weight: 680;
+  color: var(--ink);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 12px rgba(16, 35, 27, 0.06);
+  white-space: nowrap;
+}
+
+.int-chip .live-dot {
+  flex-shrink: 0;
+  animation: int-pulse 2.6s ease-in-out infinite;
+}
+
+@keyframes int-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 5px rgba(70, 219, 145, 0.08); }
+  50%       { opacity: 0.75; box-shadow: 0 0 0 8px rgba(70, 219, 145, 0.03); }
+}
+
+/* stagger every other chip slightly for visual rhythm */
+.int-chip:nth-child(even) {
+  margin-left: 1.2rem;
+}
+
+/* ─── Section note (beside h2 in .section-heading) ─── */
+.int-section-note {
+  max-width: 360px;
+}
+
+/* ─── Connector glyph icon container ─── */
+.int-glyph {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(21, 122, 83, 0.09);
+  color: var(--green);
+  margin-bottom: 1.2rem;
+}
+
+.int-glyph-muted {
+  background: rgba(16, 35, 27, 0.05);
+  color: var(--ink-soft);
+}
+
+/* ─── Live connector card ─── */
+.int-card-live {
+  border-top: 3px solid var(--green);
+}
+
+.int-card-live h3 {
+  margin-bottom: 0.55rem;
+  font-size: 1.06rem;
+  font-weight: 750;
+  letter-spacing: -0.025em;
+}
+
+.int-card-live p {
+  margin: 0;
+  font-size: 0.87rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+/* ─── Roadmap card (muted, dashed) ─── */
+.int-roadmap-card {
+  opacity: 0.72;
+  border-style: dashed;
+  transition: opacity 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+}
+
+.int-roadmap-card:where(:hover, :focus-within) {
+  opacity: 1;
+}
+
+.int-roadmap-card h3 {
+  margin-bottom: 0.45rem;
+  font-size: 0.98rem;
+  font-weight: 720;
+  letter-spacing: -0.02em;
+  color: var(--ink-soft);
+}
+
+.int-roadmap-card p {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+/* ─── Roadmap CTA strip ─── */
+.int-roadmap-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 3rem;
+  padding: 1.8rem 2.2rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.int-roadmap-cta p {
+  margin: 0;
+}
+
+.int-roadmap-cta p:first-child {
+  font-weight: 680;
+  font-size: 0.95rem;
+}
+
+/* ─── How it connects section ─── */
+.int-how-split {
+  align-items: start;
+  gap: clamp(3rem, 6vw, 6rem);
+}
+
+/* Sticky flow diagram card */
+.int-how-visual {
+  position: sticky;
+  top: 120px;
+  align-self: start;
+}
+
+.int-flow-card {
+  padding: 1.8rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: var(--shadow);
+}
+
+.int-flow-label {
+  margin: 0 0 1.2rem;
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.int-flow-step {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.int-flow-step > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+}
+
+.int-flow-step strong {
+  font-size: 0.9rem;
+  font-weight: 740;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.int-flow-step span {
+  font-family: ui-monospace, "Cascadia Code", "Fira Code", Menlo, monospace;
+  font-size: 0.67rem;
+  color: var(--ink-soft);
+}
+
+.int-flow-num {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(21, 122, 83, 0.1);
+  color: var(--green);
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.int-flow-num-done {
+  background: var(--green);
+  color: white;
+}
+
+.int-flow-connector {
+  width: 2px;
+  height: 1.8rem;
+  margin-left: 15px;
+  background: linear-gradient(to bottom, var(--green), rgba(21, 122, 83, 0.15));
+  border-radius: 2px;
+}
+
+.int-flow-divider {
+  margin-block: 1.4rem;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
+/* Artifact pills at the bottom of the flow card */
+.int-flow-artifacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.int-flow-artifacts span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.32rem 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(21, 122, 83, 0.05);
+  color: var(--green);
+  font-family: ui-monospace, "Cascadia Code", "Fira Code", Menlo, monospace;
+  font-size: 0.67rem;
+  font-weight: 680;
+}
+
+/* ─── Developer code visual ─── */
+.int-dev-split {
+  align-items: start;
+}
+
+.int-code-visual {
+  position: sticky;
+  top: 120px;
+  align-self: start;
+}
+
+.int-code-block {
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+}
+
+.int-code-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  color: #7a9a8c;
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.int-code-pre {
+  margin: 0;
+  padding: 1.3rem 1.4rem 1.5rem;
+  overflow-x: auto;
+}
+
+.int-code-pre code {
+  font-family: ui-monospace, "Cascadia Code", "Fira Code", Menlo, monospace;
+  font-size: 0.71rem;
+  line-height: 1.75;
+  color: #bdd4c8;
+  white-space: pre;
+}
+
+/* comment lines in the code block */
+.cc {
+  color: #4e7060;
+}
+
+/* ─── Responsive ─── */
+
+@media (max-width: 1050px) {
+  .int-hero {
+    grid-template-columns: 1fr;
+    padding-top: 4rem;
+  }
+
+  .int-hero-chips {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .int-chip:nth-child(even) {
+    margin-left: 0;
+  }
+
+  .int-how-visual,
+  .int-code-visual {
+    position: static;
+  }
+
+  .int-roadmap-cta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 820px) {
+  .int-section-note {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 620px) {
+  .int-hero {
+    padding-top: 3rem;
+  }
+
+  .int-flow-card {
+    padding: 1.2rem;
+  }
+}
