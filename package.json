@@ -1,0 +1,12 @@
+{
+  "name": "focusjam-site",
+  "private": true,
+  "devDependencies": {
+    "@playwright/test": "latest"
+  },
+  "scripts": {
+    "serve": "python3 -m http.server 4173",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui"
+  }
+}
