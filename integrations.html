@@ -1,669 +1,932 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#071510" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-
-    <!-- CSS: global FIRST, then page-local -->
-    <link rel="stylesheet" href="/styles.css" />
-    <link rel="stylesheet" href="/integrations.css" />
-
-    <!-- ── PER-PAGE ── -->
-    <meta name="description" content="Connect FocusJam to your existing workflow. SIP dial-in, calendar invite links, SSO, session recording, and a developer API are live today. Zoom, Teams, Slack, and more on the roadmap." />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Integrations — FocusJam" />
-    <meta property="og:description" content="Plug FocusJam into your stack. Live connectors for SIP, calendar, SSO, recording, and API. More on the roadmap." />
-    <meta property="og:url" content="https://focusjam.com/integrations.html" />
-    <meta property="og:image" content="https://focusjam.com/social-card.svg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="canonical" href="https://focusjam.com/integrations.html" />
+<!--<< Head Area >>-->
+<head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="FocusJam">
+    <meta name="description" content="Connect FocusJam to your existing stack. SIP dial-in, calendar invite links, SSO via OIDC, session recording, bot protection, and a developer API are live today. Zoom, Teams, Slack, and more on the roadmap.">
+    <!-- ======== Page Title ========== -->
     <title>Integrations — FocusJam</title>
-    <!-- ── END PER-PAGE ── -->
-  </head>
-  <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Integrations — FocusJam">
+    <meta property="og:description" content="Plug FocusJam into your stack. Six live connectors — SIP, calendar, SSO, recording, and API — available today. More coming.">
+    <meta property="og:url" content="https://focusjam.com/integrations.html">
+    <meta property="og:image" content="https://focusjam.com/social-card.svg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://focusjam.com/integrations.html">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.svg">
+    <!-- 1. Bootstrap 5 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- 2. Animate.css (WOW.js) -->
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <!-- 3. Magnific Popup -->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <!-- 4. MeanMenu (mobile accordion nav) -->
+    <link rel="stylesheet" href="assets/css/meanmenu.css">
+    <!-- 5. Swiper Bundle -->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <!-- 6. Nice Select -->
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <!-- 7. Font Awesome FREE 6 via jsDelivr CDN
+         Replaces FA Pro all.min.css (commercial, NOT committed to repo).
+         FA Free provides: fa-solid, fa-regular, fa-brands -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css">
+    <!-- 8. Cloudly main CSS (--pp-theme #7B1FE4, DM Sans + Open Sans) -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- 9. FocusJam site overrides -->
+    <link rel="stylesheet" href="assets/css/site-overrides.css">
+    <!-- 10. Integrations page styles -->
+    <link rel="stylesheet" href="assets/css/integrations-page.css">
+</head>
+<body>
 
-    <header class="site-header" data-header>
-      <a class="brand" href="/" aria-label="FocusJam home">
-        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
-          <path d="M7 8.5 20 3l13 5.5v10.8c0 8.4-5.2 14.4-13 17.7C12.2 33.7 7 27.7 7 19.3Z" />
-          <path d="m14.2 20.2 3.7 3.7 8.2-8.7" />
-        </svg>
-        <span>FocusJam</span>
-      </a>
+    <!-- Skip to main content (a11y) -->
+    <a href="#main" class="skip-link">Skip to main content</a>
 
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-        <span class="sr-only">Toggle navigation</span>
-        <span></span><span></span>
-      </button>
+    <!-- ============================================================
+         PRELOADER
+         ============================================================ -->
+    <div id="preloader" class="preloader">
+        <div class="animation-preloader">
+            <div class="spinner"></div>
+            <div class="txt-loading">
+                <span data-text-preloader="F" class="letters-loading">F</span>
+                <span data-text-preloader="O" class="letters-loading">O</span>
+                <span data-text-preloader="C" class="letters-loading">C</span>
+                <span data-text-preloader="U" class="letters-loading">U</span>
+                <span data-text-preloader="S" class="letters-loading">S</span>
+                <span data-text-preloader="J" class="letters-loading">J</span>
+                <span data-text-preloader="A" class="letters-loading">A</span>
+                <span data-text-preloader="M" class="letters-loading">M</span>
+            </div>
+            <p class="text-center">Loading</p>
+        </div>
+        <div class="loader">
+            <div class="row">
+                <div class="col-3 loader-section section-left"><div class="bg"></div></div>
+                <div class="col-3 loader-section section-left"><div class="bg"></div></div>
+                <div class="col-3 loader-section section-right"><div class="bg"></div></div>
+                <div class="col-3 loader-section section-right"><div class="bg"></div></div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader End -->
 
-      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
-        <a href="/index.html#product">Product</a>
-        <a href="/features.html">Features</a>
-        <a href="/integrations.html" aria-current="page">Integrations</a>
-        <a href="/security.html">Security</a>
-        <a href="/pricing.html">Pricing</a>
-        <a href="https://join.focusjam.com" class="nav-join">Join a meeting</a>
-        <a href="https://app.focusjam.com" class="button button-small">Open FocusJam</a>
-      </nav>
+    <!-- Back To Top -->
+    <button id="pp-back-top" class="pp-back-to-top show" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Mouse Cursor -->
+    <div class="mouseCursor cursor-outer"></div>
+    <div class="mouseCursor cursor-inner"></div>
+
+    <!-- ============================================================
+         OFFCANVAS (mobile sidebar)
+         ============================================================ -->
+    <div class="fix-area">
+        <div class="offcanvas__info">
+            <div class="offcanvas__wrapper">
+                <div class="offcanvas__content">
+                    <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
+                        <div class="offcanvas__logo">
+                            <a href="index.html" class="fj-wordmark">
+                                <img src="favicon.svg" alt="FocusJam" class="fj-wordmark-icon">
+                                <span class="fj-wordmark-text" style="color: var(--pp-header);">FocusJam</span>
+                            </a>
+                        </div>
+                        <div class="offcanvas__close">
+                            <button aria-label="Close menu">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mobile-menu fix mb-3"></div>
+                    <div class="offcanvas__contact">
+                        <div class="header-button mt-4 d-flex flex-column gap-2">
+                            <a href="https://join.focusjam.com" class="pp-btn-outline text-center">
+                                Join a meeting
+                            </a>
+                            <a href="https://app.focusjam.com" class="pp-theme-btn text-center">
+                                Open FocusJam <i class="fa-solid fa-arrow-right-long"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas__overlay"></div>
+    <!-- Offcanvas End -->
+
+    <!-- ============================================================
+         HEADER / NAVBAR
+         Integrations <li> carries class="active"
+         ============================================================ -->
+    <header id="header-sticky" class="header-1 header-2">
+        <div class="container">
+            <div class="mega-menu-wrapper">
+                <div class="header-main">
+
+                    <div class="logo">
+                        <a href="index.html" class="header-logo fj-wordmark">
+                            <img src="favicon.svg" alt="FocusJam" class="fj-wordmark-icon">
+                            <span class="fj-wordmark-text">FocusJam</span>
+                        </a>
+                        <a href="index.html" class="header-logo-2 fj-wordmark">
+                            <img src="favicon.svg" alt="FocusJam" class="fj-wordmark-icon">
+                            <span class="fj-wordmark-text">FocusJam</span>
+                        </a>
+                    </div>
+
+                    <div class="mean__menu-wrapper">
+                        <div class="main-menu">
+                            <nav id="mobile-menu" aria-label="Primary navigation">
+                                <ul>
+                                    <li>
+                                        <a href="index.html">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="features.html">Features</a>
+                                    </li>
+                                    <li>
+                                        <a href="pricing.html">Pricing</a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="integrations.html">Integrations</a>
+                                    </li>
+                                    <li>
+                                        <a href="security.html">Security</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <div class="header-right d-flex justify-content-end align-items-center gap-2">
+                        <a href="https://join.focusjam.com" class="pp-btn-outline d-none d-lg-inline-block">
+                            Join a meeting
+                        </a>
+                        <a href="https://app.focusjam.com" class="pp-theme-btn">
+                            Open FocusJam <i class="fa-solid fa-arrow-right-long"></i>
+                        </a>
+                        <div class="header__hamburger d-xl-none my-auto">
+                            <div class="sidebar__toggle" aria-label="Open menu" role="button">
+                                <div class="header-bar">
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </header>
+    <!-- Header End -->
 
-    <main id="main">
-
-      <!-- ─── Hero ─── -->
-      <section class="int-hero section-shell glow">
-        <div class="int-hero-copy reveal">
-          <p class="eyebrow"><span></span>Integrations</p>
-          <h1>Your stack,<br>your <em>jam</em>.</h1>
-          <p class="lead">
-            FocusJam is your sovereign meeting platform — not a plugin for someone else's.
-            Plug it into your calendar, your identity provider, your phone network, and your
-            developer workflow. Your meetings, your infrastructure, your data.
-          </p>
-          <div class="hero-actions">
-            <a class="button" href="https://app.focusjam.com">Start a jam</a>
-            <a class="text-link" href="#developer">
-              Explore the API
-              <span aria-hidden="true">↓</span>
-            </a>
-          </div>
-          <div class="trust-line" aria-label="Integration highlights">
-            <span>SIP dial-in live today</span>
-            <span>Calendar invite links</span>
-            <span>SSO via OIDC</span>
-          </div>
-        </div>
-
-        <!-- Decorative live-connector status strip -->
-        <div class="int-hero-chips" aria-hidden="true">
-          <span class="int-chip">
-            <span class="live-dot"></span>SIP / PSTN dial-in
-          </span>
-          <span class="int-chip">
-            <span class="live-dot"></span>Calendar invite links
-          </span>
-          <span class="int-chip">
-            <span class="live-dot"></span>SSO / OIDC identity
-          </span>
-          <span class="int-chip">
-            <span class="live-dot"></span>Session recording
-          </span>
-          <span class="int-chip">
-            <span class="live-dot"></span>Bot protection
-          </span>
-          <span class="int-chip">
-            <span class="live-dot"></span>API &amp; artifact export
-          </span>
-        </div>
-      </section>
-
-      <!-- ─── Available now ─── -->
-      <section class="section-shell pt-section pb-section" aria-labelledby="live-heading">
-        <div class="section-heading reveal">
-          <div>
-            <p class="eyebrow"><span></span>Available today</p>
-            <h2 id="live-heading">Live connectors</h2>
-          </div>
-          <p class="text-muted text-sm int-section-note">
-            Six real integrations, shipping today. No bots. No screen scraping. No empty promises.
-          </p>
-        </div>
-
-        <div class="grid-3 gap-lg">
-
-          <!-- 1 — SIP / PSTN -->
-          <article class="card int-card-live reveal">
-            <div class="int-glyph" aria-hidden="true">
-              <svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M6 5h6l2 5-3 2a14 14 0 0 0 9 9l2-3 5 2v6a2 2 0 0 1-2 2C10 28 4 22 4 7a2 2 0 0 1 2-2z"/>
-              </svg>
-            </div>
-            <div class="pill-row mb-sm">
-              <span class="badge">Live</span>
-              <span class="tag">SIP / PSTN</span>
-            </div>
-            <h3>Phone dial-in</h3>
-            <p>
-              Bring any phone caller into a jam via standard SIP trunks. No app required —
-              just a dial-in number and a PIN. Powered by LiveKit SipClient, works with
-              any SIP-compatible trunk.
-            </p>
-          </article>
-
-          <!-- 2 — Calendar invite links -->
-          <article class="card int-card-live reveal">
-            <div class="int-glyph" aria-hidden="true">
-              <svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="4" y="7" width="24" height="21" rx="3"/>
-                <path d="M4 13h24M11 4v6M21 4v6M10 20h3v3h-3z"/>
-              </svg>
-            </div>
-            <div class="pill-row mb-sm">
-              <span class="badge">Live</span>
-              <span class="tag">Google Calendar</span>
-              <span class="tag">Outlook</span>
-              <span class="tag">Apple Calendar</span>
-            </div>
-            <h3>Calendar invite links</h3>
-            <p>
-              Drop a signed jam link into any calendar invite. Attendees join with one click —
-              no FocusJam account needed. Issue single-use, multi-use, or email-bound tokens.
-              Works wherever you paste a URL.
-            </p>
-          </article>
-
-          <!-- 3 — SSO / Identity -->
-          <article class="card int-card-live reveal">
-            <div class="int-glyph" aria-hidden="true">
-              <svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="14" r="5"/>
-                <path d="M16 14h12M24 11l4 3-4 3M20 14v3l2 2"/>
-              </svg>
-            </div>
-            <div class="pill-row mb-sm">
-              <span class="badge">Live</span>
-              <span class="tag">OIDC</span>
-              <span class="badge badge-neutral">Enterprise</span>
-            </div>
-            <h3>SSO &amp; identity</h3>
-            <p>
-              Authenticate with Keycloak or FocusPass OIDC single sign-on. Lock jams to an
-              invitee allow-list. Enterprise-grade access control with zero third-party
-              identity exposure — your IdP, your rules.
-            </p>
-          </article>
-
-          <!-- 4 — Recording -->
-          <article class="card int-card-live reveal">
-            <div class="int-glyph" aria-hidden="true">
-              <svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="16" cy="16" r="11"/>
-                <circle cx="16" cy="16" r="5" fill="currentColor" stroke="none" opacity="0.65"/>
-              </svg>
-            </div>
-            <div class="pill-row mb-sm">
-              <span class="badge">Live</span>
-              <span class="tag">MP4</span>
-            </div>
-            <h3>Session recording</h3>
-            <p>
-              Record any jam to MP4 via LiveKit Egress. Recordings stay within your
-              infrastructure boundary — no cloud upload, no third-party storage. Archive
-              or share on your own terms.
-            </p>
-          </article>
-
-          <!-- 5 — Cloudflare Turnstile -->
-          <article class="card int-card-live reveal">
-            <div class="int-glyph" aria-hidden="true">
-              <svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M16 3 28 8v11c0 6-5 10-12 13C9 29 4 25 4 19V8z"/>
-                <path d="M11 16l3.5 3.5 6.5-7"/>
-              </svg>
-            </div>
-            <div class="pill-row mb-sm">
-              <span class="badge">Live</span>
-              <span class="tag">Turnstile</span>
-              <span class="badge badge-neutral">Optional</span>
-            </div>
-            <h3>Bot protection</h3>
-            <p>
-              Add a Cloudflare Turnstile challenge to guest access. Privacy-respecting,
-              non-intrusive verification keeps bots out without fingerprinting real
-              attendees. Toggle it per jam or per org.
-            </p>
-          </article>
-
-          <!-- 6 — API & Artifacts -->
-          <article class="card int-card-live reveal">
-            <div class="int-glyph" aria-hidden="true">
-              <svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M10 10 4 16l6 6M22 10l6 6-6 6M18 6l-4 20"/>
-              </svg>
-            </div>
-            <div class="pill-row mb-sm">
-              <span class="badge">Live</span>
-              <span class="tag">Markdown</span>
-              <span class="tag">JSON</span>
-            </div>
-            <h3>API &amp; artifact export</h3>
-            <p>
-              Every jam produces a signed recap — notes, decisions, action items — exportable
-              as Markdown or JSON. The token-server REST API lets you automate invite
-              creation, roster management, and artifact retrieval.
-            </p>
-          </article>
-
-        </div>
-      </section>
-
-      <!-- ─── How connecting works ─── -->
-      <section class="section-shell pt-section pb-section int-how-section" aria-labelledby="how-heading">
-        <div class="section-heading reveal">
-          <div>
-            <p class="eyebrow"><span></span>Step by step</p>
-            <h2 id="how-heading">How connecting works</h2>
-          </div>
-        </div>
-
-        <div class="split int-how-split">
-          <div>
-
-            <div class="feature-row reveal">
-              <span class="feature-row-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
-                </svg>
-              </span>
-              <h3>Drop a link into any calendar invite</h3>
-              <p>
-                Create a jam in FocusJam and copy the signed invite link. Paste it into
-                your Google Calendar, Outlook, or Apple Calendar event. Attendees join with
-                one click — no app, no account, no friction.
-              </p>
-            </div>
-
-            <div class="feature-row reveal">
-              <span class="feature-row-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.5 19.8 19.8 0 0 1 1.62 2.84 2 2 0 0 1 3.62.66h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.3A16 16 0 0 0 16 16.39l1.7-1.7a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 24 16.92z"/>
-                </svg>
-              </span>
-              <h3>Let phone callers dial straight in</h3>
-              <p>
-                Include the SIP dial-in number and PIN in the invite. Anyone on a phone —
-                landline or mobile — dials in and participates in the jam just like any
-                browser attendee. Powered by LiveKit SipClient.
-              </p>
-            </div>
-
-            <div class="feature-row reveal">
-              <span class="feature-row-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                </svg>
-              </span>
-              <h3>Wire up SSO in one afternoon</h3>
-              <p>
-                Point your Keycloak or FocusPass OIDC provider at FocusJam's token server.
-                Set your invitee allow-list. From that point on, your users authenticate
-                with their existing identity — no separate FocusJam account required.
-              </p>
-            </div>
-
-            <div class="feature-row reveal">
-              <span class="feature-row-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
-                </svg>
-              </span>
-              <h3>Call the API to automate the rest</h3>
-              <p>
-                Use the token-server REST API to generate invite tokens, retrieve session
-                artifacts, and pipe jam recaps into your own tools — Markdown or JSON,
-                your choice, on every session end.
-              </p>
-            </div>
-
-          </div>
-
-          <!-- Sticky flow diagram -->
-          <div class="int-how-visual reveal" aria-hidden="true">
-            <div class="int-flow-card">
-              <p class="int-flow-label">Typical invite flow</p>
-              <div class="int-flow-step">
-                <span class="int-flow-num">1</span>
-                <div>
-                  <strong>Create jam</strong>
-                  <span>app.focusjam.com</span>
+    <!-- ============================================================
+         BREADCRUMB BANNER / HERO
+         Dark purple gradient (via site-overrides.css) with h1 +
+         positioning statement + live-status chips + breadcrumb nav.
+         ============================================================ -->
+    <div id="main" class="pp-breadcrumb-wrapper fix int-has-chips" aria-label="Page banner">
+        <div class="container">
+            <div class="pp-page-heading">
+                <div class="pp-breadcrumb-sub-title">
+                    <h1 class="wow fadeInUp" data-wow-delay=".3s">Integrations</h1>
+                    <p class="wow fadeInUp" data-wow-delay=".4s" style="color:rgba(255,255,255,0.82);font-size:17px;max-width:580px;margin-top:14px;line-height:1.7;">
+                        FocusJam is your sovereign meeting platform — not a plugin for someone
+                        else&#8217;s. Plug it into your calendar, your identity provider, your
+                        phone network, and your developer workflow. Your meetings, your
+                        infrastructure, your data.
+                    </p>
+                    <!-- Live connector status chips -->
+                    <div class="int-hero-chips wow fadeInUp" data-wow-delay=".5s" aria-label="Live connectors at a glance">
+                        <span class="int-hero-chip">
+                            <span class="int-live-dot" aria-hidden="true"></span>SIP / PSTN dial-in
+                        </span>
+                        <span class="int-hero-chip">
+                            <span class="int-live-dot" aria-hidden="true"></span>Calendar invite links
+                        </span>
+                        <span class="int-hero-chip">
+                            <span class="int-live-dot" aria-hidden="true"></span>SSO / OIDC identity
+                        </span>
+                        <span class="int-hero-chip">
+                            <span class="int-live-dot" aria-hidden="true"></span>Session recording
+                        </span>
+                        <span class="int-hero-chip">
+                            <span class="int-live-dot" aria-hidden="true"></span>Bot protection
+                        </span>
+                        <span class="int-hero-chip">
+                            <span class="int-live-dot" aria-hidden="true"></span>API &amp; artifact export
+                        </span>
+                    </div>
                 </div>
-              </div>
-              <div class="int-flow-connector"></div>
-              <div class="int-flow-step">
-                <span class="int-flow-num">2</span>
-                <div>
-                  <strong>Copy signed link</strong>
-                  <span>focusjam.com/j/abc123</span>
+                <ul class="pp-breadcrumb-items wow fadeInUp" data-wow-delay=".6s">
+                    <li><a href="index.html">Home</a></li>
+                    <li><i class="fa-solid fa-chevron-right"></i></li>
+                    <li>Integrations</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb / Hero End -->
+
+    <!-- ============================================================
+         AVAILABLE NOW — six live connectors
+         Cloudly pp-offer-box-item card pattern, 3-column grid.
+         ============================================================ -->
+    <section class="pp-offer-section section-padding fix" aria-labelledby="live-heading">
+        <div class="container">
+
+            <div class="pp-section-title-area d-flex justify-content-between align-items-end flex-wrap gap-3 mb-4">
+                <div class="pp-section-title">
+                    <span class="pp-sub-title wow fadeInUp">Available today</span>
+                    <h2 id="live-heading" class="wow fadeInUp" data-wow-delay=".3s">Live connectors</h2>
                 </div>
-              </div>
-              <div class="int-flow-connector"></div>
-              <div class="int-flow-step">
-                <span class="int-flow-num">3</span>
-                <div>
-                  <strong>Paste anywhere</strong>
-                  <span>Calendar · Email · Doc · Chat</span>
+                <p class="wow fadeInUp" data-wow-delay=".4s" style="max-width:380px;color:var(--pp-text);font-size:15px;line-height:1.65;padding-bottom:30px;">
+                    Six real integrations, shipping today. No bots. No screen scraping.
+                    No empty promises.
+                </p>
+            </div>
+
+            <div class="row g-4">
+
+                <!-- 1 — SIP / PSTN dial-in -->
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
+                    <div class="pp-offer-box-item mt-0">
+                        <div class="pp-offer-icon-svg" aria-hidden="true">
+                            <!-- Phone handset / SIP icon -->
+                            <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M6 5h6l2 5-3 2a14 14 0 0 0 9 9l2-3 5 2v6a2 2 0 0 1-2 2C10 28 4 22 4 7a2 2 0 0 1 2-2z"/>
+                            </svg>
+                        </div>
+                        <div class="int-badge-row">
+                            <span class="int-badge-live"><span class="int-live-dot"></span>Live</span>
+                            <span style="font-size:12px;color:var(--pp-text);">SIP / PSTN</span>
+                        </div>
+                        <div class="pp-offer-content">
+                            <h3>Phone dial-in</h3>
+                            <p>
+                                Bring any phone caller into a jam via standard SIP trunks. No app
+                                required — just a dial-in number and a PIN. Powered by LiveKit
+                                SipClient, compatible with any SIP-capable trunk.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="int-flow-connector"></div>
-              <div class="int-flow-step">
-                <span class="int-flow-num int-flow-num-done">✓</span>
-                <div>
-                  <strong>Attendees join instantly</strong>
-                  <span>One click. Zero installs.</span>
+
+                <!-- 2 — Calendar invite links -->
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".5s">
+                    <div class="pp-offer-box-item mt-0">
+                        <div class="pp-offer-icon-svg" aria-hidden="true">
+                            <!-- Calendar icon -->
+                            <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="4" y="7" width="24" height="21" rx="3"/>
+                                <path d="M4 13h24M11 4v6M21 4v6M10 20h3v3h-3z"/>
+                            </svg>
+                        </div>
+                        <div class="int-badge-row">
+                            <span class="int-badge-live"><span class="int-live-dot"></span>Live</span>
+                            <span style="font-size:12px;color:var(--pp-text);">Google Calendar · Outlook · Apple Calendar</span>
+                        </div>
+                        <div class="pp-offer-content">
+                            <h3>Calendar invite links</h3>
+                            <p>
+                                Drop a signed jam link into any calendar invite. Attendees join
+                                with one click — no FocusJam account needed. Issue single-use,
+                                multi-use, or email-bound tokens. Works wherever you paste a URL.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-              </div>
 
-              <div class="int-flow-divider"></div>
+                <!-- 3 — SSO / Identity -->
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".7s">
+                    <div class="pp-offer-box-item mt-0">
+                        <div class="pp-offer-icon-svg" aria-hidden="true">
+                            <!-- Key / identity icon -->
+                            <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="14" r="5"/>
+                                <path d="M16 14h12M24 11l4 3-4 3M20 14v3l2 2"/>
+                            </svg>
+                        </div>
+                        <div class="int-badge-row">
+                            <span class="int-badge-live"><span class="int-live-dot"></span>Live</span>
+                            <span style="font-size:12px;color:var(--pp-text);">OIDC</span>
+                            <span class="int-badge-ent">Enterprise</span>
+                        </div>
+                        <div class="pp-offer-content">
+                            <h3>SSO &amp; identity</h3>
+                            <p>
+                                Authenticate with Keycloak or FocusPass OIDC single sign-on.
+                                Lock jams to an invitee allow-list. Enterprise-grade access
+                                control — your IdP, your rules, zero third-party identity exposure.
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
-              <p class="int-flow-label">Session ends → artifacts ready</p>
-              <div class="int-flow-artifacts">
-                <span>
-                  <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
-                    <path d="M3 2h7l3 3v9H3z"/><path d="M10 2v4h4"/>
-                  </svg>
-                  recap.md
-                </span>
-                <span>
-                  <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
-                    <path d="M3 2h7l3 3v9H3z"/><path d="M10 2v4h4"/>
-                  </svg>
-                  artifacts.json
-                </span>
-                <span>
-                  <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
-                    <path d="M3 2h7l3 3v9H3z"/><path d="M10 2v4h4"/>
-                  </svg>
-                  recording.mp4
-                </span>
-              </div>
+                <!-- 4 — Session recording -->
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
+                    <div class="pp-offer-box-item mt-0">
+                        <div class="pp-offer-icon-svg" aria-hidden="true">
+                            <!-- Record circle icon -->
+                            <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="16" cy="16" r="11"/>
+                                <circle cx="16" cy="16" r="5" fill="currentColor" stroke="none" opacity="0.7"/>
+                            </svg>
+                        </div>
+                        <div class="int-badge-row">
+                            <span class="int-badge-live"><span class="int-live-dot"></span>Live</span>
+                            <span style="font-size:12px;color:var(--pp-text);">MP4</span>
+                        </div>
+                        <div class="pp-offer-content">
+                            <h3>Session recording</h3>
+                            <p>
+                                Record any jam to MP4 via LiveKit Egress. Recordings stay within
+                                your infrastructure boundary — no cloud upload, no third-party
+                                storage. Archive or share entirely on your own terms.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5 — Cloudflare Turnstile (bot protection) -->
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".5s">
+                    <div class="pp-offer-box-item mt-0">
+                        <div class="pp-offer-icon-svg" aria-hidden="true">
+                            <!-- Shield-check icon -->
+                            <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 3 4 8.5v9.5c0 7 5.5 12 12 14 6.5-2 12-7 12-14V8.5z"/>
+                                <path d="m11 16 3 3 7-7"/>
+                            </svg>
+                        </div>
+                        <div class="int-badge-row">
+                            <span class="int-badge-live"><span class="int-live-dot"></span>Live</span>
+                            <span style="font-size:12px;color:var(--pp-text);">Bot protection</span>
+                        </div>
+                        <div class="pp-offer-content">
+                            <h3>Bot challenge</h3>
+                            <p>
+                                Cloudflare Turnstile challenges suspicious join attempts before
+                                they reach the room. Privacy-friendly and invisible to real users —
+                                blocks automated attacks without a CAPTCHA friction wall.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6 — API & artifact export -->
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".7s">
+                    <div class="pp-offer-box-item mt-0">
+                        <div class="pp-offer-icon-svg" aria-hidden="true">
+                            <!-- Code brackets icon -->
+                            <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10 10 4 16l6 6M22 10l6 6-6 6M18 6l-4 20"/>
+                            </svg>
+                        </div>
+                        <div class="int-badge-row">
+                            <span class="int-badge-live"><span class="int-live-dot"></span>Live</span>
+                            <span style="font-size:12px;color:var(--pp-text);">Markdown · JSON</span>
+                        </div>
+                        <div class="pp-offer-content">
+                            <h3>API &amp; artifact export</h3>
+                            <p>
+                                Every jam produces a signed recap — notes, decisions, action
+                                items — exportable as Markdown or JSON. The token-server REST API
+                                automates invite creation, roster management, and artifact retrieval.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-          </div>
         </div>
-      </section>
+    </section>
+    <!-- Available Now End -->
 
-      <!-- ─── Roadmap ─── -->
-      <section class="section-shell pt-section pb-section int-roadmap-section" aria-labelledby="roadmap-heading">
-        <div class="section-heading reveal">
-          <div>
-            <p class="eyebrow"><span></span>On the roadmap</p>
-            <h2 id="roadmap-heading">Coming to FocusJam</h2>
-          </div>
-          <p class="text-muted text-sm int-section-note">
-            These connectors are planned — not live today. We believe in honest roadmaps.
-            Vote with your request.
-          </p>
+    <!-- ============================================================
+         HOW CONNECTING WORKS — 4-step numbered process strip
+         ============================================================ -->
+    <section class="section-padding fix section-bg int-steps-section" aria-labelledby="how-heading">
+        <div class="container">
+
+            <div class="pp-section-title-area text-center">
+                <div class="pp-section-title">
+                    <span class="pp-sub-title wow fadeInUp">Step by step</span>
+                    <h2 id="how-heading" class="wow fadeInUp" data-wow-delay=".3s">How connecting works</h2>
+                </div>
+            </div>
+
+            <div class="row g-0">
+
+                <!-- Step 1 -->
+                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".2s">
+                    <div class="int-step-card position-relative">
+                        <div class="int-step-num">1</div>
+                        <h3 class="int-step-title">Drop a link in any calendar invite</h3>
+                        <p class="int-step-body">
+                            Create a jam in FocusJam and copy the signed invite link. Paste it
+                            into Google Calendar, Outlook, or Apple Calendar. Attendees join
+                            with one click — no app, no account, no friction.
+                        </p>
+                        <span class="int-step-arrow" aria-hidden="true">
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".4s">
+                    <div class="int-step-card position-relative">
+                        <div class="int-step-num">2</div>
+                        <h3 class="int-step-title">Let phone callers dial straight in</h3>
+                        <p class="int-step-body">
+                            Include the SIP dial-in number and PIN in the invite. Anyone on a
+                            phone — landline or mobile — dials in and participates just like any
+                            browser attendee. Powered by LiveKit SipClient.
+                        </p>
+                        <span class="int-step-arrow" aria-hidden="true">
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".6s">
+                    <div class="int-step-card position-relative">
+                        <div class="int-step-num">3</div>
+                        <h3 class="int-step-title">Wire up SSO in one afternoon</h3>
+                        <p class="int-step-body">
+                            Point your Keycloak or FocusPass OIDC provider at FocusJam's token
+                            server. Set your invitee allow-list. Your users authenticate with
+                            their existing identity — no separate FocusJam account required.
+                        </p>
+                        <span class="int-step-arrow" aria-hidden="true">
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".8s">
+                    <div class="int-step-card">
+                        <div class="int-step-num">4</div>
+                        <h3 class="int-step-title">Call the API to automate the rest</h3>
+                        <p class="int-step-body">
+                            Use the token-server REST API to generate invite tokens, retrieve
+                            session artifacts, and pipe jam recaps into your own tools —
+                            Markdown or JSON, your choice, on every session end.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
         </div>
+    </section>
+    <!-- How It Works End -->
 
-        <div class="grid-4 gap-md">
+    <!-- ============================================================
+         ON THE ROADMAP
+         Muted cards with honest "coming soon" / "in active development"
+         labels. These integrations are NOT live today.
+         Microsoft Teams is marked "In active development" (via Recall.ai).
+         All others are "Coming soon".
+         ============================================================ -->
+    <section class="section-padding fix" aria-labelledby="roadmap-heading">
+        <div class="container">
 
-          <!-- Zoom -->
-          <article class="card int-roadmap-card reveal">
-            <div class="int-glyph int-glyph-muted" aria-hidden="true">
-              <svg viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="10" width="17" height="13" rx="3"/>
-                <path d="M20 14 29 9v15l-9-5z"/>
-              </svg>
+            <div class="pp-section-title-area d-flex justify-content-between align-items-end flex-wrap gap-3 mb-4">
+                <div class="pp-section-title">
+                    <span class="pp-sub-title wow fadeInUp">On the roadmap</span>
+                    <h2 id="roadmap-heading" class="wow fadeInUp" data-wow-delay=".3s">Coming to FocusJam</h2>
+                </div>
+                <p class="wow fadeInUp" data-wow-delay=".4s" style="max-width:380px;color:var(--pp-text);font-size:15px;line-height:1.65;padding-bottom:30px;">
+                    These connectors are planned — not live today. We believe in honest
+                    roadmaps. Vote with your request.
+                </p>
             </div>
-            <div class="pill-row mb-sm">
-              <span class="badge badge-neutral">Coming soon</span>
-            </div>
-            <h3>Zoom bridge</h3>
-            <p>Join Zoom calls from inside FocusJam — with your AI Jammer in the room.</p>
-          </article>
 
-          <!-- Google Meet -->
-          <article class="card int-roadmap-card reveal">
-            <div class="int-glyph int-glyph-muted" aria-hidden="true">
-              <svg viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="10" width="17" height="13" rx="3"/>
-                <path d="M20 15 28 10v13l-8-5z"/>
-              </svg>
-            </div>
-            <div class="pill-row mb-sm">
-              <span class="badge badge-neutral">Coming soon</span>
-            </div>
-            <h3>Google Meet bridge</h3>
-            <p>Bridge Meet sessions so your AI Jammer attends, takes notes, and exports artifacts.</p>
-          </article>
+            <div class="row g-4">
 
-          <!-- Microsoft Teams -->
-          <article class="card int-roadmap-card reveal">
-            <div class="int-glyph int-glyph-muted" aria-hidden="true">
-              <svg viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="4" y="11" width="15" height="13" rx="2.5"/>
-                <path d="M19 15h6v9a2 2 0 0 1-2 2h-4"/>
-                <circle cx="11" cy="8" r="3"/>
-                <circle cx="22" cy="9" r="2.3"/>
-              </svg>
-            </div>
-            <div class="pill-row mb-sm">
-              <span class="badge badge-neutral">Coming soon</span>
-            </div>
-            <h3>Teams bridge</h3>
-            <p>Plug your AI Jammer into Microsoft Teams calls without replacing your workflow.</p>
-          </article>
+                <!-- Microsoft Teams — in active development (Recall.ai) -->
+                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
+                    <div class="int-roadmap-box">
+                        <div class="int-roadmap-icon" aria-hidden="true">
+                            <!-- Teams-style icon (generic multi-person video) -->
+                            <svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="4" y="11" width="15" height="13" rx="2.5"/>
+                                <path d="M19 15h6v9a2 2 0 0 1-2 2h-4"/>
+                                <circle cx="11" cy="8" r="3"/>
+                                <circle cx="22" cy="9" r="2.3"/>
+                            </svg>
+                        </div>
+                        <div class="int-badge-row">
+                            <span class="int-badge-dev">In active development</span>
+                        </div>
+                        <h3>Teams bridge</h3>
+                        <p>
+                            Plug your AI Jammer into Microsoft Teams calls without replacing your
+                            workflow. In active development — coming soon.
+                        </p>
+                    </div>
+                </div>
 
-          <!-- Webex -->
-          <article class="card int-roadmap-card reveal">
-            <div class="int-glyph int-glyph-muted" aria-hidden="true">
-              <svg viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="16" cy="16" r="11"/>
-                <circle cx="16" cy="16" r="4.5"/>
-                <path d="M16 5v3M16 24v3M5 16h3M24 16h3"/>
-              </svg>
-            </div>
-            <div class="pill-row mb-sm">
-              <span class="badge badge-neutral">Coming soon</span>
-            </div>
-            <h3>Webex bridge</h3>
-            <p>Bring FocusJam's AI Jammer to Webex meetings — intelligence without lock-in.</p>
-          </article>
+                <!-- Zoom -->
+                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".4s">
+                    <div class="int-roadmap-box">
+                        <div class="int-roadmap-icon" aria-hidden="true">
+                            <!-- Generic video camera icon -->
+                            <svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="10" width="17" height="13" rx="3"/>
+                                <path d="M20 14 29 9v15l-9-5z"/>
+                            </svg>
+                        </div>
+                        <div class="int-badge-row">
+                            <span class="int-badge-soon">Coming soon</span>
+                        </div>
+                        <h3>Zoom bridge</h3>
+                        <p>
+                            Join Zoom calls from inside FocusJam — with your AI Jammer in the
+                            room taking notes and tracking decisions.
+                        </p>
+                    </div>
+                </div>
 
-          <!-- Slack -->
-          <article class="card int-roadmap-card reveal">
-            <div class="int-glyph int-glyph-muted" aria-hidden="true">
-              <svg viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 4a3 3 0 0 1 0 6H9a3 3 0 0 1 0-6h3zM12 22a3 3 0 0 1 0 6H9a3 3 0 0 1 0-6h3zM20 12a3 3 0 0 1 6 0v3a3 3 0 0 1-6 0v-3zM4 12a3 3 0 0 1 6 0v3a3 3 0 0 1-6 0v-3z"/>
-              </svg>
-            </div>
-            <div class="pill-row mb-sm">
-              <span class="badge badge-neutral">Coming soon</span>
-            </div>
-            <h3>Slack notifications</h3>
-            <p>Post jam recaps, decisions, and action items to a Slack channel when a session ends.</p>
-          </article>
+                <!-- Google Meet -->
+                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".5s">
+                    <div class="int-roadmap-box">
+                        <div class="int-roadmap-icon" aria-hidden="true">
+                            <!-- Generic video-call icon (different angle) -->
+                            <svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="10" width="17" height="13" rx="3"/>
+                                <path d="M20 15 28 10v13l-8-5z"/>
+                            </svg>
+                        </div>
+                        <div class="int-badge-row">
+                            <span class="int-badge-soon">Coming soon</span>
+                        </div>
+                        <h3>Google Meet bridge</h3>
+                        <p>
+                            Bridge Meet sessions so your AI Jammer attends, takes notes, and
+                            exports artifacts after each call.
+                        </p>
+                    </div>
+                </div>
 
-          <!-- Calendar two-way sync -->
-          <article class="card int-roadmap-card reveal">
-            <div class="int-glyph int-glyph-muted" aria-hidden="true">
-              <svg viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="4" y="7" width="24" height="21" rx="3"/>
-                <path d="M4 13h24M11 4v6M21 4v6"/>
-                <path d="M9 21l2 2 2-2M23 21l-2 2-2-2"/>
-                <path d="M11 23V19M21 23v-4"/>
-              </svg>
-            </div>
-            <div class="pill-row mb-sm">
-              <span class="badge badge-neutral">Coming soon</span>
-            </div>
-            <h3>Calendar two-way sync</h3>
-            <p>Auto-create jam rooms from calendar events and write recaps back when sessions end.</p>
-          </article>
+                <!-- Webex -->
+                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".6s">
+                    <div class="int-roadmap-box">
+                        <div class="int-roadmap-icon" aria-hidden="true">
+                            <!-- Globe / platform icon -->
+                            <svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="16" cy="16" r="11"/>
+                                <circle cx="16" cy="16" r="4.5"/>
+                                <path d="M16 5v3M16 24v3M5 16h3M24 16h3"/>
+                            </svg>
+                        </div>
+                        <div class="int-badge-row">
+                            <span class="int-badge-soon">Coming soon</span>
+                        </div>
+                        <h3>Webex bridge</h3>
+                        <p>
+                            Bring FocusJam's AI Jammer to Webex meetings — intelligence without
+                            lock-in.
+                        </p>
+                    </div>
+                </div>
 
-          <!-- CRM / task writeback -->
-          <article class="card int-roadmap-card reveal">
-            <div class="int-glyph int-glyph-muted" aria-hidden="true">
-              <svg viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="10" height="10" rx="2"/>
-                <rect x="19" y="19" width="10" height="10" rx="2"/>
-                <path d="M13 8h6a3 3 0 0 1 3 3v8M8 13v6a3 3 0 0 0 3 3h8"/>
-              </svg>
+                <!-- Slack notifications -->
+                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
+                    <div class="int-roadmap-box">
+                        <div class="int-roadmap-icon" aria-hidden="true">
+                            <!-- Chat-notification icon -->
+                            <svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 4a3 3 0 0 1 0 6H9a3 3 0 0 1 0-6h3zM12 22a3 3 0 0 1 0 6H9a3 3 0 0 1 0-6h3zM20 12a3 3 0 0 1 6 0v3a3 3 0 0 1-6 0v-3zM4 12a3 3 0 0 1 6 0v3a3 3 0 0 1-6 0v-3z"/>
+                            </svg>
+                        </div>
+                        <div class="int-badge-row">
+                            <span class="int-badge-soon">Coming soon</span>
+                        </div>
+                        <h3>Slack notifications</h3>
+                        <p>
+                            Post jam recaps, decisions, and action items to a Slack channel when
+                            a session ends.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Calendar two-way sync -->
+                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".4s">
+                    <div class="int-roadmap-box">
+                        <div class="int-roadmap-icon" aria-hidden="true">
+                            <!-- Calendar sync icon -->
+                            <svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="4" y="7" width="24" height="21" rx="3"/>
+                                <path d="M4 13h24M11 4v6M21 4v6"/>
+                                <path d="M9 21l2 2 2-2M23 21l-2 2-2-2"/>
+                                <path d="M11 23V19M21 23v-4"/>
+                            </svg>
+                        </div>
+                        <div class="int-badge-row">
+                            <span class="int-badge-soon">Coming soon</span>
+                        </div>
+                        <h3>Calendar two-way sync</h3>
+                        <p>
+                            Auto-create jam rooms from calendar events and write recaps back
+                            when sessions end.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CRM / task writeback -->
+                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".5s">
+                    <div class="int-roadmap-box">
+                        <div class="int-roadmap-icon" aria-hidden="true">
+                            <!-- Nodes / integration icon -->
+                            <svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="10" height="10" rx="2"/>
+                                <rect x="19" y="19" width="10" height="10" rx="2"/>
+                                <path d="M13 8h6a3 3 0 0 1 3 3v8M8 13v6a3 3 0 0 0 3 3h8"/>
+                            </svg>
+                        </div>
+                        <div class="int-badge-row">
+                            <span class="int-badge-soon">Coming soon</span>
+                        </div>
+                        <h3>CRM &amp; task writeback</h3>
+                        <p>
+                            Push jam action items and decisions to Notion, Jira, or Salesforce
+                            automatically.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Live translation -->
+                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".6s">
+                    <div class="int-roadmap-box">
+                        <div class="int-roadmap-icon" aria-hidden="true">
+                            <!-- Language / globe icon -->
+                            <svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="16" cy="16" r="12"/>
+                                <path d="M16 4c-3.5 4-3.5 20 0 24M16 4c3.5 4 3.5 20 0 24M4 16h24"/>
+                            </svg>
+                        </div>
+                        <div class="int-badge-row">
+                            <span class="int-badge-soon">Coming soon</span>
+                        </div>
+                        <h3>Live translation</h3>
+                        <p>
+                            Real-time transcript translation so multilingual teams can jam without
+                            a language barrier.
+                        </p>
+                    </div>
+                </div>
+
             </div>
-            <div class="pill-row mb-sm">
-              <span class="badge badge-neutral">Coming soon</span>
-            </div>
-            <h3>CRM &amp; task writeback</h3>
-            <p>Push jam action items and decisions to Notion, Jira, or Salesforce automatically.</p>
-          </article>
 
-          <!-- Translation -->
-          <article class="card int-roadmap-card reveal">
-            <div class="int-glyph int-glyph-muted" aria-hidden="true">
-              <svg viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="16" cy="16" r="12"/>
-                <path d="M16 4c-3.5 4-3.5 20 0 24M16 4c3.5 4 3.5 20 0 24M4 16h24"/>
-              </svg>
-            </div>
-            <div class="pill-row mb-sm">
-              <span class="badge badge-neutral">Coming soon</span>
-            </div>
-            <h3>Live translation</h3>
-            <p>Real-time transcript translation so multilingual teams can jam without a language barrier.</p>
-          </article>
-
-        </div>
-
-        <!-- Request CTA -->
-        <div class="int-roadmap-cta reveal">
-          <div>
-            <p>Need something specific?</p>
-            <p class="text-muted text-sm">Priority is determined by demand — the more requests we get, the sooner it ships.</p>
-          </div>
-          <a href="mailto:hello@focushive.com" class="button button-ghost">
-            Request an integration
-            <span aria-hidden="true" style="margin-left:0.4rem">↗</span>
-          </a>
-        </div>
-      </section>
-
-      <!-- ─── Developer / API band ─── -->
-      <section class="dark-section grain" id="developer" aria-labelledby="dev-heading">
-        <div class="section-shell">
-          <div class="split int-dev-split gap-xl">
-
-            <div>
-              <p class="eyebrow"><span></span>For developers</p>
-              <h2 id="dev-heading">API-first from day one</h2>
-              <p>
-                FocusJam's token server exposes a clean REST API for everything your team
-                needs to automate. Generate signed invite tokens, retrieve session artifacts,
-                and integrate jam recaps into your own pipeline.
-              </p>
-              <ul class="check-list">
-                <li>Signed invite tokens — single-use, multi-use, or email-bound</li>
-                <li>Session artifact export — Markdown &amp; JSON recaps, decisions, action items</li>
-                <li>Artifact webhooks — trigger downstream systems when a jam ends</li>
-                <li>Self-hostable — your infrastructure, your keys, your audit logs</li>
-              </ul>
-              <div class="hero-actions" style="margin-top: 2.2rem">
-                <a class="button button-light" href="mailto:hello@focushive.com">Request API access</a>
-                <a class="text-link text-link-light" href="mailto:hello@focushive.com">
-                  Discuss self-hosting
-                  <span aria-hidden="true">↗</span>
+            <!-- Request an integration CTA row -->
+            <div class="int-roadmap-cta wow fadeInUp" data-wow-delay=".3s">
+                <div class="int-roadmap-cta-copy">
+                    <p>Need something specific?</p>
+                    <span>Priority is determined by demand — the more requests we get, the sooner it ships.</span>
+                </div>
+                <a href="mailto:hello@focushive.com" class="pp-theme-btn">
+                    Request an integration <i class="fa-solid fa-arrow-right-long"></i>
                 </a>
-              </div>
             </div>
 
-            <!-- Code visual -->
-            <div class="int-code-visual reveal" aria-label="Example token-server API request and response">
-              <div class="int-code-block">
-                <div class="int-code-topbar">
-                  <span>token-server &middot; REST API</span>
-                  <span class="badge badge-light">v1</span>
+        </div>
+    </section>
+    <!-- Roadmap End -->
+
+    <!-- ============================================================
+         DEVELOPER / API DARK BAND
+         Token-server REST API, signed invites, exportable artifacts,
+         self-hosting. Anchor: #developer
+         ============================================================ -->
+    <section class="int-api-section" id="developer" aria-labelledby="api-heading">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+
+                <!-- Left: copy + check list + CTAs -->
+                <div class="col-xl-5 col-lg-6 wow fadeInUp" data-wow-delay=".3s">
+                    <div class="pp-section-title">
+                        <span class="pp-sub-title">For developers</span>
+                        <h2 id="api-heading">API-first from day&nbsp;one</h2>
+                    </div>
+                    <p class="pp-text" style="color:rgba(255,255,255,0.78);margin-top:-8px;">
+                        FocusJam's token server exposes a clean REST API for everything your
+                        team needs to automate. Generate signed invite tokens, retrieve session
+                        artifacts, and integrate jam recaps into your own pipeline.
+                    </p>
+                    <ul class="int-check-list">
+                        <li>Signed invite tokens — single-use, multi-use, or email-bound</li>
+                        <li>Session artifact export — Markdown &amp; JSON recaps, decisions, action items</li>
+                        <li>Artifact webhooks — trigger downstream systems when a jam ends</li>
+                        <li>Self-hostable — your infrastructure, your keys, your audit logs</li>
+                    </ul>
+                    <div class="d-flex flex-wrap gap-3 mt-4">
+                        <a href="mailto:hello@focushive.com" class="pp-theme-btn">
+                            Request API access <i class="fa-solid fa-arrow-right-long"></i>
+                        </a>
+                        <a href="mailto:hello@focushive.com" class="pp-btn-outline">
+                            Discuss self-hosting
+                        </a>
+                    </div>
                 </div>
-<pre class="int-code-pre"><code><span class="cc">&#35; Generate a signed invite token</span>
+
+                <!-- Right: code visual -->
+                <div class="col-xl-7 col-lg-6 wow fadeInUp" data-wow-delay=".5s">
+                    <div class="int-code-block" aria-label="Example token-server API request and response">
+                        <div class="int-code-topbar">
+                            <span>token-server &middot; REST API</span>
+                            <span class="int-badge-api">v1</span>
+                        </div>
+<pre class="int-code-pre"><code><span class="cc"># Generate a signed invite token</span>
 POST /api/tokens
 Authorization: Bearer &lt;api_key&gt;
 
 {
-  "jam_id": "prod-strategy-q3",
-  "mode": "multi_use",
+  "jam_id":         "prod-strategy-q3",
+  "mode":           "multi_use",
   "allowed_emails": [
-    "alex@acme.com",
-    "jordan@acme.com"
+    <span class="sv">"alex@acme.com"</span>,
+    <span class="sv">"jordan@acme.com"</span>
   ],
-  "ttl_hours": 48
+  "ttl_hours":      48
 }
 
-<span class="cc">&#35; → 201 Created</span>
+<span class="cc"># → 201 Created</span>
 {
-  "token": "fjt_abc123…",
-  "join_url": "https://join.focusjam.com/j/abc123",
-  "expires_at": "2026-07-01T09:00:00Z"
+  "token":      <span class="sv">"fjt_abc123…"</span>,
+  "join_url":   <span class="sv">"https://join.focusjam.com/j/abc123"</span>,
+  "expires_at": <span class="sv">"2026-07-01T09:00:00Z"</span>
 }</code></pre>
-              </div>
+                    </div>
+                </div>
+
             </div>
-
-          </div>
         </div>
-      </section>
+    </section>
+    <!-- API Band End -->
 
-      <!-- ─── Final CTA ─── -->
-      <div class="section-shell" style="padding-block: clamp(4rem, 7vw, 7rem)">
-        <div class="cta-section reveal">
-          <div>
-            <p class="eyebrow eyebrow-light"><span></span>Get started</p>
-            <h2>Your next jam is one link away.</h2>
-          </div>
-          <div class="cta-actions">
-            <a class="button button-light" href="https://app.focusjam.com">Open FocusJam</a>
-            <a class="text-link text-link-light" href="https://join.focusjam.com">
-              Join with an invite
-              <span aria-hidden="true">↗</span>
-            </a>
-          </div>
+    <!-- ============================================================
+         FINAL CTA BAND
+         ============================================================ -->
+    <section class="int-cta-band" aria-label="Get started with FocusJam">
+        <div class="container position-relative" style="z-index:1;">
+            <div class="pp-section-title text-center">
+                <span class="pp-sub-title wow fadeInUp">Get started</span>
+                <h2 class="wow fadeInUp" data-wow-delay=".3s">Your next jam is one link away.</h2>
+            </div>
+            <p class="pp-text wow fadeInUp" data-wow-delay=".4s" style="text-align:center;max-width:480px;margin:0 auto 36px;color:rgba(255,255,255,0.75);">
+                No install. No account required to join. Drop a link, dial in, or open the
+                app — FocusJam works the way your stack works.
+            </p>
+            <div class="d-flex justify-content-center flex-wrap gap-3 wow fadeInUp" data-wow-delay=".5s">
+                <a href="https://app.focusjam.com" class="pp-theme-btn">
+                    Open FocusJam <i class="fa-solid fa-arrow-right-long"></i>
+                </a>
+                <a href="https://join.focusjam.com" class="pp-btn-outline">
+                    Join with an invite
+                </a>
+            </div>
         </div>
-      </div>
+    </section>
+    <!-- CTA Band End -->
 
-    </main>
+    <!-- ============================================================
+         FOOTER — verbatim from partials.html
+         ============================================================ -->
+    <footer class="pp-footer-section-2">
+        <div class="container">
+            <div class="pp-footer-widget-wrapper pp-style-2">
+                <div class="row justify-content-between">
 
-    <footer class="site-footer">
-      <div class="section-shell">
-        <div class="footer-cols">
+                    <!-- Brand column -->
+                    <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
+                        <div class="pp-footer-widget-items">
+                            <div class="pp-widget-head">
+                                <a href="index.html" class="pp-footer-logo fj-wordmark">
+                                    <img src="favicon.svg" alt="FocusJam" class="fj-wordmark-icon">
+                                    <span class="fj-wordmark-text">FocusJam</span>
+                                </a>
+                            </div>
+                            <div class="pp-footer-content">
+                                <p>AI-powered meeting intelligence that keeps your team focused, aligned, and moving forward.</p>
+                                <div class="social-icon d-flex align-items-center">
+                                    <a href="https://x.com/focusjam" aria-label="X / Twitter">
+                                        <i class="fa-brands fa-x-twitter"></i>
+                                    </a>
+                                    <a href="https://linkedin.com/company/focusjam" aria-label="LinkedIn">
+                                        <i class="fa-brands fa-linkedin-in"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-          <!-- Brand column -->
-          <div class="footer-col-brand">
-            <a class="brand" href="/" aria-label="FocusJam home">
-              <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
-                <path d="M7 8.5 20 3l13 5.5v10.8c0 8.4-5.2 14.4-13 17.7C12.2 33.7 7 27.7 7 19.3Z" />
-                <path d="m14.2 20.2 3.7 3.7 8.2-8.7" />
-              </svg>
-              <span>FocusJam</span>
-            </a>
-            <p>Jam with your team — with an AI Jammer that actually keeps up.</p>
-            <p>Every session gets an AI Jammer that takes notes, tracks decisions, and answers questions live. All AI runs on your own infrastructure — no external APIs, no data leaving your boundary.</p>
-          </div>
+                    <!-- Product links -->
+                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6 wow fadeInUp" data-wow-delay=".3s">
+                        <div class="pp-footer-widget-items">
+                            <div class="pp-widget-head">
+                                <h3>Product</h3>
+                            </div>
+                            <ul class="pp-list-area">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="features.html">Features</a></li>
+                                <li><a href="pricing.html">Pricing</a></li>
+                                <li><a href="integrations.html">Integrations</a></li>
+                                <li><a href="security.html">Security</a></li>
+                            </ul>
+                        </div>
+                    </div>
 
-          <!-- Product column -->
-          <div>
-            <span class="footer-col-heading">Product</span>
-            <nav class="footer-col-links" aria-label="Product pages">
-              <a href="/index.html#product">Product</a>
-              <a href="/features.html">Features</a>
-              <a href="/integrations.html">Integrations</a>
-              <a href="/security.html">Security</a>
-              <a href="/pricing.html">Pricing</a>
-            </nav>
-          </div>
+                    <!-- Meeting links -->
+                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6 wow fadeInUp" data-wow-delay=".4s">
+                        <div class="pp-footer-widget-items">
+                            <div class="pp-widget-head">
+                                <h3>Meeting</h3>
+                            </div>
+                            <ul class="pp-list-area">
+                                <li><a href="https://join.focusjam.com">Join a meeting</a></li>
+                                <li><a href="https://app.focusjam.com">Open FocusJam</a></li>
+                            </ul>
+                        </div>
+                    </div>
 
-          <!-- Meeting column -->
-          <div>
-            <span class="footer-col-heading">Meeting</span>
-            <nav class="footer-col-links" aria-label="Meeting links">
-              <a href="https://join.focusjam.com">Join a meeting</a>
-              <a href="https://app.focusjam.com">Open FocusJam</a>
-            </nav>
-          </div>
+                    <!-- Company links -->
+                    <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".5s">
+                        <div class="pp-footer-widget-items">
+                            <div class="pp-widget-head">
+                                <h3>Company</h3>
+                            </div>
+                            <ul class="pp-list-area">
+                                <li><a href="mailto:hello@focusjam.com">Contact</a></li>
+                                <li><a href="mailto:support@focusjam.com">Support</a></li>
+                            </ul>
+                        </div>
+                    </div>
 
-          <!-- Company column -->
-          <div>
-            <span class="footer-col-heading">Company</span>
-            <nav class="footer-col-links" aria-label="Company links">
-              <a href="mailto:hello@focushive.com">Contact</a>
-              <a href="mailto:support@focusjam.com">Support</a>
-            </nav>
-          </div>
-
+                </div>
+            </div>
         </div>
 
-        <div class="footer-bottom">
-          <small>© <span data-year>2026</span> FocusHive Inc.</small>
+        <!-- Footer bottom bar -->
+        <div class="footer-bottom3">
+            <div class="container">
+                <div class="pp-footer-bottom-wrapper">
+                    <p class="wow fadeInUp" data-wow-delay=".3s">
+                        Copyright &copy; <span id="footer-year"></span> <b>FocusJam</b>. All rights reserved.
+                    </p>
+                    <ul class="pp-footer-list wow fadeInUp" data-wow-delay=".5s">
+                        <li><a href="mailto:hello@focusjam.com">Contact</a></li>
+                        <li><a href="mailto:support@focusjam.com">Support</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
     </footer>
+    <!-- Footer End -->
 
-    <script src="/site.js" defer></script>
-  </body>
+    <!-- ============================================================
+         JS INCLUDES — verbatim from partials.html
+         Load order: jQuery → viewport → Bootstrap → plugins → main.js
+         ============================================================ -->
+    <!-- 1. jQuery -->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <!-- 2. Viewport -->
+    <script src="assets/js/viewport.jquery.js"></script>
+    <!-- 3. Bootstrap Bundle (includes Popper) -->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <!-- 4. Nice Select -->
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <!-- 5. Waypoints -->
+    <script src="assets/js/jquery.waypoints.js"></script>
+    <!-- 6. Counter Up -->
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <!-- 7. Swiper -->
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <!-- 8. MeanMenu (mobile accordion nav) -->
+    <script src="assets/js/jquery.meanmenu.min.js"></script>
+    <!-- 9. Magnific Popup -->
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <!-- 10. WOW.js (scroll-triggered animations) -->
+    <script src="assets/js/wow.min.js"></script>
+    <!-- 11. Parallaxie -->
+    <script src="assets/js/parallaxie.js"></script>
+    <!-- 12. Cloudly main.js -->
+    <script src="assets/js/main.js"></script>
+    <!-- 13. Dynamic footer year -->
+    <script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
+
+</body>
 </html>
