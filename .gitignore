@@ -2,3 +2,10 @@ node_modules/
 test-results/
 playwright-report/
 .playwright/
+
+# Purchased template archive — do NOT commit (license + size)
+saas-software-app-landing-*.zip
+
+# Extracted template dirs (if ever cloned/unzipped locally)
+cloudly/
+buyer-file/
