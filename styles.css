@@ -1724,3 +1724,6 @@ h2 {
     transform: none;
   }
 }
+
+/* ─── Global: ensure [hidden] always wins over component display rules ─── */
+[hidden] { display: none !important; }

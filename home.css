@@ -285,6 +285,29 @@
   margin: 0;
 }
 
+.tier-price {
+  font-size: 2rem;
+  font-weight: 820;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  color: var(--ink);
+  margin: 0;
+}
+
+.tier-price-period {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--ink-soft);
+}
+
+.pricing-teaser-note {
+  margin-top: 1.5rem;
+  font-size: 0.76rem;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
 .tier-tagline {
   color: var(--ink-soft);
   font-size: 0.83rem;

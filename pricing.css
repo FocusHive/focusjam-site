@@ -33,6 +33,15 @@
 }
 
 .pricing-hero .lead {
+  margin-bottom: 0.9rem;
+}
+
+.pricing-position-line {
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  max-width: 600px;
+  margin-inline: auto;
   margin-bottom: 0;
 }
 
