@@ -1,0 +1,360 @@
+/* ═══════════════════════════════════════════════════════
+   FocusJam — home.css
+   Page-specific styles for index.html ONLY.
+   Global design system and reusable components live in
+   styles.css — do not duplicate them here.
+   ═══════════════════════════════════════════════════════ */
+
+/* ─── Marquee proof strip ─── */
+/* Wraps the .marquee component with page-specific border/background */
+.home-marquee-wrap {
+  padding-block: 1.15rem;
+  border-block: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.22);
+  overflow: hidden;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: #53655c;
+  font-size: 0.71rem;
+  font-weight: 690;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.marquee-dot {
+  color: var(--green-bright);
+  font-size: 0.55rem;
+  line-height: 1;
+}
+
+/* ─── Hero: meeting health card (3rd insight card) ─── */
+.hero-health-card {
+  border-left: 2px solid var(--green-bright);
+}
+
+.hero-health-card .insight-type {
+  color: var(--green-bright);
+}
+
+/* ─── Product section cards ─── */
+.product-cards {
+  /* extends .grid-2 from styles.css */
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+}
+
+.product-card .feature-number {
+  margin-bottom: 0.3rem;
+}
+
+.product-card h3 {
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  letter-spacing: -0.044em;
+  line-height: 1.05;
+  margin-bottom: 0.7rem;
+}
+
+.product-card > p {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  line-height: 1.65;
+  flex-grow: 1;
+}
+
+.product-card-tags {
+  margin-top: auto;
+  padding-top: 1.35rem;
+}
+
+/* ─── AI Jammer spotlight ─── */
+/* Section uses .dark-section .grain .glow from styles.css.
+   Inner layout: .section-shell > .split.gap-xl              */
+
+.jammer-copy h2 {
+  margin-bottom: 1.4rem;
+}
+
+.mt-cta {
+  margin-top: 2.5rem;
+}
+
+/* Name/status badge above the demo stack */
+.jammer-name-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+  padding: 0.42rem 0.85rem;
+  border: 1px solid rgba(70, 219, 145, 0.22);
+  border-radius: 999px;
+  background: rgba(70, 219, 145, 0.06);
+  font-size: 0.7rem;
+  font-weight: 760;
+}
+
+.jammer-name-text {
+  color: #d4e0d9;
+}
+
+/* Artifact outcome pills below the Jammer response */
+.jammer-artifacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.8rem;
+}
+
+.artifact-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.32rem 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  color: #b4c7bb;
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.63rem;
+  font-weight: 720;
+}
+
+.artifact-icon {
+  color: var(--green-bright);
+  font-style: normal;
+}
+
+/* ─── How a jam works — 3-step section ─── */
+.jam-steps-section {
+  padding-block: clamp(6rem, 10vw, 10rem);
+}
+
+/* Reset <ol> so .grid-3 layout applies cleanly */
+.jam-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.jam-step {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.jam-step h3 {
+  font-size: clamp(1.25rem, 1.9vw, 1.65rem);
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-bottom: 0.2rem;
+}
+
+.jam-step > p {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  flex-grow: 1;
+  margin-bottom: 0;
+}
+
+/* Middle step gets a subtle green highlight */
+.jam-step--mid {
+  background:
+    radial-gradient(circle at 80% 10%, rgba(70, 219, 145, 0.11), transparent 52%),
+    rgba(255, 255, 255, 0.44);
+  border-color: rgba(21, 122, 83, 0.2);
+}
+
+/* Step counter label */
+.step-number {
+  font-size: 0.68rem;
+  font-weight: 820;
+  letter-spacing: 0.13em;
+  color: var(--green);
+  text-transform: uppercase;
+}
+
+/* CTA links inside step 1 */
+.step-ctas {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-top: 0.25rem;
+}
+
+/* ─── Configurable teaser ─── */
+.config-teaser-section {
+  padding-block: clamp(6rem, 10vw, 10rem);
+}
+
+.config-teaser-inner {
+  display: grid;
+  grid-template-columns: 0.82fr 1.18fr;
+  gap: clamp(3rem, 6vw, 7rem);
+  align-items: start;
+}
+
+.config-teaser-copy h2 {
+  margin-bottom: 1.2rem;
+}
+
+.config-teaser-copy .lead {
+  max-width: 420px;
+}
+
+/* Link cards — <a> elements styled as cards */
+.config-link-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-bottom: 2.25rem;   /* room for the positioned arrow */
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.config-link-card strong {
+  font-size: 1.02rem;
+  font-weight: 770;
+  letter-spacing: -0.02em;
+}
+
+.config-link-card > p {
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin-bottom: 0;
+}
+
+.config-link-arrow {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  color: var(--green);
+  font-size: 1rem;
+  font-weight: 700;
+  transition: transform 160ms ease;
+}
+
+.config-link-card:hover .config-link-arrow,
+.config-link-card:focus-visible .config-link-arrow {
+  transform: translate(3px, -3px);
+}
+
+/* ─── Pricing teaser ─── */
+.pricing-teaser-section {
+  padding-block: clamp(6rem, 10vw, 10rem);
+}
+
+.pricing-tiers {
+  /* extends .grid-3 from styles.css */
+}
+
+.price-tier {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+/* Featured tier — slight green glow + stronger border */
+.price-tier--featured {
+  background:
+    radial-gradient(circle at 80% 0%, rgba(70, 219, 145, 0.1), transparent 52%),
+    rgba(255, 255, 255, 0.44);
+  border-color: rgba(21, 122, 83, 0.26);
+  box-shadow: 0 8px 44px rgba(21, 122, 83, 0.09);
+}
+
+.tier-badge {
+  align-self: flex-start;
+  margin-bottom: 0.35rem;
+}
+
+.tier-name {
+  font-size: 1.7rem;
+  font-weight: 820;
+  letter-spacing: -0.055em;
+  line-height: 1;
+  margin: 0;
+}
+
+.tier-tagline {
+  color: var(--ink-soft);
+  font-size: 0.83rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.tier-features {
+  list-style: none;
+  padding: 0;
+  margin: 0.35rem 0 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-grow: 1;
+}
+
+.tier-features li {
+  position: relative;
+  padding-left: 1.3rem;
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+}
+
+.tier-features li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 820;
+}
+
+/* ─── Final CTA wrapper ─── */
+.final-cta-wrap {
+  padding-bottom: 2.5rem;
+}
+
+/* ─── Responsive overrides ─── */
+
+@media (max-width: 1050px) {
+  .config-teaser-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .config-teaser-copy .lead {
+    max-width: none;
+  }
+}
+
+@media (max-width: 820px) {
+  /* Stack config link cards on narrow screens */
+  .config-links.grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .jam-steps-section,
+  .config-teaser-section,
+  .pricing-teaser-section {
+    padding-block: clamp(4rem, 8vw, 7rem);
+  }
+
+  .step-ctas {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* marquee inherits the global reduced-motion rule in styles.css;
+     no additional overrides needed here                            */
+}
