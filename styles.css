@@ -504,9 +504,8 @@ h1 em {
   border-left: 2px solid var(--amber);
 }
 
-/* .ask-ringi is a deprecated alias — new markup should use .ask-jammer */
-.ask-jammer,
-.ask-ringi {
+/* AI Jammer prompt bar — ask your AI Jammer anything about this session */
+.ask-jammer {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -518,8 +517,7 @@ h1 em {
   font-size: 0.55rem;
 }
 
-.ask-jammer b,
-.ask-ringi b {
+.ask-jammer b {
   color: var(--green-bright);
 }
 
