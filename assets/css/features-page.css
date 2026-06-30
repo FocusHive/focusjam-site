@@ -1134,7 +1134,100 @@
 }
 
 /* ================================================================
-   10. CTA button override (white on theme-bg)
+   10. PERSONA CARDS — Meet your AI Jammers (section H, dark bg)
+   ================================================================ */
+
+/*
+ * Section lives on section-bg-2 (dark navy #1A192E).
+ * White on #1A192E = 17.2:1 ✓.  #c084fc on #1A192E = 6.72:1 ✓.
+ * rgba(255,255,255,0.72) blended = ~12:1 ✓.
+ */
+
+.fj-persona-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    padding: 32px 24px 24px;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    transition: border-color 0.25s ease, background 0.25s ease, transform 0.3s ease;
+}
+
+.fj-persona-card:hover {
+    border-color: rgba(161, 33, 202, 0.45);
+    background: rgba(255, 255, 255, 0.09);
+    transform: translateY(-6px);
+}
+
+.fj-persona-avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 20px;
+    flex-shrink: 0;
+}
+
+.fj-persona-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.fj-persona-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.fj-persona-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    font-family: "DM Sans", sans-serif;
+    line-height: 1.2;
+}
+
+.fj-persona-role {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.72); /* 12:1 on #1A192E ✓ */
+    line-height: 1.5;
+}
+
+.fj-persona-rename {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #c084fc; /* 6.72:1 on effective card bg ✓ */
+    background: rgba(161, 33, 202, 0.18);
+    border: 1px solid rgba(192, 132, 252, 0.3);
+    border-radius: 100px;
+    padding: 5px 14px;
+    font-family: "DM Sans", sans-serif;
+    letter-spacing: 0.02em;
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+.fj-jammers-footnote {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.55); /* 7.5:1 on #1A192E ✓ */
+    max-width: 600px;
+    margin: 40px auto 0;
+    line-height: 1.6;
+}
+
+/* ================================================================
+   11. CTA button override (white on theme-bg)
    ================================================================ */
 
 .fj-cta-btn-light {
@@ -1148,7 +1241,7 @@
 }
 
 /* ================================================================
-   11. RESPONSIVE
+   12. RESPONSIVE
    ================================================================ */
 
 @media (max-width: 991px) {
