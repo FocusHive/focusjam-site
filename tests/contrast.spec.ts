@@ -365,6 +365,44 @@ test('pricing page: Annual tab cards are visible on first paint without scrollin
 });
 
 // ──────────────────────────────────────────────────────────
+// TEST: Dark-section kickers — previously missing from gate
+// Defects #1-2: .section-bg-2 .pp-sub-title (purple 2.58:1 → white 17.18:1)
+// Defects #3-6,#8: .footer-bottom3 p b wordmark (purple 2.58:1 → white 17.18:1)
+// Defect #7: #principles-heading em "checkbox." (purple 2.58:1 → white 17.18:1)
+// ──────────────────────────────────────────────────────────
+
+// NOTE: effectiveBackground() walks the ancestor chain compositing solid colours.
+// section-bg-2 uses background-color:#1A192E (solid), so it resolves correctly here
+// (unlike CSS gradient sections which show rgba(0,0,0,0) and require assertDarkBackground).
+
+const DARK_KICKER_PAGES = ['/', '/features.html', '/pricing.html', '/security.html'];
+
+for (const url of DARK_KICKER_PAGES) {
+  test(`[${url}] .section-bg-2 .pp-sub-title contrast ≥3:1 (large text, dark section)`, async ({
+    page,
+  }) => {
+    await page.goto(url);
+    const el = page.locator('.section-bg-2 .pp-sub-title').first();
+    const count = await el.count();
+    if (count === 0) return; // page has no dark-section kicker — skip
+    await el.scrollIntoViewIfNeeded();
+    await assertContrast(page, '.section-bg-2 .pp-sub-title', 3, `${url} dark-section pp-sub-title`);
+  });
+}
+
+for (const url of ALL_PAGES) {
+  test(`[${url}] .footer-bottom3 p b wordmark contrast ≥4.5:1`, async ({ page }) => {
+    await page.goto(url);
+    await assertContrast(page, '.footer-bottom3 p b', 4.5, `${url} footer wordmark`);
+  });
+}
+
+test('security page — #principles-heading em contrast ≥3:1 (large text)', async ({ page }) => {
+  await page.goto('/security.html');
+  await assertContrast(page, '#principles-heading em', 3, 'principles-heading em');
+});
+
+// ──────────────────────────────────────────────────────────
 // TEST: Footer visible on all pages (no WOW blank)
 // ──────────────────────────────────────────────────────────
 
