@@ -211,71 +211,17 @@
          Floating image slots carry data-needs-image for hardmagic pass.
          ============================================================ -->
     <section id="main" class="pp-hero-section pp-hero-2 fix" aria-labelledby="hero-heading">
-        <!-- AI Jammer in-meeting panel mockup — swap for a real screenshot later -->
+        <!-- AI Jammer in-meeting panel -->
         <div class="pp-hero-image-1 float-bob-y" aria-hidden="true">
-            <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:16px;backdrop-filter:blur(12px);padding:18px;overflow:hidden;">
-                <!-- window chrome -->
-                <div style="display:flex;align-items:center;gap:6px;margin-bottom:14px;">
-                    <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#ff5f57;"></span>
-                    <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#febc2e;"></span>
-                    <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#28c840;"></span>
-                    <span style="margin-left:auto;font-size:11px;color:rgba(255,255,255,0.55);font-family:DM Sans,sans-serif;">FocusJam &middot; 4 participants</span>
-                </div>
-                <!-- 2-up participant grid -->
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
-                    <div style="height:72px;background:rgba(45,27,94,0.7);border-radius:8px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.35);font-size:18px;"><i class="fa-solid fa-user"></i></div>
-                    <div style="height:72px;background:rgba(45,27,94,0.7);border-radius:8px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.35);font-size:18px;"><i class="fa-solid fa-user"></i></div>
-                </div>
-                <!-- Jammer tile -->
-                <div style="background:linear-gradient(135deg,#7B1FE4,#A121CA);border-radius:8px;padding:10px 14px;margin-bottom:12px;display:flex;align-items:center;gap:10px;">
-                    <div style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;font-size:13px;"><i class="fa-solid fa-microphone"></i></div>
-                    <div>
-                        <div style="font-size:13px;font-weight:700;color:#fff;font-family:DM Sans,sans-serif;line-height:1.2;">Jammer</div>
-                        <div style="font-size:11px;color:rgba(255,255,255,0.85);">AI participant &middot; listening</div>
-                    </div>
-                    <span style="margin-left:auto;font-size:10px;font-weight:700;color:#4ade80;font-family:DM Sans,sans-serif;display:flex;align-items:center;gap:4px;white-space:nowrap;">
-                        <span style="width:6px;height:6px;border-radius:50%;background:#4ade80;display:inline-block;"></span> LIVE
-                    </span>
-                </div>
-                <!-- live transcript snippet -->
-                <div style="font-size:11px;color:rgba(255,255,255,0.65);font-family:Open Sans,sans-serif;line-height:1.55;border-top:1px solid rgba(255,255,255,0.1);padding-top:10px;">
-                    <span style="color:#c084fc;font-weight:600;">Alex:</span> &ldquo;&hellip;deadline moves to Q3 unless we&mdash;&rdquo;
-                </div>
-            </div>
+            <img src="assets/img/fj/hero-jammer-ui.png"
+                 alt="AI Jammer in-meeting command panel showing participant sidebar, Jammer tile with LIVE indicator, and live transcript"
+                 width="420" height="520">
         </div>
-        <!-- Live-recap card mockup — swap for a real screenshot later -->
+        <!-- Live-recap card -->
         <div class="pp-hero-image-2 float-bob-x" aria-hidden="true">
-            <div style="background:#fff;border-radius:12px;border:1px solid #e5e9f0;box-shadow:0 16px 48px rgba(0,0,0,0.18);padding:16px;overflow:hidden;">
-                <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#7B1FE4;margin-bottom:12px;font-family:DM Sans,sans-serif;display:flex;align-items:center;gap:6px;">
-                    <i class="fa-solid fa-file-lines"></i> Meeting Recap
-                </div>
-                <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#1A192E;margin-bottom:6px;font-family:DM Sans,sans-serif;">Decisions</div>
-                <div style="display:flex;align-items:flex-start;gap:7px;margin-bottom:5px;font-size:12px;color:#1A192E;line-height:1.4;">
-                    <i class="fa-solid fa-circle-check" style="color:#7B1FE4;margin-top:1px;flex-shrink:0;font-size:11px;"></i>
-                    <span>Ship design system v2 by Fri</span>
-                </div>
-                <div style="display:flex;align-items:flex-start;gap:7px;margin-bottom:12px;font-size:12px;color:#1A192E;line-height:1.4;">
-                    <i class="fa-solid fa-circle-check" style="color:#7B1FE4;margin-top:1px;flex-shrink:0;font-size:11px;"></i>
-                    <span>Defer API migration to Q3</span>
-                </div>
-                <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#1A192E;margin-bottom:6px;font-family:DM Sans,sans-serif;">Action Items</div>
-                <div style="display:flex;align-items:center;gap:5px;margin-bottom:5px;font-size:11px;color:#6D6B7B;">
-                    <span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Write migration runbook</span>
-                    <span style="font-size:10px;font-weight:600;color:#7B1FE4;background:rgba(123,31,228,.08);border-radius:4px;padding:1px 5px;white-space:nowrap;flex-shrink:0;">@sam</span>
-                    <span style="font-size:10px;color:#6D6B7B;white-space:nowrap;flex-shrink:0;">Jun 30</span>
-                </div>
-                <div style="display:flex;align-items:center;gap:5px;margin-bottom:12px;font-size:11px;color:#6D6B7B;">
-                    <span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Update design tokens</span>
-                    <span style="font-size:10px;font-weight:600;color:#7B1FE4;background:rgba(123,31,228,.08);border-radius:4px;padding:1px 5px;white-space:nowrap;flex-shrink:0;">@lea</span>
-                    <span style="font-size:10px;color:#6D6B7B;white-space:nowrap;flex-shrink:0;">Jul 2</span>
-                </div>
-                <div style="border-top:1px solid #f0f2f7;padding-top:10px;display:flex;align-items:center;gap:8px;">
-                    <div style="flex:1;height:6px;background:rgba(123,31,228,.1);border-radius:100px;overflow:hidden;">
-                        <div style="width:78%;height:100%;background:linear-gradient(90deg,#7B1FE4,#A121CA);border-radius:100px;"></div>
-                    </div>
-                    <span style="font-size:15px;font-weight:700;color:#7B1FE4;font-family:DM Sans,sans-serif;white-space:nowrap;">78%</span>
-                </div>
-            </div>
+            <img src="assets/img/fj/hero-recap-panel.png"
+                 alt="Meeting recap card showing decisions with checkmarks, action items with owner tags and due dates, and a 78% completion progress bar"
+                 width="360" height="420">
         </div>
         <div class="container">
             <div class="row justify-content-center">
@@ -496,40 +442,11 @@
                     </div>
 
                     <div class="col-lg-6">
-                        <!-- Slash-command UI mockup — swap for screenshot later -->
+                        <!-- AI Jammer slash-command interface -->
                         <div class="pp-feature-image" aria-hidden="true">
-                            <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);border-radius:20px;padding:24px;max-width:420px;margin-left:auto;">
-                                <!-- slash-command input bar -->
-                                <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-                                    <span style="color:#c084fc;font-size:16px;font-weight:700;font-family:DM Sans,sans-serif;">/</span>
-                                    <span style="font-size:14px;color:rgba(255,255,255,0.5);font-family:Open Sans,sans-serif;flex:1;">ask jammer&hellip;</span>
-                                    <span style="font-size:11px;color:rgba(255,255,255,0.35);font-family:DM Sans,sans-serif;">Enter</span>
-                                </div>
-                                <!-- command suggestions -->
-                                <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:18px;">
-                                    <div style="background:rgba(123,31,228,0.15);border:1px solid rgba(123,31,228,0.3);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:10px;">
-                                        <code style="font-size:12px;color:#c084fc;background:rgba(161,33,202,0.2);border-radius:4px;padding:2px 7px;font-family:Fira Code,monospace;white-space:nowrap;">/ask</code>
-                                        <span style="font-size:13px;color:rgba(255,255,255,0.82);font-family:Open Sans,sans-serif;">Ask Jammer anything mid-meeting</span>
-                                    </div>
-                                    <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:10px;">
-                                        <code style="font-size:12px;color:#c084fc;background:rgba(161,33,202,0.2);border-radius:4px;padding:2px 7px;font-family:Fira Code,monospace;white-space:nowrap;">/recap</code>
-                                        <span style="font-size:13px;color:rgba(255,255,255,0.65);font-family:Open Sans,sans-serif;">Summarise what&rsquo;s been decided</span>
-                                    </div>
-                                    <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:10px;">
-                                        <code style="font-size:12px;color:#c084fc;background:rgba(161,33,202,0.2);border-radius:4px;padding:2px 7px;font-family:Fira Code,monospace;white-space:nowrap;">/action</code>
-                                        <span style="font-size:13px;color:rgba(255,255,255,0.65);font-family:Open Sans,sans-serif;">Log action item with owner + due date</span>
-                                    </div>
-                                </div>
-                                <!-- live answer snippet -->
-                                <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:14px;">
-                                    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
-                                        <div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#7B1FE4,#A121CA);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;color:#fff;"><i class="fa-solid fa-microphone"></i></div>
-                                        <span style="font-size:12px;font-weight:700;color:#c084fc;font-family:DM Sans,sans-serif;">Jammer</span>
-                                        <span style="font-size:10px;color:rgba(255,255,255,0.4);font-family:DM Sans,sans-serif;margin-left:auto;">just now</span>
-                                    </div>
-                                    <p style="font-size:13px;color:rgba(255,255,255,0.78);font-family:Open Sans,sans-serif;line-height:1.55;margin:0;">The team agreed on a Q3 ship date. Alex owns the migration runbook, due June&nbsp;30.</p>
-                                </div>
-                            </div>
+                            <img src="assets/img/fj/feature-jammer-panel.png"
+                                 alt="AI Jammer slash-command interface showing /ask, /recap, /action commands and a live AI response panel"
+                                 width="600" height="500" loading="lazy">
                         </div>
                     </div>
 
@@ -551,52 +468,11 @@
                 <div class="row g-4 align-items-center">
 
                     <div class="col-lg-6">
-                        <!-- E2EE architecture diagram mockup — swap for illustration later -->
+                        <!-- E2EE architecture diagram -->
                         <div class="pp-feature-privacy-image wow fadeInUp" data-wow-delay=".3s" aria-hidden="true">
-                            <div style="background:#FAFAFA;border:1.5px solid rgba(155,154,165,0.2);border-radius:24px;padding:28px 24px;display:flex;flex-direction:column;align-items:center;gap:14px;">
-                                <!-- participants row -->
-                                <div style="display:flex;gap:24px;justify-content:center;">
-                                    <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
-                                        <div style="width:48px;height:48px;border-radius:50%;background:rgba(123,31,228,0.1);display:flex;align-items:center;justify-content:center;font-size:20px;color:#7B1FE4;"><i class="fa-solid fa-user"></i></div>
-                                        <span style="font-size:12px;font-weight:600;color:#1A192E;font-family:DM Sans,sans-serif;">You</span>
-                                    </div>
-                                    <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
-                                        <div style="width:48px;height:48px;border-radius:50%;background:rgba(123,31,228,0.1);display:flex;align-items:center;justify-content:center;font-size:20px;color:#7B1FE4;"><i class="fa-solid fa-users"></i></div>
-                                        <span style="font-size:12px;font-weight:600;color:#1A192E;font-family:DM Sans,sans-serif;">Team</span>
-                                    </div>
-                                </div>
-                                <!-- E2EE lock badge -->
-                                <div style="display:flex;align-items:center;gap:7px;padding:6px 16px;border-radius:100px;background:rgba(123,31,228,0.08);border:1px solid rgba(123,31,228,0.2);">
-                                    <i class="fa-solid fa-lock" style="font-size:12px;color:#7B1FE4;"></i>
-                                    <span style="font-size:12px;font-weight:600;color:#7B1FE4;font-family:DM Sans,sans-serif;">End-to-end encrypted</span>
-                                </div>
-                                <!-- boundary box -->
-                                <div style="border:2px dashed rgba(123,31,228,0.3);border-radius:16px;padding:16px 20px;width:100%;text-align:center;">
-                                    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#7B1FE4;font-family:DM Sans,sans-serif;margin-bottom:12px;">Your private estate</div>
-                                    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-                                        <!-- SFU node -->
-                                        <div style="display:flex;flex-direction:column;align-items:center;gap:5px;background:#fff;border:1.5px solid rgba(155,154,165,0.25);border-radius:10px;padding:10px 14px;">
-                                            <i class="fa-solid fa-tower-broadcast" style="font-size:18px;color:#7B1FE4;"></i>
-                                            <span style="font-size:11px;font-weight:600;color:#1A192E;font-family:DM Sans,sans-serif;">SFU</span>
-                                        </div>
-                                        <!-- Jammer AI node -->
-                                        <div style="display:flex;flex-direction:column;align-items:center;gap:5px;background:linear-gradient(135deg,rgba(123,31,228,0.08),rgba(161,33,202,0.08));border:1.5px solid rgba(123,31,228,0.3);border-radius:10px;padding:10px 14px;">
-                                            <i class="fa-solid fa-microchip" style="font-size:18px;color:#7B1FE4;"></i>
-                                            <span style="font-size:11px;font-weight:600;color:#7B1FE4;font-family:DM Sans,sans-serif;">Jammer AI</span>
-                                        </div>
-                                        <!-- Storage node -->
-                                        <div style="display:flex;flex-direction:column;align-items:center;gap:5px;background:#fff;border:1.5px solid rgba(155,154,165,0.25);border-radius:10px;padding:10px 14px;">
-                                            <i class="fa-solid fa-database" style="font-size:18px;color:#7B1FE4;"></i>
-                                            <span style="font-size:11px;font-weight:600;color:#1A192E;font-family:DM Sans,sans-serif;">Storage</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- crossed-out external APIs -->
-                                <div style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:#6D6B7B;font-family:DM Sans,sans-serif;">
-                                    <i class="fa-solid fa-ban" style="color:#ef4444;"></i>
-                                    Zero external AI APIs
-                                </div>
-                            </div>
+                            <img src="assets/img/fj/feature-e2ee-arch.png"
+                                 alt="End-to-end encryption architecture diagram showing participants, E2EE shield, and private estate boundary containing SFU, GPU, and storage nodes"
+                                 width="580" height="460" loading="lazy">
                         </div>
                     </div>
 
@@ -712,44 +588,11 @@
                     </div>
 
                     <div class="col-lg-6">
-                        <!-- Integrations hub mockup — swap for graphic later -->
+                        <!-- Integrations hub diagram -->
                         <div class="pp-feature-connection-image wow fadeInUp" data-wow-delay=".3s" aria-hidden="true">
-                            <div style="background:#fff;border:1.5px solid rgba(155,154,165,0.2);border-radius:24px;padding:28px 24px;">
-                                <!-- center hub -->
-                                <div style="display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:20px;">
-                                    <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#7B1FE4,#A121CA);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(123,31,228,0.35);">
-                                        <i class="fa-solid fa-shield-halved" style="font-size:22px;color:#fff;"></i>
-                                    </div>
-                                    <span style="font-size:14px;font-weight:700;color:#1A192E;font-family:DM Sans,sans-serif;">FocusJam</span>
-                                </div>
-                                <!-- connector nodes: two rows of 3 -->
-                                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
-                                    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;background:#FAFAFA;border:1.5px solid rgba(155,154,165,0.18);border-radius:12px;padding:12px 8px;">
-                                        <i class="fa-solid fa-list-check" style="font-size:20px;color:#7B1FE4;"></i>
-                                        <span style="font-size:11px;font-weight:600;color:#1A192E;font-family:DM Sans,sans-serif;text-align:center;">Task&nbsp;Tracker</span>
-                                    </div>
-                                    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;background:#FAFAFA;border:1.5px solid rgba(155,154,165,0.18);border-radius:12px;padding:12px 8px;">
-                                        <i class="fa-solid fa-comments" style="font-size:20px;color:#7B1FE4;"></i>
-                                        <span style="font-size:11px;font-weight:600;color:#1A192E;font-family:DM Sans,sans-serif;text-align:center;">Messaging</span>
-                                    </div>
-                                    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;background:#FAFAFA;border:1.5px solid rgba(155,154,165,0.18);border-radius:12px;padding:12px 8px;">
-                                        <i class="fa-solid fa-file-alt" style="font-size:20px;color:#7B1FE4;"></i>
-                                        <span style="font-size:11px;font-weight:600;color:#1A192E;font-family:DM Sans,sans-serif;text-align:center;">Docs</span>
-                                    </div>
-                                    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;background:#FAFAFA;border:1.5px solid rgba(155,154,165,0.18);border-radius:12px;padding:12px 8px;">
-                                        <i class="fa-solid fa-calendar-days" style="font-size:20px;color:#7B1FE4;"></i>
-                                        <span style="font-size:11px;font-weight:600;color:#1A192E;font-family:DM Sans,sans-serif;text-align:center;">Calendar</span>
-                                    </div>
-                                    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;background:#FAFAFA;border:1.5px solid rgba(155,154,165,0.18);border-radius:12px;padding:12px 8px;">
-                                        <i class="fa-solid fa-webhook" style="font-size:20px;color:#7B1FE4;"></i>
-                                        <span style="font-size:11px;font-weight:600;color:#1A192E;font-family:DM Sans,sans-serif;text-align:center;">Webhooks</span>
-                                    </div>
-                                    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;background:#FAFAFA;border:1.5px solid rgba(155,154,165,0.18);border-radius:12px;padding:12px 8px;">
-                                        <i class="fa-solid fa-code" style="font-size:20px;color:#7B1FE4;"></i>
-                                        <span style="font-size:11px;font-weight:600;color:#1A192E;font-family:DM Sans,sans-serif;text-align:center;">API</span>
-                                    </div>
-                                </div>
-                            </div>
+                            <img src="assets/img/fj/feature-integrations-hub.png"
+                                 alt="Hub-and-spoke integration diagram with FocusJam at center connected to task tracker, docs, messaging, calendar, webhooks, and API nodes"
+                                 width="580" height="460" loading="lazy">
                         </div>
                     </div>
 
@@ -1052,44 +895,11 @@
                     </div>
 
                     <div class="col-lg-6">
-                        <!-- Security / data-residency flow mockup — swap for diagram later -->
+                        <!-- Security / data-residency architecture diagram -->
                         <div class="pp-about-image" aria-hidden="true">
-                            <div style="background:#FAFAFA;border:1.5px solid rgba(155,154,165,0.2);border-radius:24px;padding:28px 24px;display:flex;flex-direction:column;gap:0;">
-                                <!-- ZTNA layer -->
-                                <div style="display:flex;align-items:center;gap:12px;background:#fff;border:1.5px solid rgba(123,31,228,0.3);border-radius:12px;padding:14px 18px;">
-                                    <i class="fa-solid fa-network-wired" style="font-size:20px;color:#7B1FE4;flex-shrink:0;"></i>
-                                    <div>
-                                        <div style="font-size:13px;font-weight:700;color:#7B1FE4;font-family:DM Sans,sans-serif;">ZTNA Overlay</div>
-                                        <div style="font-size:11px;color:#6D6B7B;font-family:Open Sans,sans-serif;">No public endpoints &middot; Ziti fabric</div>
-                                    </div>
-                                    <span style="margin-left:auto;font-size:10px;font-weight:700;color:#fff;background:linear-gradient(90deg,#7B1FE4,#A121CA);border-radius:100px;padding:3px 10px;white-space:nowrap;font-family:DM Sans,sans-serif;flex-shrink:0;">Active</span>
-                                </div>
-                                <!-- connector -->
-                                <div style="width:2px;height:20px;background:linear-gradient(180deg,rgba(123,31,228,0.4),rgba(123,31,228,0.1));margin:0 auto;"></div>
-                                <!-- Identity layer -->
-                                <div style="display:flex;align-items:center;gap:12px;background:#fff;border:1.5px solid rgba(155,154,165,0.2);border-radius:12px;padding:14px 18px;">
-                                    <i class="fa-solid fa-id-badge" style="font-size:20px;color:#7B1FE4;flex-shrink:0;"></i>
-                                    <div>
-                                        <div style="font-size:13px;font-weight:700;color:#1A192E;font-family:DM Sans,sans-serif;">SSO / OIDC &middot; SCIM</div>
-                                        <div style="font-size:11px;color:#6D6B7B;font-family:Open Sans,sans-serif;">Federated identity &middot; auto-provisioning</div>
-                                    </div>
-                                </div>
-                                <!-- connector -->
-                                <div style="width:2px;height:20px;background:linear-gradient(180deg,rgba(123,31,228,0.4),rgba(123,31,228,0.1));margin:0 auto;"></div>
-                                <!-- Data residency layer -->
-                                <div style="display:flex;align-items:center;gap:12px;background:rgba(123,31,228,0.04);border:1.5px solid rgba(123,31,228,0.2);border-radius:12px;padding:14px 18px;">
-                                    <i class="fa-solid fa-database" style="font-size:20px;color:#7B1FE4;flex-shrink:0;"></i>
-                                    <div>
-                                        <div style="font-size:13px;font-weight:700;color:#1A192E;font-family:DM Sans,sans-serif;">On-estate data residency</div>
-                                        <div style="font-size:11px;color:#6D6B7B;font-family:Open Sans,sans-serif;">Transcripts &middot; recaps &middot; AI models</div>
-                                    </div>
-                                </div>
-                                <!-- audit log strip -->
-                                <div style="margin-top:16px;border-top:1px solid rgba(155,154,165,0.18);padding-top:14px;display:flex;align-items:center;gap:8px;font-size:12px;color:#6D6B7B;font-family:DM Sans,sans-serif;">
-                                    <i class="fa-solid fa-scroll" style="color:#7B1FE4;font-size:13px;"></i>
-                                    Immutable audit log &middot; exportable
-                                </div>
-                            </div>
+                            <img src="assets/img/fj/feature-security-arch.png"
+                                 alt="Sovereign AI data residency architecture showing on-premises node, ZTNA tunnel, SSO/OIDC identity, audit log, and estate perimeter boundary"
+                                 width="620" height="520" loading="lazy">
                         </div>
                     </div>
 
