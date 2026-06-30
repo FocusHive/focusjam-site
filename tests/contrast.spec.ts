@@ -85,7 +85,8 @@ async function effectiveBackground(
         r = a * c[0] + (1 - a) * r;
         g = a * c[1] + (1 - a) * g;
         b = a * c[2] + (1 - a) * b;
-        if (a >= 0.99) break; // fully opaque — no point compositing further
+        // No early break: an opaque ancestor (e.g. body) does not hide layers
+        // between it and the target element — those layers still composite on top.
       }
     }
     return [Math.round(r), Math.round(g), Math.round(b)];
@@ -306,6 +307,31 @@ test.describe('security page — contrast pairs', () => {
     const el = page.locator('.fj-model-vendors span').first();
     await el.scrollIntoViewIfNeeded();
     await assertContrast(page, '.fj-model-vendors span', 4.5, 'fj-model-vendors span');
+  });
+});
+
+// ──────────────────────────────────────────────────────────
+// TEST: Persona cards contrast (features page — #jammers section)
+// Background: section-bg-2 = background-color: #1A192E (solid dark navy).
+// Cards use rgba(255,255,255,0.05) overlay; rename chip is rgba(161,33,202,0.18).
+// After effectiveBackground composites all layers (#1A192E → card → chip) the
+// chip effective bg is ≈ rgb(60,36,83); #c084fc on that = 5.09:1 ✓.
+// ──────────────────────────────────────────────────────────
+
+test.describe('features page — persona cards contrast', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/features.html');
+    await page.locator('#jammers').scrollIntoViewIfNeeded();
+  });
+
+  test('#jammers section has a dark background', async ({ page }) => {
+    await assertDarkBackground(page, '#jammers', 'jammers section');
+  });
+
+  test('.fj-persona-rename chip contrast ≥4.5:1 on dark card', async ({ page }) => {
+    const el = page.locator('.fj-persona-rename').first();
+    await el.scrollIntoViewIfNeeded();
+    await assertContrast(page, '.fj-persona-rename', 4.5, 'fj-persona-rename chip');
   });
 });
 
