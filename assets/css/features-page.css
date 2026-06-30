@@ -57,7 +57,7 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.80); /* raised from 0.50: ~7.5:1 on dark panel ✓ */
 }
 
 .fj-config-live {
@@ -147,7 +147,7 @@
     display: flex;
     justify-content: space-between;
     font-size: 10px;
-    color: rgba(255, 255, 255, 0.45);
+    color: rgba(255, 255, 255, 0.80); /* raised from 0.45: ~7.5:1 on dark panel ✓ */
     text-transform: uppercase;
     letter-spacing: 0.06em;
     margin-bottom: 8px;
@@ -193,7 +193,7 @@
     align-items: center;
     gap: 10px;
     font-size: 13px;
-    color: rgba(255, 255, 255, 0.55);
+    color: rgba(255, 255, 255, 0.78); /* raised from 0.55: ~6.4:1 on dark panel ✓ */
     font-family: "DM Sans", sans-serif;
 }
 
@@ -262,7 +262,7 @@
 .fj-config-stat-key {
     display: block;
     font-size: 11px;
-    color: rgba(255, 255, 255, 0.45);
+    color: rgba(255, 255, 255, 0.80); /* raised from 0.45: ~7.5:1 on dark panel ✓ */
     margin-top: 4px;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -274,6 +274,15 @@
 
 .fj-section-lead-light {
     color: rgba(255, 255, 255, 0.72) !important;
+}
+
+/* Contrast fix: .pp-sub-title kicker labels inside dark sections
+   (#triggers, #commands) use var(--pp-theme) = #7B1FE4 on dark
+   section-bg-2 (#1A192E) → 2.58:1 (fails 4.5:1).
+   Override to white: white on #1A192E = 17.2:1 ✓ */
+#triggers .pp-sub-title,
+#commands .pp-sub-title {
+    color: #fff;
 }
 
 /* ================================================================
@@ -684,7 +693,7 @@
 
 .fj-blueprint-card p {
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.90); /* raised from 0.75: 4.95:1 on purple card ✓ */
     line-height: 1.55;
     margin-bottom: 18px;
 }
@@ -697,7 +706,7 @@
 
 .fj-blueprint-details li {
     font-size: 13px;
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(255, 255, 255, 0.85); /* raised from 0.65: 4.51:1 on purple card ✓ */
     padding: 5px 0;
     border-top: 1px solid rgba(255, 255, 255, 0.12);
     font-family: "DM Sans", sans-serif;
@@ -742,7 +751,7 @@
 
 .fj-cmd-meta {
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.72); /* raised from 0.40: ~5.1:1 on dark palette ✓ */
     font-family: "DM Sans", sans-serif;
 }
 
@@ -839,8 +848,7 @@
 
 .fj-recap-meta {
     font-size: 12px;
-    color: var(--pp-text);
-    opacity: 0.6;
+    color: var(--pp-text); /* #6D6B7B on white = 5.20:1 ✓; removed opacity:0.6 (was 2.39:1) */
 }
 
 .fj-recap-block {
@@ -916,8 +924,7 @@
 
 .fj-recap-due {
     font-size: 11px;
-    color: var(--pp-text);
-    opacity: 0.55;
+    color: var(--pp-text); /* #6D6B7B on white = 5.20:1 ✓; removed opacity:0.55 (was 2.17:1) */
     white-space: nowrap;
     font-family: "DM Sans", sans-serif;
 }
@@ -954,8 +961,7 @@
 
 .fj-recap-health-sub {
     font-size: 12px;
-    color: var(--pp-text);
-    opacity: 0.6;
+    color: var(--pp-text); /* #6D6B7B on white = 5.20:1 ✓; removed opacity:0.6 (was 2.39:1) */
     margin-top: 6px;
 }
 

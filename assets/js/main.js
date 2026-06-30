@@ -80,7 +80,7 @@
        Wow Animation Js Start
     ================================ */
 
-      new WOW().init();
+      new WOW({ offset: 0, mobile: true }).init();
   
       /* ================================
        Nice Select Js Start

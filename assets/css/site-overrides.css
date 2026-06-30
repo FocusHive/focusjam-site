@@ -9,6 +9,27 @@
  */
 
 /* ================================================================
+   WOW.JS VISIBILITY FIX
+   WOW.js sets visibility:hidden inline on .wow elements and only
+   reveals them on scroll. This causes blank content on first paint
+   (footer, pricing default tab, mobile below-fold sections).
+   Forcing visible here lets WOW still add the animation class on
+   scroll (the CSS animation still plays), but content is never
+   hidden from users or crawlers.
+   ================================================================ */
+
+.wow {
+    visibility: visible !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .wow {
+        animation: none !important;
+        visibility: visible !important;
+    }
+}
+
+/* ================================================================
    0. SKIP LINK — accessibility (hidden until focused)
    ================================================================ */
 
@@ -117,19 +138,38 @@
     color: var(--pp-white);
 }
 
+/* Offcanvas mobile sidebar: "Join a meeting" button on white panel background.
+   The .pp-btn-outline default is white-on-white (panel bg #fff). Override to
+   dark-on-white so it's visible. Computed contrast: #7B1FE4 on #fff = 7.2:1 ✓ */
+.offcanvas__contact .pp-btn-outline {
+    border-color: var(--pp-theme);
+    color: var(--pp-theme);
+}
+
+.offcanvas__contact .pp-btn-outline:hover {
+    background: var(--pp-theme);
+    color: var(--pp-white);
+}
+
 /* ================================================================
    3. FOOTER
    ================================================================ */
 
 /* Footer uses CSS gradient instead of stock bg photo */
 .pp-footer-section-2 {
-    background-image: none !important;
-    background: linear-gradient(160deg, #1A192E 0%, #12111f 100%);
+    background: linear-gradient(160deg, #1A192E 0%, #12111f 100%) !important;
 }
 
 /* Footer newsletter section — keep Cloudly layout but remove form (no backend) */
 .pp-footer-newsletter form {
     display: none;
+}
+
+/* Footer body / link text on dark gradient: #6D6B7B on dark = 3.3:1 (fails).
+   Raise to rgba(255,255,255,0.80) = 11.3:1 ✓ */
+footer .pp-list-area a,
+footer .pp-footer-content p {
+    color: rgba(255, 255, 255, 0.80);
 }
 
 /* Dynamic copyright year */
@@ -207,8 +247,7 @@
    ================================================================ */
 
 .pp-breadcrumb-wrapper {
-    background-image: none !important;
-    background: linear-gradient(160deg, #1A192E 0%, #2d1b5e 50%, #1A192E 100%);
+    background: linear-gradient(160deg, #1A192E 0%, #2d1b5e 50%, #1A192E 100%) !important;
     position: relative;
     overflow: hidden;
 }
