@@ -259,3 +259,31 @@ footer .pp-footer-content p {
     background: radial-gradient(ellipse at 60% 50%, rgba(123, 31, 228, 0.3) 0%, transparent 70%);
     pointer-events: none;
 }
+
+/* ================================================================
+   8. WCAG AA CONTRAST FIXES — purple-on-dark (#7B1FE4 on #1A192E = 2.58:1 fails)
+   Scope: only dark-section contexts. Purple on white (#fff) = 6.65:1 ✓,
+   so light-section kickers are unchanged.
+   White on #1A192E = 17.18:1 ✓ (both AA normal and AA large text).
+   ================================================================ */
+
+/* Defects #1-2: .pp-sub-title kickers inside section-bg-2 (dark #1A192E) on index
+   (steps "Get started" + pricing "Pricing"). Also covers future dark-section kickers. */
+.section-bg-2 .pp-sub-title {
+    color: #fff;
+}
+
+/* Defects #3-6,#8: footer bottom bar wordmark "<b>FocusJam</b>" on all pages.
+   main.css sets .footer-bottom3 p b { color: var(--pp-theme) } on dark bg = 2.58:1.
+   site-overrides.css loads after main.css → cascade order wins at equal specificity. */
+.footer-bottom3 p b {
+    color: #fff;
+}
+
+/* Defect #7: security page — #principles-heading em "checkbox." (44px large text)
+   security-page.css sets .pp-how-work-section h2 em { color: var(--pp-theme) } (0,1,2).
+   This selector has higher specificity (0,2,2) so wins even though site-overrides.css
+   loads before security-page.css on that page. */
+.pp-how-work-section.section-bg-2 h2 em {
+    color: #fff;
+}
