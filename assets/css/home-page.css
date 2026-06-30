@@ -14,17 +14,13 @@
     overflow: hidden;
 }
 
-/* Floating image placeholder sizing so gradient fill is visible */
-.pp-hero-image-1[data-needs-image] {
-    min-height: 260px;
-    width: 320px;
-    border-radius: 16px;
+/* Hero floating mockup sizing — kept after data-needs-image is removed */
+.pp-hero-image-1 {
+    width: 310px;
 }
 
-.pp-hero-image-2[data-needs-image] {
-    min-height: 200px;
-    width: 240px;
-    border-radius: 12px;
+.pp-hero-image-2 {
+    width: 235px;
 }
 
 /* ================================================================
