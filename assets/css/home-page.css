@@ -9,23 +9,18 @@
    ================================================================ */
 
 .pp-hero-section.pp-hero-2 {
-    background-image: none !important;
-    background: linear-gradient(160deg, #1A192E 0%, #2d1b5e 55%, #12111f 100%);
+    background: linear-gradient(160deg, #1A192E 0%, #2d1b5e 55%, #12111f 100%) !important;
     position: relative;
     overflow: hidden;
 }
 
-/* Floating image placeholder sizing so gradient fill is visible */
-.pp-hero-image-1[data-needs-image] {
-    min-height: 260px;
-    width: 320px;
-    border-radius: 16px;
+/* Hero floating mockup sizing — kept after data-needs-image is removed */
+.pp-hero-image-1 {
+    width: 310px;
 }
 
-.pp-hero-image-2[data-needs-image] {
-    min-height: 200px;
-    width: 240px;
-    border-radius: 12px;
+.pp-hero-image-2 {
+    width: 235px;
 }
 
 /* ================================================================
@@ -78,8 +73,7 @@
    ================================================================ */
 
 .pp-feature-section-2.fj-jammer-spotlight {
-    background-image: none !important;
-    background: linear-gradient(160deg, #1A192E 0%, #2d1b5e 55%, #12111f 100%);
+    background: linear-gradient(160deg, #1A192E 0%, #2d1b5e 55%, #12111f 100%) !important;
 }
 
 /* Bubble-list for Jammer feature bullets */

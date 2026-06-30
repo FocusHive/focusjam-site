@@ -36,7 +36,7 @@
     font-weight: 700;
     letter-spacing: 0.07em;
     text-transform: uppercase;
-    color: #16a34a;
+    color: #15803d; /* darkened from #16a34a (3.02:1 on light-green bg) → 4.64:1 ✓ */
     background: rgba(34, 197, 94, 0.1);
     border: 1px solid rgba(34, 197, 94, 0.28);
     border-radius: 100px;
@@ -319,8 +319,8 @@
     white-space: pre;
     tab-size: 2;
 }
-/* Comment lines */
-.int-code-pre .cc { color: #6b7280; }
+/* Comment lines: #6b7280 on #1A192E = 3.56:1 (fail) → #8b9098 = 5.36:1 ✓, stays distinct from base code #e2e8f0 */
+.int-code-pre .cc { color: #8b9098; }
 /* String / value highlight */
 .int-code-pre .sv { color: #86efac; }
 
