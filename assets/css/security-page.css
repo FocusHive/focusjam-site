@@ -199,7 +199,7 @@
 }
 
 .fj-model-wall span {
-    font-size: 11px;
+    font-size: 12px; /* raised from 11px for legibility */
     white-space: nowrap;
 }
 
@@ -213,12 +213,11 @@
 .fj-model-vendors span {
     font-family: "Open Sans", sans-serif;
     font-size: 12px;
-    color: var(--pp-text);
+    color: var(--pp-text); /* #6D6B7B on #FAFAFA = 5.00:1 ✓; removed opacity:0.6 (was 2.24:1) */
     padding: 4px 12px;
     border-radius: 6px;
     background: rgba(155, 154, 165, 0.1);
-    text-decoration: line-through;
-    opacity: 0.6;
+    text-decoration: line-through; /* line-through already signals "unavailable" */
 }
 
 /* ================================================================
@@ -474,7 +473,7 @@
     padding: 6px 0 6px 12px;
     border-left: 2px dashed rgba(123, 31, 228, 0.25);
     font-family: "Open Sans", sans-serif;
-    font-size: 11px;
+    font-size: 13px; /* raised from 11px — too small at 11px */
     color: var(--pp-text);
     font-style: italic;
 }
