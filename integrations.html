@@ -109,12 +109,8 @@
                     <div class="mobile-menu fix mb-3"></div>
                     <div class="offcanvas__contact">
                         <div class="header-button mt-4 d-flex flex-column gap-2">
-                            <a href="https://join.focusjam.com" class="pp-btn-outline text-center">
-                                Join a meeting
-                            </a>
-                            <a href="https://app.focusjam.com" class="pp-theme-btn text-center">
-                                Open FocusJam <i class="fa-solid fa-arrow-right-long"></i>
-                            </a>
+                            <a href="pricing.html" class="pp-btn-outline text-center">See pricing</a>
+                            <a href="contact.html" class="pp-theme-btn text-center">Request a demo <i class="fa-solid fa-arrow-right-long"></i></a>
                         </div>
                     </div>
                 </div>
@@ -169,12 +165,8 @@
                     </div>
 
                     <div class="header-right d-flex justify-content-end align-items-center gap-2">
-                        <a href="https://join.focusjam.com" class="pp-btn-outline d-none d-lg-inline-block">
-                            Join a meeting
-                        </a>
-                        <a href="https://app.focusjam.com" class="pp-theme-btn">
-                            Open FocusJam <i class="fa-solid fa-arrow-right-long"></i>
-                        </a>
+                        <a href="pricing.html" class="pp-btn-outline d-none d-lg-inline-block">See pricing</a>
+                        <a href="contact.html" class="pp-theme-btn">Request a demo <i class="fa-solid fa-arrow-right-long"></i></a>
                         <div class="header__hamburger d-xl-none my-auto">
                             <div class="sidebar__toggle" aria-label="Open menu" role="button">
                                 <div class="header-bar">
@@ -276,8 +268,7 @@
                             <h3>Phone dial-in</h3>
                             <p>
                                 Bring any phone caller into a jam via standard SIP trunks. No app
-                                required — just a dial-in number and a PIN. Powered by LiveKit
-                                SipClient, compatible with any SIP-capable trunk.
+                                required — just a dial-in number and a PIN. Compatible with any SIP-capable trunk.
                             </p>
                         </div>
                     </div>
@@ -326,7 +317,7 @@
                         <div class="pp-offer-content">
                             <h3>SSO &amp; identity</h3>
                             <p>
-                                Authenticate with Keycloak or FocusPass OIDC single sign-on.
+                                Authenticate with your organization&rsquo;s single sign-on (OIDC or SAML).
                                 Lock jams to an invitee allow-list. Enterprise-grade access
                                 control — your IdP, your rules, zero third-party identity exposure.
                             </p>
@@ -351,7 +342,7 @@
                         <div class="pp-offer-content">
                             <h3>Session recording</h3>
                             <p>
-                                Record any jam to MP4 via LiveKit Egress. Recordings stay within
+                                Record any jam to MP4. Recordings stay within
                                 your infrastructure boundary — no cloud upload, no third-party
                                 storage. Archive or share entirely on your own terms.
                             </p>
@@ -359,7 +350,7 @@
                     </div>
                 </div>
 
-                <!-- 5 — Cloudflare Turnstile (bot protection) -->
+                <!-- 5 — Bot protection -->
                 <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".5s">
                     <div class="pp-offer-box-item mt-0">
                         <div class="pp-offer-icon-svg" aria-hidden="true">
@@ -376,7 +367,7 @@
                         <div class="pp-offer-content">
                             <h3>Bot challenge</h3>
                             <p>
-                                Cloudflare Turnstile challenges suspicious join attempts before
+                                Automated bot challenges screen suspicious join attempts before
                                 they reach the room. Privacy-friendly and invisible to real users —
                                 blocks automated attacks without a CAPTCHA friction wall.
                             </p>
@@ -401,8 +392,7 @@
                             <h3>API &amp; artifact export</h3>
                             <p>
                                 Every jam produces a signed recap — notes, decisions, action
-                                items — exportable as Markdown or JSON. The token-server REST API
-                                automates invite creation, roster management, and artifact retrieval.
+                                items — exportable as Markdown or JSON. The FocusJam API (available to customers) automates invite creation, roster management, and artifact retrieval.
                             </p>
                         </div>
                     </div>
@@ -452,7 +442,7 @@
                         <p class="int-step-body">
                             Include the SIP dial-in number and PIN in the invite. Anyone on a
                             phone — landline or mobile — dials in and participates just like any
-                            browser attendee. Powered by LiveKit SipClient.
+                            browser attendee.
                         </p>
                         <span class="int-step-arrow" aria-hidden="true">
                             <i class="fa-solid fa-arrow-right-long"></i>
@@ -466,8 +456,7 @@
                         <div class="int-step-num">3</div>
                         <h3 class="int-step-title">Wire up SSO in one afternoon</h3>
                         <p class="int-step-body">
-                            Point your Keycloak or FocusPass OIDC provider at FocusJam's token
-                            server. Set your invitee allow-list. Your users authenticate with
+                            Connect your OIDC or SAML identity provider to FocusJam. Set your invitee allow-list. Your users authenticate with
                             their existing identity — no separate FocusJam account required.
                         </p>
                         <span class="int-step-arrow" aria-hidden="true">
@@ -482,7 +471,7 @@
                         <div class="int-step-num">4</div>
                         <h3 class="int-step-title">Call the API to automate the rest</h3>
                         <p class="int-step-body">
-                            Use the token-server REST API to generate invite tokens, retrieve
+                            Use the FocusJam API to generate invite tokens, retrieve
                             session artifacts, and pipe jam recaps into your own tools —
                             Markdown or JSON, your choice, on every session end.
                         </p>
@@ -698,7 +687,7 @@
                     <p>Need something specific?</p>
                     <span>Priority is determined by demand — the more requests we get, the sooner it ships.</span>
                 </div>
-                <a href="mailto:hello@focushive.com" class="pp-theme-btn">
+                <a href="mailto:hello@focusjam.com" class="pp-theme-btn">
                     Request an integration <i class="fa-solid fa-arrow-right-long"></i>
                 </a>
             </div>
@@ -709,7 +698,7 @@
 
     <!-- ============================================================
          DEVELOPER / API DARK BAND
-         Token-server REST API, signed invites, exportable artifacts,
+         FocusJam API, signed invites, exportable artifacts,
          self-hosting. Anchor: #developer
          ============================================================ -->
     <section class="int-api-section" id="developer" aria-labelledby="api-heading">
@@ -734,10 +723,10 @@
                         <li>Self-hostable — your infrastructure, your keys, your audit logs</li>
                     </ul>
                     <div class="d-flex flex-wrap gap-3 mt-4">
-                        <a href="mailto:hello@focushive.com" class="pp-theme-btn">
+                        <a href="mailto:hello@focusjam.com" class="pp-theme-btn">
                             Request API access <i class="fa-solid fa-arrow-right-long"></i>
                         </a>
-                        <a href="mailto:hello@focushive.com" class="pp-btn-outline">
+                        <a href="mailto:hello@focusjam.com" class="pp-btn-outline">
                             Discuss self-hosting
                         </a>
                     </div>
@@ -745,30 +734,26 @@
 
                 <!-- Right: code visual -->
                 <div class="col-xl-7 col-lg-6 wow fadeInUp" data-wow-delay=".5s">
-                    <div class="int-code-block" aria-label="Example token-server API request and response">
+                    <div class="int-code-block" aria-label="Example JSON meeting recap">
                         <div class="int-code-topbar">
-                            <span>token-server &middot; REST API</span>
+                            <span>meeting recap &middot; JSON</span>
                             <span class="int-badge-api">v1</span>
                         </div>
-<pre class="int-code-pre"><code><span class="cc"># Generate a signed invite token</span>
-POST /api/tokens
-Authorization: Bearer &lt;api_key&gt;
-
+<pre class="int-code-pre"><code><span class="cc"># Example recap export (abridged)</span>
 {
-  "jam_id":         "prod-strategy-q3",
-  "mode":           "multi_use",
-  "allowed_emails": [
-    <span class="sv">"alex@acme.com"</span>,
-    <span class="sv">"jordan@acme.com"</span>
+  "jam":       <span class="sv">"Q3 strategy review"</span>,
+  "duration":  <span class="sv">"47 min"</span>,
+  "decisions": [
+    { "text": <span class="sv">"Ship the pilot to two regions"</span>,
+      "owner": <span class="sv">"Jordan"</span> }
   ],
-  "ttl_hours":      48
-}
-
-<span class="cc"># → 201 Created</span>
-{
-  "token":      <span class="sv">"fjt_abc123…"</span>,
-  "join_url":   <span class="sv">"https://join.focusjam.com/j/abc123"</span>,
-  "expires_at": <span class="sv">"2026-07-01T09:00:00Z"</span>
+  "actions": [
+    { "text": <span class="sv">"Draft rollout plan"</span>,
+      "owner": <span class="sv">"Alex"</span>,
+      "due":   <span class="sv">"Friday"</span> }
+  ],
+  "risks":      [ <span class="sv">"Vendor lead time"</span> ],
+  "transcript": <span class="sv">"included"</span>
 }</code></pre>
                     </div>
                 </div>
@@ -792,12 +777,8 @@ Authorization: Bearer &lt;api_key&gt;
                 app — FocusJam works the way your stack works.
             </p>
             <div class="d-flex justify-content-center flex-wrap gap-3 wow fadeInUp" data-wow-delay=".5s">
-                <a href="https://app.focusjam.com" class="pp-theme-btn">
-                    Open FocusJam <i class="fa-solid fa-arrow-right-long"></i>
-                </a>
-                <a href="https://join.focusjam.com" class="pp-btn-outline">
-                    Join with an invite
-                </a>
+                <a href="contact.html" class="pp-theme-btn">Request a demo <i class="fa-solid fa-arrow-right-long"></i></a>
+                <a href="contact.html" class="pp-btn-outline">Contact us</a>
             </div>
         </div>
     </section>
@@ -854,11 +835,10 @@ Authorization: Bearer &lt;api_key&gt;
                     <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6 wow fadeInUp" data-wow-delay=".4s">
                         <div class="pp-footer-widget-items">
                             <div class="pp-widget-head">
-                                <h3>Meeting</h3>
+                                <h3>Get started</h3>
                             </div>
                             <ul class="pp-list-area">
-                                <li><a href="https://join.focusjam.com">Join a meeting</a></li>
-                                <li><a href="https://app.focusjam.com">Open FocusJam</a></li>
+                                <li><a href="contact.html">Request a demo</a></li>
                             </ul>
                         </div>
                     </div>

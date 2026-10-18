@@ -5,10 +5,16 @@ meeting platform.
 
 ## Domains
 
-- `focusjam.com` — public product showcase
-- `app.focusjam.com` — authenticated application
-- `join.focusjam.com` — meeting invitation and join flow
-- `admin.focusjam.com` — private administrative console
+- `focusjam.com` (and `www`) is this site: the only public FocusJam surface.
+- The FocusJam application lives on private, Ziti-only hostnames. This site must
+  never link to them (enforced by `tests/public-surface.spec.ts`); calls to
+  action go to the demo request page (`contact.html`).
+
+## Copy rules
+
+Describe benefits, not internals. Do not name internal hostnames, the
+infrastructure, or the technology stack in page copy (the public-surface test
+fails the pipeline if it finds them).
 
 ## Development
 

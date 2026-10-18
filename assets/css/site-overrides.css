@@ -287,3 +287,89 @@ footer .pp-footer-content p {
 .pp-how-work-section.section-bg-2 h2 em {
     color: #fff;
 }
+
+/* ================================================================
+   CONTACT / DEMO REQUEST PAGE
+   ================================================================ */
+
+.fj-contact-section {
+    padding-top: 140px;
+}
+
+.fj-contact-title {
+    font-size: clamp(30px, 5vw, 48px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--pp-header);
+    margin: 12px 0 20px;
+}
+
+.fj-contact-title em {
+    font-style: normal;
+    color: #7B1FE4;
+}
+
+.fj-contact-text,
+.fj-contact-direct {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--pp-text);
+}
+
+.fj-contact-direct {
+    margin-top: 24px;
+}
+
+.fj-contact-direct a {
+    color: #7B1FE4;
+    text-decoration: underline;
+}
+
+.fj-contact-form {
+    background: #fff;
+    border: 1px solid #d9d4e7;
+    border-radius: 16px;
+    padding: clamp(20px, 4vw, 36px);
+    box-shadow: 0 12px 40px rgba(123, 31, 228, 0.08);
+}
+
+.fj-contact-form label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--pp-header);
+    margin-bottom: 6px;
+}
+
+.fj-contact-form input,
+.fj-contact-form select,
+.fj-contact-form textarea {
+    width: 100%;
+    font: inherit;
+    font-size: 16px;
+    color: var(--pp-header);
+    background: #fff;
+    border: 1px solid #6b6880;
+    border-radius: 8px;
+    padding: 12px 14px;
+}
+
+.fj-contact-form input:focus-visible,
+.fj-contact-form select:focus-visible,
+.fj-contact-form textarea:focus-visible,
+.fj-contact-form button:focus-visible {
+    outline: 3px solid #7B1FE4;
+    outline-offset: 2px;
+}
+
+.fj-contact-note {
+    margin: 18px 0 0;
+    font-size: 14px;
+    color: #4d4a5e;
+}
+
+@media (max-width: 991px) {
+    .fj-contact-section {
+        padding-top: 110px;
+    }
+}

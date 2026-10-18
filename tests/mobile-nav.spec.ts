@@ -89,10 +89,10 @@ test.describe('mobile offcanvas sidebar', () => {
     }
   });
 
-  test('offcanvas CTA "Open FocusJam" links to app.focusjam.com', async ({ page }) => {
+  test('offcanvas CTA "Request a demo" links to the contact page', async ({ page }) => {
     await page.locator('.sidebar__toggle').click();
     const cta = page.locator('.offcanvas__contact a.pp-theme-btn');
-    await expect(cta).toContainText('Open FocusJam');
-    await expect(cta).toHaveAttribute('href', 'https://app.focusjam.com');
+    await expect(cta).toContainText('Request a demo');
+    await expect(cta).toHaveAttribute('href', 'contact.html');
   });
 });
