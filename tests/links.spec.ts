@@ -18,6 +18,7 @@ const allPages = [
   '/pricing.html',
   '/integrations.html',
   '/security.html',
+  '/contact.html',
   '/404.html',
 ];
 

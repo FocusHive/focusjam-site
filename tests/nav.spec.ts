@@ -4,8 +4,8 @@
  * Targets the Cloudly template markup:
  *   - nav#mobile-menu  (desktop accordion nav, hidden by meanmenu on mobile)
  *   - .logo a.header-logo  (wordmark / brand link)
- *   - header .header-right a.pp-theme-btn  ("Open FocusJam" CTA)
- *   - header .header-right a.pp-btn-outline  ("Join a meeting" CTA)
+ *   - header .header-right a.pp-theme-btn  ("Request a demo" CTA)
+ *   - header .header-right a.pp-btn-outline  (secondary "See pricing" CTA)
  *   - li.active  (per-page active state)
  *
  * Restricted to Desktop Chrome only — on mobile viewports meanmenu
@@ -24,6 +24,7 @@ const pages: [string, string | null][] = [
   ['/pricing.html', 'Pricing'],
   ['/integrations.html', 'Integrations'],
   ['/security.html', 'Security'],
+  ['/contact.html', null],
   ['/404.html', null],
 ];
 
@@ -72,19 +73,19 @@ for (const [url, activeText] of pages) {
       }
     });
 
-    test('"Open FocusJam" CTA is present and links to app.focusjam.com', async ({ page }) => {
+    test('"Request a demo" CTA is present and links to the contact page', async ({ page }) => {
       await page.goto(url);
       const cta = page.locator('header .header-right a.pp-theme-btn').first();
-      await expect(cta).toContainText('Open FocusJam');
-      await expect(cta).toHaveAttribute('href', 'https://app.focusjam.com');
+      await expect(cta).toContainText('Request a demo');
+      await expect(cta).toHaveAttribute('href', 'contact.html');
     });
 
-    test('"Join a meeting" CTA is present and links to join.focusjam.com', async ({ page }) => {
+    test('secondary header CTA is present and stays on the marketing site', async ({ page }) => {
       await page.goto(url);
       // d-none d-lg-inline-block: visible on desktop
       const cta = page.locator('header .header-right a.pp-btn-outline').first();
-      await expect(cta).toContainText('Join a meeting');
-      await expect(cta).toHaveAttribute('href', 'https://join.focusjam.com');
+      await expect(cta).toContainText(/See (pricing|features)/);
+      await expect(cta).toHaveAttribute('href', /^(pricing|features)\.html$/);
     });
   });
 }

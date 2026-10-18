@@ -107,7 +107,7 @@ linkcheck:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 # ---------------------------------------------------------------------------
-# a11y — accessibility scan (pa11y-ci) over the 5 primary pages
+# a11y — accessibility scan (pa11y-ci) over the 6 primary pages
 # ---------------------------------------------------------------------------
 # Port 8080 is used here (same reasoning as linkcheck; jobs run in separate
 # containers so there is no port conflict between them).
@@ -131,6 +131,7 @@ a11y:
       http://localhost:8080/pricing.html
       http://localhost:8080/integrations.html
       http://localhost:8080/security.html
+      http://localhost:8080/contact.html
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
     - if: '$CI_COMMIT_BRANCH =~ /^renovate\//'
