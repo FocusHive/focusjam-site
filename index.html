@@ -19,6 +19,9 @@
     <title>FocusJam — Every jam gets an AI Jammer</title>
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.svg">
+    <!-- Preload the two self-hosted text fonts every page paints with -->
+    <link rel="preload" href="assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/open-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
     <!-- 1. Bootstrap 5 -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <!-- 2. Animate.css (WOW.js) -->
@@ -32,7 +35,7 @@
     <!-- 6. Nice Select -->
     <link rel="stylesheet" href="assets/css/nice-select.css">
     <!-- 7. Font Awesome FREE 6 via jsDelivr CDN -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css">
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
     <!-- 8. Cloudly main CSS (--pp-theme #7B1FE4, DM Sans + Open Sans) -->
     <link rel="stylesheet" href="assets/css/main.css">
     <!-- 9. FocusJam site overrides -->
@@ -205,13 +208,13 @@
     <section id="main" class="pp-hero-section pp-hero-2 fix" aria-labelledby="hero-heading">
         <!-- AI Jammer in-meeting panel -->
         <div class="pp-hero-image-1 float-bob-y" aria-hidden="true">
-            <img src="assets/img/fj/hero-jammer-ui.png"
+            <img src="assets/img/fj/hero-jammer-ui.webp"
                  alt="AI Jammer in-meeting command panel showing participant sidebar, Jammer tile with LIVE indicator, and live transcript"
                  width="420" height="520">
         </div>
         <!-- Live-recap card -->
         <div class="pp-hero-image-2 float-bob-x" aria-hidden="true">
-            <img src="assets/img/fj/hero-recap-panel.png"
+            <img src="assets/img/fj/hero-recap-panel.webp"
                  alt="Meeting recap card showing decisions with checkmarks, action items with owner tags and due dates, and a 78% completion progress bar"
                  width="360" height="420">
         </div>
@@ -432,7 +435,7 @@
                     <div class="col-lg-6">
                         <!-- AI Jammer slash-command interface -->
                         <div class="pp-feature-image" aria-hidden="true">
-                            <img src="assets/img/fj/feature-jammer-panel.png"
+                            <img src="assets/img/fj/feature-jammer-panel.webp"
                                  alt="AI Jammer slash-command interface showing /ask, /recap, /action commands and a live AI response panel"
                                  width="600" height="500" loading="lazy">
                         </div>
@@ -458,7 +461,7 @@
                     <div class="col-lg-6">
                         <!-- E2EE architecture diagram -->
                         <div class="pp-feature-privacy-image wow fadeInUp" data-wow-delay=".3s" aria-hidden="true">
-                            <img src="assets/img/fj/feature-e2ee-arch.png"
+                            <img src="assets/img/fj/feature-e2ee-arch.webp"
                                  alt="End-to-end encryption architecture diagram showing participants, E2EE shield, and a private boundary around your meeting media, AI, and storage"
                                  width="580" height="460" loading="lazy">
                         </div>
@@ -495,10 +498,10 @@
          ============================================================ -->
     <section class="pp-how-work-section section-padding fix section-bg-2" aria-labelledby="steps-heading">
         <div class="top-shape">
-            <img src="assets/img/home-1/feature/bg-shape.png" alt="">
+            <img src="assets/img/home-1/feature/bg-shape.webp" alt="" loading="lazy" decoding="async">
         </div>
         <div class="line-shape">
-            <img src="assets/img/home-1/feature/line.png" alt="">
+            <img src="assets/img/home-1/feature/line.webp" alt="" loading="lazy" decoding="async">
         </div>
         <div class="container">
             <div class="pp-section-title text-center">
@@ -578,7 +581,7 @@
                     <div class="col-lg-6">
                         <!-- Integrations hub diagram -->
                         <div class="pp-feature-connection-image wow fadeInUp" data-wow-delay=".3s" aria-hidden="true">
-                            <img src="assets/img/fj/feature-integrations-hub.png"
+                            <img src="assets/img/fj/feature-integrations-hub.webp"
                                  alt="Hub-and-spoke integration diagram with FocusJam at center connected to task tracker, docs, messaging, calendar, webhooks, and API nodes"
                                  width="580" height="460" loading="lazy">
                         </div>
@@ -678,7 +681,7 @@
          ============================================================ -->
     <section class="pp-pricing-section section-padding fix section-bg-2" aria-labelledby="pricing-heading">
         <div class="top-shape">
-            <img src="assets/img/home-1/feature/bg-shape.png" alt="">
+            <img src="assets/img/home-1/feature/bg-shape.webp" alt="" loading="lazy" decoding="async">
         </div>
         <div class="container">
             <div class="pp-section-title text-center">
@@ -885,7 +888,7 @@
                     <div class="col-lg-6">
                         <!-- Security / data-residency architecture diagram -->
                         <div class="pp-about-image" aria-hidden="true">
-                            <img src="assets/img/fj/feature-security-arch.png"
+                            <img src="assets/img/fj/feature-security-arch.webp"
                                  alt="Sovereign AI data residency architecture showing private deployment, single sign-on identity, audit log, and a protected data perimeter"
                                  width="620" height="520" loading="lazy">
                         </div>
@@ -905,7 +908,7 @@
          ============================================================ -->
     <section class="pp-cta-section section-padding fix theme-bg" aria-labelledby="cta-heading">
         <div class="top-shape">
-            <img src="assets/img/home-1/cta/bg.png" alt="">
+            <img src="assets/img/home-1/cta/bg.webp" alt="" loading="lazy" decoding="async">
         </div>
         <div class="container">
             <div class="pp-cta-wrapper">
