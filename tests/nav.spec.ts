@@ -25,6 +25,8 @@ const pages: [string, string | null][] = [
   ['/integrations.html', 'Integrations'],
   ['/security.html', 'Security'],
   ['/contact.html', null],
+  ['/terms.html', null],
+  ['/privacy.html', null],
   ['/404.html', null],
 ];
 

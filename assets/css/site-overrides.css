@@ -363,3 +363,36 @@ footer .pp-footer-content p {
     font-size: 14px;
     color: #4d4a5e;
 }
+
+/* Legal pages (terms.html, privacy.html): readable long-form text */
+.fj-legal h2 {
+    font-size: 24px;
+    margin: 40px 0 14px;
+    color: var(--pp-header);
+}
+
+.fj-legal p,
+.fj-legal li {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #3d3a4e;
+}
+
+.fj-legal ul {
+    list-style: disc;
+    padding-left: 24px;
+    margin: 0 0 16px;
+}
+
+.fj-legal li {
+    margin-bottom: 8px;
+}
+
+.fj-legal a {
+    color: #6a14c9;
+    text-decoration: underline;
+}
+
+.fj-legal-effective {
+    margin-bottom: 8px;
+}
