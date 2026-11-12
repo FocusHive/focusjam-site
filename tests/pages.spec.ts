@@ -25,6 +25,8 @@ const pages: PageDef[] = [
   { url: '/integrations.html', hasDescription: true },
   { url: '/security.html', hasDescription: true },
   { url: '/contact.html', hasDescription: true },
+  { url: '/terms.html', hasDescription: true },
+  { url: '/privacy.html', hasDescription: true },
   { url: '/404.html', hasDescription: false },
 ];
 
